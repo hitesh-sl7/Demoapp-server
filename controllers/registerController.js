@@ -33,7 +33,7 @@ Register.registerLog = async (req, res) => {
         // console.log(data);
 
         let my_file = await s3.getObject({
-            Bucket: "cyclic-dead-gray-iguana-suit-us-east-1",
+            Bucket: "cyclic-upset-dove-sari-eu-west-3",
             Key: "some_files/users.json",
         }).promise()
 
@@ -52,12 +52,12 @@ Register.registerLog = async (req, res) => {
             return res.status(200).send(sendData);  
         }else{
             userid = Object.keys(users).length + 1
+            // userid = 1
             users[Reqdata.rfs.email] = {"id" : 50 + userid , "username" : Reqdata.rfs.name , "password" : Reqdata.rfs.password }
-
 
             await s3.putObject({
                 Body: JSON.stringify(users),
-                Bucket: "cyclic-dead-gray-iguana-suit-us-east-1",
+                Bucket: "cyclic-upset-dove-sari-eu-west-3",
                 Key: "some_files/users.json",
             }).promise()
         }

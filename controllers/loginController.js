@@ -30,7 +30,7 @@ Login.loginLog = async (req, res) => {
     }else{
         // var data = Reqdata.email + ":" + Reqdata.password;
         my_file = await s3.getObject({
-            Bucket: "cyclic-dead-gray-iguana-suit-us-east-1",
+            Bucket: "cyclic-upset-dove-sari-eu-west-3",
             Key: "some_files/users.json",
         }).promise()
 
