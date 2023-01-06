@@ -126,7 +126,7 @@ Login.sendLoginData = async(status,data) => {
         .post('https://m.authsafe.ai/v1/login', 
         // .post('http://127.0.0.1:8000/v1/login', 
         body,
-        { headers: headers }
+        // { headers: headers }
         )
         .then(res => {
             console.log(`statusCode: ${res.status}`);

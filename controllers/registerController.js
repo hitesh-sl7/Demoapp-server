@@ -113,7 +113,7 @@ Register.registerLog = async (req, res) => {
         axios
         .post('https://m.authsafe.ai/v1/register', 
         body,
-        { headers: headers }
+        // { headers: headers }
         )
         .then(res => {
             console.log(`statusCode: ${res.status}`);
