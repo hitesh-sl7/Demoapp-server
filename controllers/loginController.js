@@ -12,90 +12,90 @@ const s3 = new AWS.S3()
 var Login = function(){
 };
 Login.loginLog = async (req, res) => {
-    // try{
-    var Reqdata = req.body;
-    // Reqdata.auth_key = req.headers['authorization'];
-    // Reqdata.package = req.headers['package'];
-    var passed = 0;
-    Reqdata.ip = requestIp.getClientIp(req);
-    var user = parseInt(Reqdata.email.slice(5,));
-    var pass = parseInt(Reqdata.password.slice(5,));
-    if((user <= 50) && (pass <= 50) && (user == pass)){
-        const astk = jwtGenerator(user);
-        Reqdata.uID = user;
-        Reqdata.username = Reqdata.email;
-        Reqdata.email = Reqdata.email + "@yopmail.com";
-        Reqdata.session_id = astk;
-        passed = 1;
-    }else{
-        // var data = Reqdata.email + ":" + Reqdata.password;
-        my_file = await s3.getObject({
-            Bucket: "cyclic-lime-stormy-panda-ap-south-1",
-            Key: "some_files/users.json",
-        }).promise()
+    try{
+        var Reqdata = req.body;
+        // Reqdata.auth_key = req.headers['authorization'];
+        // Reqdata.package = req.headers['package'];
+        var passed = 0;
+        Reqdata.ip = requestIp.getClientIp(req);
+        var user = parseInt(Reqdata.email.slice(5,));
+        var pass = parseInt(Reqdata.password.slice(5,));
+        if((user <= 50) && (pass <= 50) && (user == pass)){
+            const astk = jwtGenerator(user);
+            Reqdata.uID = user;
+            Reqdata.username = Reqdata.email;
+            Reqdata.email = Reqdata.email + "@yopmail.com";
+            Reqdata.session_id = astk;
+            passed = 1;
+        }else{
+            // var data = Reqdata.email + ":" + Reqdata.password;
+            my_file = await s3.getObject({
+                Bucket: "cyclic-lime-stormy-panda-ap-south-1",
+                Key: "some_files/users.json",
+            }).promise()
 
-        var users = new Buffer.from(my_file['Body']).toString();
-        users = JSON.parse(users)
+            var users = new Buffer.from(my_file['Body']).toString();
+            users = JSON.parse(users)
 
-        if(users[Reqdata.email]){
-            if(users[Reqdata.email]['password'] == Reqdata.password){
-                Reqdata.uID = users[Reqdata.email]['id'];
-                Reqdata.username = users[Reqdata.email]['username'];
-                Reqdata.email = Reqdata.email;
-                const astk = jwtGenerator(Reqdata.uID);
-                Reqdata.session_id = astk;
-                passed = 1;  
+            if(users[Reqdata.email]){
+                if(users[Reqdata.email]['password'] == Reqdata.password){
+                    Reqdata.uID = users[Reqdata.email]['id'];
+                    Reqdata.username = users[Reqdata.email]['username'];
+                    Reqdata.email = Reqdata.email;
+                    const astk = jwtGenerator(Reqdata.uID);
+                    Reqdata.session_id = astk;
+                    passed = 1;  
+                }
             }
         }
-    }
-    // const content = await fs.readFileSync('users.txt',{encoding:'utf8', flag:'r'});
-    // Allcontent = content.split("\n");
-    //         i = 51;
-    //         Allcontent.forEach(function(value){
-    //                 // console.log(value);
-    //                 try{
-    //                 if(value.split(";")[1] == data){
-    //                     Reqdata.uID = i;
-    //                     Reqdata.username = value.split(";")[0] ;
-    //                     Reqdata.email = Reqdata.email;
-    //                     const astk = jwtGenerator(Reqdata.uID);
-    //                     Reqdata.session_id = astk;
-    //                     passed = 1;     
-    //                 };
-    //             }catch(err){                   
-    //             }
-    //                 i += 1;
-    //         });
+        // const content = await fs.readFileSync('users.txt',{encoding:'utf8', flag:'r'});
+        // Allcontent = content.split("\n");
+        //         i = 51;
+        //         Allcontent.forEach(function(value){
+        //                 // console.log(value);
+        //                 try{
+        //                 if(value.split(";")[1] == data){
+        //                     Reqdata.uID = i;
+        //                     Reqdata.username = value.split(";")[0] ;
+        //                     Reqdata.email = Reqdata.email;
+        //                     const astk = jwtGenerator(Reqdata.uID);
+        //                     Reqdata.session_id = astk;
+        //                     passed = 1;     
+        //                 };
+        //             }catch(err){                   
+        //             }
+        //                 i += 1;
+        //         });
 
-    if(passed == 1){
-        Login.sendLoginData("login_succeeded",Reqdata);
-        var sendData = {};
-        sendData.status = 'allow';
-        sendData.severity = 'low';
-        sendData.loginstatus = 'login_succeeded';
-        sendData.device = {};
-        sendData.request = Reqdata;
-        sendData.message = "Login Request successfully reached.";
-    }else{
-        Login.sendLoginData("login_failed",Reqdata);
-        var sendData = {};
-        sendData.status = 'allow';
-        sendData.severity = 'low';
-        sendData.loginstatus = 'login_failed';
-        sendData.device = {};
-        sendData.request = Reqdata;
-        sendData.message = "Login Request successfully reached.";
+        if(passed == 1){
+            Login.sendLoginData("login_succeeded",Reqdata);
+            var sendData = {};
+            sendData.status = 'allow';
+            sendData.severity = 'low';
+            sendData.loginstatus = 'login_succeeded';
+            sendData.device = {};
+            sendData.request = Reqdata;
+            sendData.message = "Login Request successfully reached.";
+        }else{
+            Login.sendLoginData("login_failed",Reqdata);
+            var sendData = {};
+            sendData.status = 'allow';
+            sendData.severity = 'low';
+            sendData.loginstatus = 'login_failed';
+            sendData.device = {};
+            sendData.request = Reqdata;
+            sendData.message = "Login Request successfully reached.";
+        }
+        return res.status(200).send(sendData);
+}
+    catch (err) 
+    {
+        //console.error(err.message);
+        retMsg = {};
+        retMsg.status = 500;
+        retMsg.message = err.message;
+        return res.status(200).send(retMsg);
     }
-    return res.status(200).send(sendData);
-// }
-    // catch (err) 
-    // {
-    //     //console.error(err.message);
-    //     retMsg = {};
-    //     retMsg.status = 500;
-    //     retMsg.message = err.message;
-    //     return res.status(200).send(retMsg);
-    // }
 }
 
 Login.sendLoginData = async(status,data) => {
