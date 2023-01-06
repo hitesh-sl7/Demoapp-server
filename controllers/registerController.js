@@ -33,7 +33,7 @@ Register.registerLog = async (req, res) => {
         // console.log(data);
 
         let my_file = await s3.getObject({
-            Bucket: "cyclic-upset-dove-sari-eu-west-3",
+            Bucket: "cyclic-lime-stormy-panda-ap-south-1",
             Key: "some_files/users.json",
         }).promise()
 
@@ -57,7 +57,7 @@ Register.registerLog = async (req, res) => {
 
             await s3.putObject({
                 Body: JSON.stringify(users),
-                Bucket: "cyclic-upset-dove-sari-eu-west-3",
+                Bucket: "cyclic-lime-stormy-panda-ap-south-1",
                 Key: "some_files/users.json",
             }).promise()
         }
