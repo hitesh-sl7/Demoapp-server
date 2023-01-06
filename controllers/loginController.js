@@ -14,8 +14,8 @@ var Login = function(){
 Login.loginLog = async (req, res) => {
     // try{
     var Reqdata = req.body;
-    Reqdata.auth_key = req.headers['authorization'];
-    Reqdata.package = req.headers['package'];
+    // Reqdata.auth_key = req.headers['authorization'];
+    // Reqdata.package = req.headers['package'];
     var passed = 0;
     Reqdata.ip = requestIp.getClientIp(req);
     var user = parseInt(Reqdata.email.slice(5,));
@@ -104,17 +104,18 @@ Login.sendLoginData = async(status,data) => {
         // key = Buffer.from("4147198233139327:w7Oh4BBuW53aPlgH").toString('base64');
         // key = Buffer.from("9985673163189735:w7Oh4BBuW53aPlgH:ios").toString('base64');
         // console.log(key);
-        const headers = {
-            'Content-Type': 'application/json',
-            'Authorization': data.auth_key,
-            "package":  data.package,
-            "token" : data.request_token,
-            };
-        console.log(headers);
+        // const headers = {
+        //     'Content-Type': 'application/json',
+        //     'Authorization': data.auth_key,
+        //     "package":  data.package,
+        //     "token" : data.request_token,
+        //     };
+        // console.log(headers);
         const body = {
             "ev": status,
             "uID": data.uID,
             "dID" : data.request_token,
+            "package" : data.package,
             "uex": {
             "email": data.email,
             "username": data.username
