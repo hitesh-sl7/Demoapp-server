@@ -2,9 +2,11 @@ const parser = require("ua-parser-js");
 const useragent = require('express-useragent');
 const requestIp = require('request-ip');
 const { v1: uuidv1,v4: uuidv4 } = require('uuid');
+const AWS = require("aws-sdk");
 
 const axios = require('axios');
 var fs = require("fs");
+const s3 = new AWS.S3()
 
 var Register = function(){
     
@@ -12,10 +14,11 @@ var Register = function(){
 Register.registerLog = async (req, res) => {
     try{
         var Reqdata = req.body;
+        console.log(Reqdata);
         Reqdata.auth_key = req.headers['authorization'];
         Reqdata.package = req.headers['package'];
         Reqdata.ip = requestIp.getClientIp(req);
-        if((Reqdata.name == "") || (Reqdata.email == "") || (Reqdata.password == "") ){
+        if((Reqdata.rfs.name == "") || (Reqdata.rfs.email == "") || (Reqdata.rfs.password == "") ){
             Register.sendRegisterData("register_failed",Reqdata);
             var sendData = {};
             sendData.status = 'allow';
@@ -26,12 +29,44 @@ Register.registerLog = async (req, res) => {
             sendData.message = "Register Request successfully reached";
             return res.status(200).send(sendData);  
         }
-        var data = Reqdata.name + ";" + Reqdata.email + ":" + Reqdata.password + "\n";
-        console.log(data);
-        fs.appendFile("users.txt", data, (err) => {
-        if (err) console.log(err);
-        console.log("Successfully Written to File.");
-        });
+        // var data = Reqdata.rfs.name + ";" + Reqdata.rfs.email + ":" + Reqdata.rfs.password + "\n";
+        // console.log(data);
+
+        let my_file = await s3.getObject({
+            Bucket: "cyclic-dead-gray-iguana-suit-us-east-1",
+            Key: "some_files/users.json",
+        }).promise()
+
+        var users = new Buffer.from(my_file['Body']).toString();
+        users = JSON.parse(users)
+
+        if(users[Reqdata.rfs.email]){
+            Register.sendRegisterData("register_failed",Reqdata);
+            var sendData = {};
+            sendData.status = 'allow';
+            sendData.severity = 'low';
+            sendData.register_status = 'register_failed';
+            sendData.device = {};
+            sendData.request = req.body;
+            sendData.message = "Register Request successfully reached. User Already exists";
+            return res.status(200).send(sendData);  
+        }else{
+            userid = Object.keys(users).length + 1
+            users[Reqdata.rfs.email] = {"id" : 50 + userid , "username" : Reqdata.rfs.name , "password" : Reqdata.rfs.password }
+
+
+            await s3.putObject({
+                Body: JSON.stringify(users),
+                Bucket: "cyclic-dead-gray-iguana-suit-us-east-1",
+                Key: "some_files/users.json",
+            }).promise()
+        }
+
+        
+        // fs.appendFile("users.txt", data, (err) => {
+        // if (err) console.log(err);
+        // console.log("Successfully Written to File.");
+        // });
         Register.sendRegisterData("register_succeeded",Reqdata);
         var sendData = {};
         sendData.status = 'allow';
