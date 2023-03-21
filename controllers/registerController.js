@@ -111,7 +111,7 @@ Register.registerLog = async (req, res) => {
         }
 
         axios
-        .post('https://m.authsafe.ai/v1/register', 
+        .post('https://mdev.authsafe.ai/v1/register', 
         body,
         // { headers: headers }
         )
