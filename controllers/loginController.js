@@ -7,6 +7,7 @@ const axios = require('axios');
 var fs = require("fs");
 const AWS = require("aws-sdk");
 
+
 const s3 = new AWS.S3()
 
 var Login = function(){
@@ -42,6 +43,9 @@ Login.loginLog = async (req, res) => {
                     Reqdata.uID = users[Reqdata.email]['id'];
                     Reqdata.username = users[Reqdata.email]['username'];
                     Reqdata.email = Reqdata.email;
+                    if(users[Reqdata.email]['phone']){
+                        Reqdata.phone = users[Reqdata.email]['phone'];
+                    }
                     const astk = jwtGenerator(Reqdata.uID);
                     Reqdata.session_id = astk;
                     passed = 1;  

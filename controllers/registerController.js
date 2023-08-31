@@ -53,7 +53,7 @@ Register.registerLog = async (req, res) => {
         }else{
             userid = Object.keys(users).length + 1
             // userid = 1
-            users[Reqdata.rfs.email] = {"id" : 50 + userid , "username" : Reqdata.rfs.name , "password" : Reqdata.rfs.password }
+            users[Reqdata.rfs.email] = {"id" : 50 + userid , "username" : Reqdata.rfs.name , "password" : Reqdata.rfs.password , "phone" : Reqdata.rfs.phone  }
 
             await s3.putObject({
                 Body: JSON.stringify(users),
