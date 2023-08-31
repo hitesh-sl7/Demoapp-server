@@ -122,7 +122,8 @@ Login.sendLoginData = async(status,data) => {
             "package" : data.package,
             "uex": {
             "email": data.email,
-            "username": data.username
+            "username": data.username,
+            "phone" : data.phone
             }
         }
 
