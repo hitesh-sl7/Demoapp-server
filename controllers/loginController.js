@@ -105,21 +105,35 @@ Login.loginLog = async (req, res) => {
 Login.sendLoginData = async(status,data) => {
     try 
     {
-        // key = Buffer.from("4147198233139327:w7Oh4BBuW53aPlgH").toString('base64');
-        // key = Buffer.from("9985673163189735:w7Oh4BBuW53aPlgH:ios").toString('base64');
-        // console.log(key);
-        // const headers = {
-        //     'Content-Type': 'application/json',
-        //     'Authorization': data.auth_key,
-        //     "package":  data.package,
-        //     "token" : data.request_token,
-        //     };
+        var auth_key = '';
+        var plt = '';
+        var token = '';
+
+        var dID = new Buffer.from(data.request_token.split(".")[1], 'base64').toString();
+    
+        if(objCon.isJsonParsable(dID)) {
+            dID = JSON.parse(dID);
+            plt = dID['plt'];
+            pid = dID['pr'];
+        }
+        if(pid == "21" || pid == 21){
+            token = "9153477437238592:zzuVeKSXMdGdMz5C" + plt;
+            auth_key = new Buffer.from(token).toString('base64');
+        }else if(pid == "22" || pid == 22){
+            token = "3764534847133574:3Oy1L8ejkMnhaTdc" + plt;
+            auth_key = new Buffer.from(token).toString('base64');
+        }
+
+        const headers = {
+            'Content-Type': 'application/json',
+            'authorization': auth_key,
+            "package":  data.package,
+            };
         // console.log(headers);
         const body = {
             "ev": status,
             "uID": data.uID,
             "dID" : data.request_token,
-            "package" : data.package,
             "uex": {
             "email": data.email,
             "username": data.username,
@@ -131,7 +145,7 @@ Login.sendLoginData = async(status,data) => {
         .post('https://mdev.authsafe.ai/v1/login',
         // .post('http://127.0.0.1:8000/v1/login', 
         body,
-        // { headers: headers }
+        { headers: headers }
         )
         .then(res => {
             console.log(`statusCode: ${res.status}`);
