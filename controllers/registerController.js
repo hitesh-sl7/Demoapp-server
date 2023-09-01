@@ -101,7 +101,7 @@ Register.registerLog = async (req, res) => {
         plt = dID['plt'];
         pid = dID['pr'];
         if(pid == "21" || pid == 21){
-            token = "9153477437238592:zzuVeKSXMdGdMz5C" + plt;
+            token = "9153477437238592:zzuVeKSXMdGdMz5C:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
         }else if(pid == "22" || pid == 22){
             token = "3764534847133574:3Oy1L8ejkMnhaTdc:" + plt;
