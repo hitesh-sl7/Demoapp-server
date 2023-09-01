@@ -110,12 +110,10 @@ Login.sendLoginData = async(status,data) => {
         var token = '';
 
         var dID = new Buffer.from(data.request_token.split(".")[1], 'base64').toString();
-    
-        if(objCon.isJsonParsable(dID)) {
-            dID = JSON.parse(dID);
-            plt = dID['plt'];
-            pid = dID['pr'];
-        }
+        dID = JSON.parse(dID);
+        plt = dID['plt'];
+        pid = dID['pr'];
+
         if(pid == "21" || pid == 21){
             token = "9153477437238592:zzuVeKSXMdGdMz5C" + plt;
             auth_key = new Buffer.from(token).toString('base64');
