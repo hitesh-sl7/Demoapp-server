@@ -106,6 +106,9 @@ Register.registerLog = async (req, res) => {
         }else if(pid == "22" || pid == 22){
             token = "3764534847133574:3Oy1L8ejkMnhaTdc:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
+        }else if(pid == "23" || pid == 23){
+            token = "9961982276966394:nxkf31HgRA7wAARz:" + plt;
+            auth_key = new Buffer.from(token).toString('base64');
         }
 
         const headers = {
