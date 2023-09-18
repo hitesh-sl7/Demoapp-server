@@ -114,7 +114,7 @@ Login.sendLoginData = async(status,data) => {
         plt = dID['plt'];
         pid = dID['pr'];
 
-        if(pid == "21" || pid == 21){
+        if(pid == "21" || pid == 21){ 
             token = "9153477437238592:zzuVeKSXMdGdMz5C:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
         }else if(pid == "22" || pid == 22){
@@ -135,6 +135,7 @@ Login.sendLoginData = async(status,data) => {
             "ev": status,
             "uID": data.uID,
             "dID" : data.request_token,
+            "df" : data.d_f,
             "uex": {
             "email": data.email,
             "username": data.username,
