@@ -18,7 +18,7 @@ Register.registerLog = async (req, res) => {
         // Reqdata.auth_key = req.headers['authorization'];
         // Reqdata.package = req.headers['package'];
         Reqdata.ip = requestIp.getClientIp(req);
-        if((Reqdata.rfs.name == "") || (Reqdata.rfs.email == "") || (Reqdata.rfs.password == "") ){
+        if((Reqdata.rfs.name == "") || (Reqdata.rfs.email == "") || (Reqdata.rfs.password == "" || Reqdata.rfs.phone == "0" ) ){
             Register.sendRegisterData("register_failed",Reqdata);
             var sendData = {};
             sendData.status = 'allow';
