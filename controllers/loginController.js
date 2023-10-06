@@ -53,7 +53,14 @@ Login.loginLog = async (req, res) => {
             }
         }
         if(passed == 1){
-            var sendData = await Login.sendLoginData("login_succeeded",Reqdata);
+            var respData = await Login.sendLoginData("login_succeeded",Reqdata);
+            var sendData = {};
+            sendData.status = respData.status;
+            sendData.severity = respData.severity;
+            sendData.loginstatus = 'login_succeeded';
+            sendData.device = respData.device;
+            sendData.request = Reqdata;
+            sendData.message = "Login Request successfully reached.";
         }else{
             Login.sendLoginData("login_failed",Reqdata);
             var sendData = {};
@@ -116,7 +123,7 @@ Login.sendLoginData = async(status,data) => {
             "phone" : data.phone
             }
         }
-        
+
         const response = await axios.post('https://mdev.authsafe.ai/v1/login', body,{ headers: headers });
         console.log(`statusCode: ${response.status}`);
         console.log(response.data,"---------response ");

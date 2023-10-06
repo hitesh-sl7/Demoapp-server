@@ -63,7 +63,14 @@ Register.registerLog = async (req, res) => {
             }).promise()
         }
 
-        var sendData = await Register.sendRegisterData("register_succeeded",Reqdata);
+        var respData = await Register.sendRegisterData("register_succeeded",Reqdata);
+        var sendData = {};
+        sendData.status = respData.status;
+        sendData.severity = respData.severity;
+        sendData.loginstatus = 'register_succeeded';
+        sendData.device = respData.device;
+        sendData.request = Reqdata;
+        sendData.message = "Register Request successfully reached.";
         return res.status(200).send(sendData);
         }catch (err) 
         {
