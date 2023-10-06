@@ -63,19 +63,7 @@ Register.registerLog = async (req, res) => {
             }).promise()
         }
 
-        
-        // fs.appendFile("users.txt", data, (err) => {
-        // if (err) console.log(err);
-        // console.log("Successfully Written to File.");
-        // });
-        Register.sendRegisterData("register_succeeded",Reqdata);
-        var sendData = {};
-        sendData.status = 'allow';
-        sendData.severity = 'low';
-        sendData.register_status = 'register_succeeded';
-        sendData.device = {};
-        sendData.request = req.body;
-        sendData.message = "Register Request successfully reached.";
+        var sendData = Register.sendRegisterData("register_succeeded",Reqdata);
         return res.status(200).send(sendData);
         }catch (err) 
         {
@@ -132,7 +120,7 @@ Register.registerLog = async (req, res) => {
             }
         }
 
-        axios
+        await axios
         .post('https://mdev.authsafe.ai/v1/register', 
         body,
         { headers: headers }
@@ -140,9 +128,11 @@ Register.registerLog = async (req, res) => {
         .then(res => {
             console.log(`statusCode: ${res.status}`);
             console.log(res);
+            return res
         })
         .catch(error => {
-            console.error(error);
+            console.log(error.message);
+            return error.message
         });
 
     } 

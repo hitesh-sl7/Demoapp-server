@@ -52,34 +52,8 @@ Login.loginLog = async (req, res) => {
                 }
             }
         }
-        // const content = await fs.readFileSync('users.txt',{encoding:'utf8', flag:'r'});
-        // Allcontent = content.split("\n");
-        //         i = 51;
-        //         Allcontent.forEach(function(value){
-        //                 // console.log(value);
-        //                 try{
-        //                 if(value.split(";")[1] == data){
-        //                     Reqdata.uID = i;
-        //                     Reqdata.username = value.split(";")[0] ;
-        //                     Reqdata.email = Reqdata.email;
-        //                     const astk = jwtGenerator(Reqdata.uID);
-        //                     Reqdata.session_id = astk;
-        //                     passed = 1;     
-        //                 };
-        //             }catch(err){                   
-        //             }
-        //                 i += 1;
-        //         });
-
         if(passed == 1){
-            Login.sendLoginData("login_succeeded",Reqdata);
-            var sendData = {};
-            sendData.status = 'allow';
-            sendData.severity = 'low';
-            sendData.loginstatus = 'login_succeeded';
-            sendData.device = {};
-            sendData.request = Reqdata;
-            sendData.message = "Login Request successfully reached.";
+            var sendData = Login.sendLoginData("login_succeeded",Reqdata);
         }else{
             Login.sendLoginData("login_failed",Reqdata);
             var sendData = {};
@@ -143,7 +117,7 @@ Login.sendLoginData = async(status,data) => {
             }
         }
 
-        axios
+        await axios
         .post('https://mdev.authsafe.ai/v1/login',
         // .post('http://127.0.0.1:8000/v1/login', 
         body,
@@ -152,6 +126,7 @@ Login.sendLoginData = async(status,data) => {
         .then(res => {
             console.log(`statusCode: ${res.status}`);
             console.log(res);
+            return res
         })
         .catch(error => {
             console.error(error);
@@ -160,7 +135,8 @@ Login.sendLoginData = async(status,data) => {
     } 
     catch (err) 
     {
-        console.error(err.message);
+        console.log(err.message);
+        return err.message
     
     }
 };
