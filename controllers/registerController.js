@@ -63,7 +63,7 @@ Register.registerLog = async (req, res) => {
             }).promise()
         }
 
-        var sendData = Register.sendRegisterData("register_succeeded",Reqdata);
+        var sendData = await Register.sendRegisterData("register_succeeded",Reqdata);
         return res.status(200).send(sendData);
         }catch (err) 
         {
@@ -120,20 +120,12 @@ Register.registerLog = async (req, res) => {
             }
         }
 
-        await axios
-        .post('https://mdev.authsafe.ai/v1/register', 
-        body,
-        { headers: headers }
-        )
-        .then(res => {
-            console.log(`statusCode: ${res.status}`);
-            console.log(res);
-            return res
-        })
-        .catch(error => {
-            console.log(error.message);
-            return error.message
-        });
+        const response = await axios.post('https://mdev.authsafe.ai/v1/register',body,{ headers: headers });
+
+        console.log(`statusCode: ${response.status}`);
+        console.log(response.data);
+        return response.data
+
 
     } 
     catch (err) 
