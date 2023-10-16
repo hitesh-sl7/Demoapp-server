@@ -106,7 +106,7 @@ Register.registerLog = async (req, res) => {
             token = "9961982276966394:nxkf31HgRA7wAARz:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
         }else if(pid == "720" || pid == 720){
-            token = "5916688855237721:IzfVF8xbpNsn1zcP" + plt;
+            token = "5916688855237721:IzfVF8xbpNsn1zcP:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
             domain = 'https://m.authsafe.ai/v1/register';
         }
