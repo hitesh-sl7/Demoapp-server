@@ -7,9 +7,7 @@ const axios = require('axios');
 var fs = require("fs");
 const AWS = require("aws-sdk");
 
-
 const s3 = new AWS.S3()
-
 var Login = function(){
 };
 Login.loginLog = async (req, res) => {
@@ -89,6 +87,7 @@ Login.sendLoginData = async(status,data) => {
         var auth_key = '';
         var plt = '';
         var token = '';
+        var domain = 'https://mdev.authsafe.ai/v1/login';
 
         var dID = new Buffer.from(data.request_token.split(".")[1], 'base64').toString();
         dID = JSON.parse(dID);
@@ -104,6 +103,10 @@ Login.sendLoginData = async(status,data) => {
         }else if(pid == "23" || pid == 23){
             token = "9961982276966394:nxkf31HgRA7wAARz:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
+        }else if(pid == "720" || pid == 720){
+            token = "5916688855237721:IzfVF8xbpNsn1zcP" + plt;
+            auth_key = new Buffer.from(token).toString('base64');
+            domain = 'https://m.authsafe.ai/v1/login';
         }
 
         const headers = {
@@ -124,7 +127,7 @@ Login.sendLoginData = async(status,data) => {
             }
         }
 
-        const response = await axios.post('https://mdev.authsafe.ai/v1/login', body,{ headers: headers });
+        const response = await axios.post(domain, body,{ headers: headers });
         console.log(`statusCode: ${response.status}`);
         console.log(response.data,"---------response ");
         return response.data;
