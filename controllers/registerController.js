@@ -142,7 +142,7 @@ Register.registerLog = async (req, res) => {
     } 
     catch (err) 
     {
-        //console.error(err.message);
+        console.error(err.message);
         retMsg = {};
         retMsg.status = 500;
         retMsg.message = err.message;
