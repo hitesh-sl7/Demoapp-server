@@ -28,6 +28,8 @@ app.use("/login", require("./routes/login"));
 
 app.use("/register", require("./routes/register"));
 
+app.use("/webhook", require("./routes/webhook"));
+
 app.use("/reset-password", require("./routes/reset"));
 
 const PORT = process.env.PORT || 6000;
