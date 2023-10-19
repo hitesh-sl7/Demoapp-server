@@ -14,10 +14,8 @@ Webhook.webhookSend = async (req, res) => {
     var user_id = req.params['user_id'];
     const SendData = [];
     alerts.forEach(log => {
-        console.log(log);
-        console.log(log['user']);
-        console.log(log.user);
-        console.log(JSON.parse(log));
+        console.log(log['user']['user_id']);
+        console.log(parseInt(log['user']['user_id']) , parseInt(user_id));
         if(parseInt(log['user']['user_id']) == parseInt(user_id)){
             SendData.push(log);
         }
