@@ -11,9 +11,16 @@ Webhook.webhookReceive = async (req, res) => {
 };
 
 Webhook.webhookSend = async (req, res) => {
-    var Reqdata = req.body;
-    console.log(alerts,"------------- webhook sent");
-    return res.status(200).send(Reqdata);
+    var user_id = req.params['user_id'];
+    const SendData = [];
+    alerts.forEach(log => {
+        if(parseInt(log['user']['user_id']) == parseInt(user_id)){
+            SendData.push(log);
+        }
+      });
+    alerts.length = 0;
+    console.log(SendData,"------------- webhook sent");
+    return res.status(200).send(SendData);
 };
 
 module.exports = Webhook;
