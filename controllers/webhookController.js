@@ -11,7 +11,7 @@ Webhook.webhookReceive = async (req, res) => {
 };
 
 Webhook.webhookSend = async (req, res) => {
-    var user_id = req.params['user_id'];
+    var user_id = req.query['user_id'];
     const SendData = [];
     alerts.forEach(log => {
         console.log(log['user']['user_id']);
