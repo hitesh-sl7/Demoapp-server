@@ -13,14 +13,12 @@ Webhook.webhookReceive = async (req, res) => {
 Webhook.webhookSend = async (req, res) => {
     var user_id = req.query['user_id'];
     const SendData = [];
-    alerts.forEach(log => {
-        console.log(log['user']['user_id']);
-        console.log(parseInt(log['user']['user_id']) , parseInt(user_id));
-        if(parseInt(log['user']['user_id']) == parseInt(user_id)){
-            SendData.push(log);
+    for (let i = alerts.length - 1; i >= 0; i--) {
+        if (parseInt(alerts[i]['user']['user_id']) === parseInt(user_id)) {
+            SendData.push(alerts[i]);
+            alerts.splice(i, 1);
         }
-      });
-    alerts.length = 0;
+    }
     console.log(SendData,"------------- webhook sent");
     return res.status(200).send(SendData);
 };
