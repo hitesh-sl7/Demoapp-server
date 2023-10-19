@@ -11,11 +11,11 @@ Webhook.webhookReceive = async (req, res) => {
 };
 
 Webhook.webhookSend = async (req, res) => {
+    var SendData = {};
     var user_id = req.query['user_id'];
-    const SendData = [];
     for (let i = alerts.length - 1; i >= 0; i--) {
         if (parseInt(alerts[i]['user']['user_id']) === parseInt(user_id)) {
-            SendData.push(alerts[i]);
+            SendData = alerts[i];
             alerts.splice(i, 1);
         }
     }
