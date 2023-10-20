@@ -12,7 +12,7 @@ Webhook.webhookReceive = async (req, res) => {
 
 Webhook.webhookSend = async (req, res) => {
     var user_id = req.query['user_id'];
-    var SendData = {"status":"","severity":"","device":{"device_id":"","ip":"","location":", "},"user":{"user_id":str(user_id),"email":"","username":""},"message":""};
+    var SendData = {"status":"","severity":"","device":{"device_id":"","ip":"","location":", "},"user":{"user_id":user_id.toString(),"email":"","username":""},"message":""};
     for (let i = alerts.length - 1; i >= 0; i--) {
         if (parseInt(alerts[i]['user']['user_id']) === parseInt(user_id)) {
             SendData = alerts[i];
