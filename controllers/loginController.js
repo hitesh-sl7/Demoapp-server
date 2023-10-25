@@ -16,6 +16,7 @@ Login.loginLog = async (req, res) => {
         // Reqdata.auth_key = req.headers['authorization'];
         // Reqdata.package = req.headers['package'];
         var passed = 0;
+        Reqdata.uID = '';
         Reqdata.ip = requestIp.getClientIp(req);
         var user = parseInt(Reqdata.email.slice(5,));
         var pass = parseInt(Reqdata.password.slice(5,));
