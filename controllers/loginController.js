@@ -13,6 +13,9 @@ var Login = function(){
 Login.loginLog = async (req, res) => {
     try{
         var Reqdata = req.body;
+        var dID = new Buffer.from(Reqdata.request_token.split(".")[1], 'base64').toString();
+        dID = JSON.parse(dID);
+        pid = dID['pr'];
         // Reqdata.auth_key = req.headers['authorization'];
         // Reqdata.package = req.headers['package'];
         var passed = 0;

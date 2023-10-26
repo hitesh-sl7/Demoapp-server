@@ -15,6 +15,10 @@ Register.registerLog = async (req, res) => {
     try{
         var Reqdata = req.body;
         console.log(Reqdata);
+
+        var dID = new Buffer.from(Reqdata.request_token.split(".")[1], 'base64').toString();
+        dID = JSON.parse(dID);
+        pid = dID['pr'];
         // Reqdata.auth_key = req.headers['authorization'];
         // Reqdata.package = req.headers['package'];
         Reqdata.ip = requestIp.getClientIp(req);
@@ -54,7 +58,7 @@ Register.registerLog = async (req, res) => {
             userid = Object.keys(users).length + 1
             // userid = 1
             Reqdata.rfs.uID = 50 + userid;
-            users[Reqdata.rfs.email] = {"id" : Reqdata.rfs.uID , "username" : Reqdata.rfs.name , "password" : Reqdata.rfs.password , "phone" : Reqdata.rfs.phone  }
+            users[Reqdata.rfs.email] = {"id" : Reqdata.rfs.uID , "pid" : pid , "username" : Reqdata.rfs.name , "password" : Reqdata.rfs.password , "phone" : Reqdata.rfs.phone  }
 
             await s3.putObject({
                 Body: JSON.stringify(users),
