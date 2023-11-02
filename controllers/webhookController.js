@@ -4,6 +4,7 @@ const alerts = [];
 var Webhook = function(){
 };
 Webhook.webhookReceive = async (req, res) => {
+    console.log(alerts,"------------- webhook received API");
     var Reqdata = req.body;
     if(Reqdata['status'] != "allow"){
         alerts.push(Reqdata);
@@ -22,6 +23,7 @@ Webhook.webhookReceive = async (req, res) => {
 };
 
 Webhook.webhookSend = async (req, res) => {
+    console.log(alerts,"------------- webhook send API");
     var user_id = "";
     if(req.query['u_id']){
         user_id = req.query['u_id'];
