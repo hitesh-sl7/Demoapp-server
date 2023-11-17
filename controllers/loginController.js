@@ -112,6 +112,9 @@ Login.sendLoginData = async(status,data) => {
         }else if(pid == "23" || pid == 23){
             token = "9961982276966394:nxkf31HgRA7wAARz:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
+        }else if(pid == "800" || pid == 800){
+            token = "6117992428568284:Sgp7TPnZ2Sd52KQd:" + plt;
+            auth_key = new Buffer.from(token).toString('base64');
         }else if(pid == "720" || pid == 720){
             token = "5916688855237721:IzfVF8xbpNsn1zcP:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
