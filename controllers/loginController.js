@@ -28,6 +28,7 @@ Login.loginLog = async (req, res) => {
             Reqdata.uID = user;
             Reqdata.username = Reqdata.email;
             Reqdata.email = Reqdata.email + "@yopmail.com";
+            Reqdata.phone = '';
             Reqdata.session_id = astk;
             passed = 1;
         }else{
@@ -45,6 +46,7 @@ Login.loginLog = async (req, res) => {
                     Reqdata.uID = users[Reqdata.email]['id'];
                     Reqdata.username = users[Reqdata.email]['username'];
                     Reqdata.email = Reqdata.email;
+                    Reqdata.phone = '';
                     if(users[Reqdata.email]['phone']){
                         Reqdata.phone = users[Reqdata.email]['phone'];
                     }
