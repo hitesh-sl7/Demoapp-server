@@ -38,19 +38,19 @@ app.use("/reset-password", require("./routes/reset"));
 
 
 
-const options = {
-    key: fs.readFileSync('./private.key'),
-    cert: fs.readFileSync('./certificate.crt'),
-  };
+// const options = {
+//     key: fs.readFileSync('./private.key'),
+//     cert: fs.readFileSync('./certificate.crt'),
+//   };
 
-  const server = https.createServer(options, (req, res) => {
-    app(req, res);
-  });
+//   const server = https.createServer(options, (req, res) => {
+//     app(req, res);
+//   });
 
 
 
 const PORT = process.env.PORT || 6000;
 
-server.listen(PORT, process.env.bindIP, () => {
+app.listen(PORT, process.env.bindIP, () => {
     console.log("Server is running on port " + PORT);
 });
