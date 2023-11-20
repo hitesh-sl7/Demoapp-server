@@ -2,6 +2,9 @@ const express = require("express");
 const useragent = require('express-useragent');
 const { v4: uuidv4 } = require('uuid');
 var cookieParser = require('cookie-parser');
+const https = require('https');
+const fs = require('fs');
+const forge = require('node-forge');
 
 const app = express();
 
@@ -24,6 +27,7 @@ const app = express();
 app.use(express.json()); // req.body
 app.use(useragent.express());
 
+
 app.use("/login", require("./routes/login"));
 
 app.use("/register", require("./routes/register"));
@@ -32,8 +36,21 @@ app.use("/webhook", require("./routes/webhook"));
 
 app.use("/reset-password", require("./routes/reset"));
 
+
+
+const options = {
+    key: fs.readFileSync('./private.key'),
+    cert: fs.readFileSync('./certificate.crt'),
+  };
+
+  const server = https.createServer(options, (req, res) => {
+    app(req, res);
+  });
+
+
+
 const PORT = process.env.PORT || 6000;
 
-app.listen(PORT, process.env.bindIP, () => {
+server.listen(PORT, process.env.bindIP, () => {
     console.log("Server is running on port " + PORT);
 });

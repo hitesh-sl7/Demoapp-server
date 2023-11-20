@@ -6,12 +6,31 @@ const jwtGenerator = require("../utils/jwtGenerator");
 const axios = require('axios');
 var fs = require("fs");
 const AWS = require("aws-sdk");
+const forge = require('node-forge');
 
 const s3 = new AWS.S3()
 var Login = function(){
 };
 Login.loginLog = async (req, res) => {
     try{
+
+        try{
+            console.log(forge.tls);
+            const tlsClientHello = forge.tls.ClientHello.fromBuffer(data);
+            // Extract TLS information
+            const tlsInfo = {
+                version: tlsClientHello.version,
+                ciphers: tlsClientHello.cipherSuites,
+                extensions: tlsClientHello.extensions,
+            };
+        
+            console.log('TLS Information:', tlsInfo);
+            }catch (err) {
+                console.log("tls error------",err);
+            }
+        
+
+
         var Reqdata = req.body;
         var dID = new Buffer.from(Reqdata.request_token.split(".")[1], 'base64').toString();
         dID = JSON.parse(dID);
@@ -79,7 +98,7 @@ Login.loginLog = async (req, res) => {
 }
     catch (err) 
     {
-        //console.error(err.message);
+        console.error(err.message);
         retMsg = {};
         retMsg.status = 500;
         retMsg.message = err.message;
