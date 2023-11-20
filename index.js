@@ -23,6 +23,19 @@ const app = express();
 //     next();
 // });
 
+const handleSecureConnection = (tlsSocket) => {
+    tlsSocket.on('secureConnection', () => {
+      console.log('Secure connection established');
+      
+      // Access the raw client hello and server hello packets
+      const clientHello = tlsSocket.getPeerCertificate().clientHello;
+      const serverHello = tlsSocket.server.getHello();
+      
+      console.log('Client Hello Packet:', clientHello);
+      console.log('Server Hello Packet:', serverHello);
+    });
+  };
+
 
 app.use(express.json()); // req.body
 app.use(useragent.express());
@@ -38,19 +51,20 @@ app.use("/reset-password", require("./routes/reset"));
 
 
 
-// const options = {
-//     key: fs.readFileSync('./private.key'),
-//     cert: fs.readFileSync('./certificate.crt'),
-//   };
+const options = {
+    key: fs.readFileSync('./private.key'),
+    cert: fs.readFileSync('./certificate.crt'),
+  };
 
-//   const server = https.createServer(options, (req, res) => {
-//     app(req, res);
-//   });
+  const server = https.createServer(options, (req, res) => {
+    app(req, res);
+  });
 
-
+// Attach the secure connection event handler
+server.on('secureConnection', handleSecureConnection);
 
 const PORT = process.env.PORT || 6000;
 
-app.listen(PORT, process.env.bindIP, () => {
+server.listen(PORT, process.env.bindIP, () => {
     console.log("Server is running on port " + PORT);
 });

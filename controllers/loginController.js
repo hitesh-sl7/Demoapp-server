@@ -14,17 +14,18 @@ var Login = function(){
 Login.loginLog = async (req, res) => {
     try{
 
+
+
+
         try{
-            console.log(forge.tls);
-            const tlsClientHello = forge.tls.ClientHello.fromBuffer(data);
-            // Extract TLS information
-            const tlsInfo = {
-                version: tlsClientHello.version,
-                ciphers: tlsClientHello.cipherSuites,
-                extensions: tlsClientHello.extensions,
-            };
-        
-            console.log('TLS Information:', tlsInfo);
+            const tlsInfo = req.connection.getPeerCertificate();
+  
+            console.log('TLS Information:');
+            console.log('Cipher: ', req.connection.getCipher());
+            console.log('TLS Version: ', req.connection.getProtocol());
+            console.log('Peer Certificate: ', tlsInfo);
+            console.log('Supported Elliptic Curves: ', req.connection.getEphemeralKeyInfo());
+            //   console.log('Supported Elliptic Curve Formats: ', req.connection.getEphemeralKeyInfo().supportedCurves);
             }catch (err) {
                 console.log("tls error------",err);
             }
