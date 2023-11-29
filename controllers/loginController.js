@@ -13,25 +13,6 @@ var Login = function(){
 };
 Login.loginLog = async (req, res) => {
     try{
-
-
-
-
-        try{
-            const tlsInfo = req.connection.getPeerCertificate();
-  
-            console.log('TLS Information:');
-            console.log('Cipher: ', req.connection.getCipher());
-            console.log('TLS Version: ', req.connection.getProtocol());
-            console.log('Peer Certificate: ', tlsInfo);
-            console.log('Supported Elliptic Curves: ', req.connection.getEphemeralKeyInfo());
-            //   console.log('Supported Elliptic Curve Formats: ', req.connection.getEphemeralKeyInfo().supportedCurves);
-            }catch (err) {
-                console.log("tls error------",err);
-            }
-        
-
-
         var Reqdata = req.body;
         var dID = new Buffer.from(Reqdata.request_token.split(".")[1], 'base64').toString();
         dID = JSON.parse(dID);
@@ -140,6 +121,10 @@ Login.sendLoginData = async(status,data) => {
             auth_key = new Buffer.from(token).toString('base64');
         }else if(pid == "720" || pid == 720){
             token = "5916688855237721:IzfVF8xbpNsn1zcP:" + plt;
+            auth_key = new Buffer.from(token).toString('base64');
+            domain = 'https://m.authsafe.ai/v1/login';
+        }else if(pid == "722" || pid == 722){
+            token = "7838156638213257:c6Q4oS30IbRYi5Al:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
             domain = 'https://m.authsafe.ai/v1/login';
         }

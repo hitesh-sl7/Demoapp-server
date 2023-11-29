@@ -51,18 +51,6 @@ app.use("/reset-password", require("./routes/reset"));
 
 
 
-const options = {
-    key: fs.readFileSync('./private.key'),
-    cert: fs.readFileSync('./certificate.crt'),
-  };
-
-  const server = https.createServer(options, (req, res) => {
-    app(req, res);
-  });
-
-// Attach the secure connection event handler
-server.on('secureConnection', handleSecureConnection);
-
 const PORT = process.env.PORT || 6000;
 
 app.listen(PORT, process.env.bindIP, () => {
