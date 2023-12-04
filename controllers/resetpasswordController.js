@@ -121,20 +121,20 @@ resetpassword.sendresetpasswordData = async(status,data) => {
                 "h": {
                 "ip": data.ip,
                 "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
-                "ho": "demo.authsafe.ai",
-                "rf": "http://demo.authsafe.ai/login.php",
+                "ho": "demo.sensfrx.ai",
+                "rf": "http://demo.sensfrx.ai/login.php",
                 "ac": {
                     "a": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
                     "ae": "gzip, deflate, br",
                     "al": "en-US,en;q=0.9,hi;q=0.8,mr;q=0.7"
                 },
-                "url": "http://demo.authsafe.ai/login.php"
+                "url": "http://demo.sensfrx.ai/login.php"
                 }
             }
 
 
         axios
-        .post('https://a.authsafe.ai/v1/reset-password', 
+        .post('https://a.sensfrx.ai/v1/reset-password', 
         body,
         { headers: headers }
         )

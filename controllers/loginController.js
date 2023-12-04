@@ -94,7 +94,7 @@ Login.sendLoginData = async(status,data) => {
         var auth_key = '';
         var plt = '';
         var token = '';
-        var domain = 'https://mdev.authsafe.ai/v1/login';
+        var domain = 'https://mdev.sensfrx.ai/v1/login';
 
         var dID = new Buffer.from(data.request_token.split(".")[1], 'base64').toString();
         dID = JSON.parse(dID);
@@ -122,11 +122,11 @@ Login.sendLoginData = async(status,data) => {
         }else if(pid == "720" || pid == 720){
             token = "5916688855237721:IzfVF8xbpNsn1zcP:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
-            domain = 'https://m.authsafe.ai/v1/login';
+            domain = 'https://m.sensfrx.ai/v1/login';
         }else if(pid == "722" || pid == 722){
             token = "7838156638213257:c6Q4oS30IbRYi5Al:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
-            domain = 'https://m.authsafe.ai/v1/login';
+            domain = 'https://m.sensfrx.ai/v1/login';
         }
 
         const headers = {
