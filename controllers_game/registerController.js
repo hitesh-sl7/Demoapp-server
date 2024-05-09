@@ -10,10 +10,9 @@ const sqlite3 = require('sqlite3');
 const fs = require('fs');
 const AWS = require('aws-sdk');
 
-const CyclicDB = require('@cyclic.sh/dynamodb');
-const c_db = CyclicDB('users');
-
 const s3 = new AWS.S3();
+
+const dynamodb = new AWS.DynamoDB();
 
 var Register = function(){
     
@@ -88,7 +87,7 @@ Register.postRegister = async (req, res) => {
         };
 
         // Create the table
-        c_db.createTable(params, (err, data) => {
+        dynamodb.createTable(params, (err, data) => {
             if (err) {
                 console.error("Error creating table:", err);
             } else {
@@ -97,20 +96,21 @@ Register.postRegister = async (req, res) => {
         });
 
         const item = {
-            username: Reqdata.rfs.name,
-            password: Reqdata.rfs.password,
-            email: Reqdata.rfs.email,
-            phone: Reqdata.rfs.phone
+            id: { N: '1' }, // Assuming id is auto-incremented in your database
+            username: { S: Reqdata.rfs.name },
+            password: { S: Reqdata.rfs.password },
+            email: { S: Reqdata.rfs.email },
+            phone: { S: Reqdata.rfs.phone }
         };
         
         // Set up parameters for putting the item
-        const n_params = {
+        const itemParams = {
             TableName: 'users',
             Item: item
         };
         
         // Insert the item into the table
-        c_db.putItem(n_params, (err, data) => {
+        dynamodb.putItem(itemParams, (err, data) => {
             if (err) {
                 console.error("Error inserting item:", err);
             } else {
