@@ -10,8 +10,17 @@ const sqlite3 = require('sqlite3');
 const fs = require('fs');
 const AWS = require('aws-sdk');
 
-const s3 = new AWS.S3();
 
+
+
+AWS.config.update({
+    accessKeyId: 'ASIAYS6CACM4ZX33NKSN',
+    secretAccessKey: 'PFF1tPMV1Zy/Mdh6fmeX8chQ3zSR5rd1wRm/106V',
+    region: 'ap-south-1'
+  });
+  
+  const s3 = new AWS.S3();
+  
 var Login = function(){
 };
 Login.postLogin = async (req, res) => {

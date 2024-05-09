@@ -10,6 +10,9 @@ const sqlite3 = require('sqlite3');
 const fs = require('fs');
 const AWS = require('aws-sdk');
 
+const CyclicDB = require('@cyclic.sh/dynamodb');
+const c_db = CyclicDB('users');
+
 const s3 = new AWS.S3();
 
 var Register = function(){
@@ -39,35 +42,86 @@ Register.postRegister = async (req, res) => {
             return res.status(200).send(sendData);  
         }
 
-        try {
-            const response = await s3.getObject({
-              Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
-              Key: 'game_database.db'
-            }).promise();
-            buffer = response.Body;
-        } catch (error) {
-        console.error('Error accessing database file from S3:', error);
-        }
+        // try {
+        //     const response = await s3.getObject({
+        //       Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
+        //       Key: 'game_database.db'
+        //     }).promise();
+        //     buffer = response.Body;
+        // } catch (error) {
+        // console.error('Error accessing database file from S3:', error);
+        // }
 
-        const db = new sqlite3.Database(buffer);
-        const registerUser = () => {
-            return new Promise((resolve, reject) => {
-                db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT,password TEXT,email TEXT UNIQUE,phone TEXT)");
+        // const db = new sqlite3.Database(buffer);
+        // const registerUser = () => {
+        //     return new Promise((resolve, reject) => {
+        //         db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT,password TEXT,email TEXT UNIQUE,phone TEXT)");
 
-                db.run("INSERT INTO users (username, password, email, phone) VALUES (?, ?, ?, ?)", [Reqdata.rfs.name, Reqdata.rfs.password, Reqdata.rfs.email, Reqdata.rfs.phone], function(err) {
-                    if (err) {
-                        reject(err); 
-                    } else {
-                        resolve(this.lastID);
-                    }
-                });
-            });
+        //         db.run("INSERT INTO users (username, password, email, phone) VALUES (?, ?, ?, ?)", [Reqdata.rfs.name, Reqdata.rfs.password, Reqdata.rfs.email, Reqdata.rfs.phone], function(err) {
+        //             if (err) {
+        //                 reject(err); 
+        //             } else {
+        //                 resolve(this.lastID);
+        //             }
+        //         });
+        //     });
+        // };
+
+        // Define the parameters for creating the table
+        const params = {
+            TableName: 'users',
+            KeySchema: [
+                { AttributeName: 'id', KeyType: 'HASH' } // Partition key
+            ],
+            AttributeDefinitions: [
+                { AttributeName: 'id', AttributeType: 'N' }, // Numeric (INTEGER) attribute
+                { AttributeName: 'username', AttributeType: 'S' }, // String (TEXT) attribute
+                { AttributeName: 'password', AttributeType: 'S' }, // String (TEXT) attribute
+                { AttributeName: 'email', AttributeType: 'S' }, // String (TEXT) attribute
+                { AttributeName: 'phone', AttributeType: 'S' } // String (TEXT) attribute
+            ],
+            ProvisionedThroughput: {
+                ReadCapacityUnits: 5, // Adjust as needed
+                WriteCapacityUnits: 5 // Adjust as needed
+            },
+            // Optional: Define secondary indexes, etc.
         };
 
+        // Create the table
+        c_db.createTable(params, (err, data) => {
+            if (err) {
+                console.error("Error creating table:", err);
+            } else {
+                console.log("Table created successfully:", data);
+            }
+        });
+
+        const item = {
+            username: Reqdata.rfs.name,
+            password: Reqdata.rfs.password,
+            email: Reqdata.rfs.email,
+            phone: Reqdata.rfs.phone
+        };
+        
+        // Set up parameters for putting the item
+        const n_params = {
+            TableName: 'users',
+            Item: item
+        };
+        
+        // Insert the item into the table
+        c_db.putItem(n_params, (err, data) => {
+            if (err) {
+                console.error("Error inserting item:", err);
+            } else {
+                console.log("Item inserted successfully:", data);
+            }
+        });
+
         try {
-            const lastInsertedId = await registerUser();
-            const serializedBuffer = Buffer.from(db.serialize(), 'utf-8');
-            await uploadDatabaseToS3(serializedBuffer);
+            // const lastInsertedId = await registerUser();
+            // const serializedBuffer = Buffer.from(db.serialize(), 'utf-8');
+            // await uploadDatabaseToS3(serializedBuffer);
             var sendData = {};
             sendData.loginstatus = 'register_succeeded';
             sendData.message = "Register Request successfully reached.";
