@@ -10,9 +10,14 @@ const sqlite3 = require('sqlite3');
 const fs = require('fs');
 const AWS = require('aws-sdk');
 
-const s3 = new AWS.S3();
+AWS.config.update({
+    accessKeyId: 'ASIAYS6CACM4UJU6G4JO',
+    secretAccessKey: 'HmuutcwjuM5+D2y8JfzPAIpa0YJg7EewGTSFN7j4',
+    region: 'ap-south-1'
+  });
 
 const dynamodb = new AWS.DynamoDB();
+
 
 var Register = function(){
     
@@ -134,12 +139,12 @@ Register.postRegister = async (req, res) => {
             sendData.message = "Email already Exists!";
         }
 
-        db.close((err) => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log('Close the database connection.');
-        });
+        // db.close((err) => {
+        //     if (err) {
+        //         return console.error(err.message);
+        //     }
+        //     console.log('Close the database connection.');
+        // });
 
         // var respData = await Register.sendRegisterData("register_succeeded",Reqdata);
         return res.status(200).send(sendData);
