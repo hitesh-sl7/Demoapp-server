@@ -18,7 +18,6 @@ AWS.config.update({
 
 const dynamodb = new AWS.DynamoDB();
 
-
 var Register = function(){
     
 };
@@ -130,7 +129,7 @@ Register.postRegister = async (req, res) => {
             var sendData = {};
             sendData.loginstatus = 'register_succeeded';
             sendData.message = "Register Request successfully reached.";
-            console.log(`User inserted with ID: ${lastInsertedId}`);
+            // console.log(`User inserted with ID: ${lastInsertedId}`);
         } catch (error) {
             console.log(error);
             var sendData = {};
