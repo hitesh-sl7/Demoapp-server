@@ -21,7 +21,7 @@ profile.getProfile = async (req, res) => {
         const user_id = req.query.user_id;
         var sendData = {};
 
-        const db = new sqlite3.Database('game_database.db');
+        const db = new sqlite3.Database('../game_database.db');
         const getUser = () => {
             return new Promise((resolve, reject) => {
                 db.all("SELECT id, username, email, phone, password FROM users WHERE id=?", [user_id], function(err, row) {

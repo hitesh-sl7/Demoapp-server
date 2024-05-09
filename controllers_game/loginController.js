@@ -23,7 +23,7 @@ Login.postLogin = async (req, res) => {
         Reqdata.ip = requestIp.getClientIp(req);
         var sendData = {};
 
-        const db = new sqlite3.Database('game_database.db');
+        const db = new sqlite3.Database('../game_database.db');
 
         const findUser = () => {
             return new Promise((resolve, reject) => {

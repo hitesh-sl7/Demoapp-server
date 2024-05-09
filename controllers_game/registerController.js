@@ -33,7 +33,7 @@ Register.postRegister = async (req, res) => {
             return res.status(200).send(sendData);  
         }
 
-        const db = new sqlite3.Database('game_database.db');
+        const db = new sqlite3.Database('../game_database.db');
         const registerUser = () => {
             return new Promise((resolve, reject) => {
                 db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT,password TEXT,email TEXT UNIQUE,phone TEXT)");
