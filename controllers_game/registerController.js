@@ -39,10 +39,10 @@ Register.postRegister = async (req, res) => {
         
         try {
             let users = dynamodb.collection('users');
-            console.log(users,"--users");
-            console.log(users.all(),"--users all");
-            console.log(users.get(),"--users get");
-            console.log(animals.scan().all(),"--users scan");
+            var l = await users.list()
+            console.log(l,"--users");
+            var lat = await users.latest()
+            console.log(lat,"--latest");
             let u = await users.get(Reqdata.rfs.email);
             console.log(u,"--")
             if(u){
