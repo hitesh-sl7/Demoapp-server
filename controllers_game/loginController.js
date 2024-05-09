@@ -34,29 +34,42 @@ Login.postLogin = async (req, res) => {
               Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
               Key: 'game_database.db'
             }).promise();
+
             buffer = response.Body;
           } catch (error) {
             console.error('Error accessing database file from S3:', error);
           }
 
-          const db = new sqlite3.Database(buffer);
+          console.log(buffer);
 
-        const findUser = () => {
-            return new Promise((resolve, reject) => {
-                db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT,password TEXT,email TEXT UNIQUE,phone TEXT)");
+          const db = new sqlite3.Database(':memory:');
+        //   const db = new sqlite3.Database(buffer);
 
-                db.all("SELECT id, username, email, phone, password FROM users WHERE email=? and password=?", [Reqdata.email, Reqdata.password], function(err, row) {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(row);
-                    }
+        db.exec(buffer.toString(),async function(err) {
+            if (err) {
+              console.error('Error executing SQL commands on database:', err);
+              return;
+            }
+            
+            const findUser = () => {
+                return new Promise((resolve, reject) => {
+                    db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT,password TEXT,email TEXT UNIQUE,phone TEXT)");
+    
+                    db.all("SELECT id, username, email, phone, password FROM users WHERE email=? and password=?", [Reqdata.email, Reqdata.password], function(err, row) {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve(row);
+                        }
+                    });
                 });
-            });
-        };
+            };
+            
+            const rows = await findUser();
+            console.log(rows)
+          });
+
         
-        const rows = await findUser();
-        console.log(rows)
         if(rows.length > 0){
             sendData.loginstatus = 'login_succeeded';
             sendData.user_info = {
