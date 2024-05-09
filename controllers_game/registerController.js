@@ -10,15 +10,8 @@ const sqlite3 = require('sqlite3');
 const CyclicDB = require('@cyclic.sh/dynamodb');
 
 const fs = require('fs');
-const AWS = require('aws-sdk');
 
-AWS.config.update({
-    accessKeyId: 'ASIAYS6CACM4UJU6G4JO',
-    secretAccessKey: 'HmuutcwjuM5+D2y8JfzPAIpa0YJg7EewGTSFN7j4',
-    region: 'ap-south-1'
-  });
-
-const dynamodb = CyclicDB('lime-stormy-panda');
+const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 
 var Register = function(){
     
@@ -72,57 +65,20 @@ Register.postRegister = async (req, res) => {
         //     });
         // };
 
-        // Define the parameters for creating the table
-        const params = {
-            TableName: 'users',
-            KeySchema: [
-                { AttributeName: 'id', KeyType: 'HASH' } // Partition key
-            ],
-            AttributeDefinitions: [
-                { AttributeName: 'id', AttributeType: 'N' }, // Numeric (INTEGER) attribute
-                { AttributeName: 'username', AttributeType: 'S' }, // String (TEXT) attribute
-                { AttributeName: 'password', AttributeType: 'S' }, // String (TEXT) attribute
-                { AttributeName: 'email', AttributeType: 'S' }, // String (TEXT) attribute
-                { AttributeName: 'phone', AttributeType: 'S' } // String (TEXT) attribute
-            ],
-            ProvisionedThroughput: {
-                ReadCapacityUnits: 5, // Adjust as needed
-                WriteCapacityUnits: 5 // Adjust as needed
-            },
-            // Optional: Define secondary indexes, etc.
-        };
+        let users = dynamodb.collection('users');
 
-        // Create the table
-        dynamodb.createTable(params, (err, data) => {
-            if (err) {
-                console.error("Error creating table:", err);
-            } else {
-                console.log("Table created successfully:", data);
-            }
-        });
+        // create an item in collection with key "leo"
+        let user = await users.set(Reqdata.rfs.email, {
+            username : Reqdata.rfs.name,
+            password : Reqdata.rfs.password,
+            email : Reqdata.rfs.email,
+            phone : Reqdata.rfs.phone,
+        })
 
-        const item = {
-            id: { N: '1' }, // Assuming id is auto-incremented in your database
-            username: { S: Reqdata.rfs.name },
-            password: { S: Reqdata.rfs.password },
-            email: { S: Reqdata.rfs.email },
-            phone: { S: Reqdata.rfs.phone }
-        };
+        // get an item at key "leo" from collection animals
+        let item = await users.get(Reqdata.rfs.email)
+        console.log(item)
         
-        // Set up parameters for putting the item
-        const itemParams = {
-            TableName: 'users',
-            Item: item
-        };
-        
-        // Insert the item into the table
-        dynamodb.putItem(itemParams, (err, data) => {
-            if (err) {
-                console.error("Error inserting item:", err);
-            } else {
-                console.log("Item inserted successfully:", data);
-            }
-        });
 
         try {
             // const lastInsertedId = await registerUser();
