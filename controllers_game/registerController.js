@@ -19,14 +19,13 @@ Register.postRegister = async (req, res) => {
         var Reqdata = req.body;
         console.log(Reqdata);
 
-        var dID = new Buffer.from(Reqdata.request_token.split(".")[1], 'base64').toString();
-        dID = JSON.parse(dID);
-        pid = dID['pr'];
+        // var dID = new Buffer.from(Reqdata.request_token.split(".")[1], 'base64').toString();
+        // dID = JSON.parse(dID);
+        // pid = dID['pr'];
         // Reqdata.auth_key = req.headers['authorization'];
         // Reqdata.package = req.headers['package'];
         Reqdata.ip = requestIp.getClientIp(req);
         if((Reqdata.rfs.name == "") || (Reqdata.rfs.email == "") || (Reqdata.rfs.password == "" || Reqdata.rfs.phone == "0" ) ){
-            Register.sendRegisterData("register_failed",Reqdata);
             var sendData = {};
             sendData.status = 'allow';
             sendData.severity = 'low';
@@ -136,20 +135,6 @@ Register.postRegister = async (req, res) => {
         return res.status(200).send(retMsg);
     }
 };
-
-const uploadDatabaseToS3 = async (buffer) => {
-    try {
-      await s3.upload({
-        Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
-        Key: 'game_database.db',
-        Body: buffer
-      }).promise();
-  
-      console.log('Serialized database buffer uploaded to S3 successfully');
-    } catch (error) {
-      console.error('Error uploading serialized database buffer to S3:', error);
-    }
-  };
 
 
 module.exports = Register;
