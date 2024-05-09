@@ -48,10 +48,10 @@ Register.postRegister = async (req, res) => {
             }else{
                 var all_users = await users.list();
                 console.log(all_users);
-                console.log(all_users.length);
-                console.log(all_users.length + 1);
+                console.log(all_users.results.length);
+                console.log(all_users.results.length + 1);
                 let user = await users.set(Reqdata.rfs.email, {
-                    id : all_users.length + 1,
+                    id : all_users.results.length + 1,
                     username : Reqdata.rfs.name,
                     password : Reqdata.rfs.password,
                     email : Reqdata.rfs.email,
