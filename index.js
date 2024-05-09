@@ -9,35 +9,7 @@ const forge = require('node-forge');
 const app = express();
 
 
-// app.use((req, res, next) => {
-//     res.header('Access-control-Allow-Origin', req.headers.origin);
-//     res.header(
-//         "Access-Control-Allow-Headers",
-//         "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-//     );
-//     res.header('Access-Control-Allow-Credentials', true);
-//     if (req.method === 'OPTIONS') {
-//         res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-//         return res.status(200).json({});
-//     }
-//     next();
-// });
-
-const handleSecureConnection = (tlsSocket) => {
-    tlsSocket.on('secureConnection', () => {
-      console.log('Secure connection established');
-      
-      // Access the raw client hello and server hello packets
-      const clientHello = tlsSocket.getPeerCertificate().clientHello;
-      const serverHello = tlsSocket.server.getHello();
-      
-      console.log('Client Hello Packet:', clientHello);
-      console.log('Server Hello Packet:', serverHello);
-    });
-  };
-
-
-app.use(express.json()); // req.body
+app.use(express.json()); 
 app.use(useragent.express());
 
 
@@ -48,6 +20,18 @@ app.use("/register", require("./routes/register"));
 app.use("/webhook", require("./routes/webhook"));
 
 app.use("/reset-password", require("./routes/reset"));
+
+// Urls for game server
+
+app.use("/game/login", require("./routes_game/login"));
+
+app.use("/game/register", require("./routes_game/register"));
+
+app.use("/game/quiz", require("./routes_game/questions"));
+
+app.use("/game/get-profile", require("./routes_game/profile"));
+
+app.use("/game/get-leaderboard", require("./routes_game/leaderboard"));
 
 
 

@@ -1,0 +1,3012 @@
+[
+  {
+    "question": "What is the chemical symbol for helium?",
+    "options": [
+      "He",
+      "H",
+      "Hu",
+      "Ha"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who is the author of 'The Great Gatsby'?",
+    "options": [
+      "F. Scott Fitzgerald",
+      "Ernest Hemingway",
+      "Mark Twain",
+      "J.D. Salinger"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the largest desert in the world?",
+    "options": [
+      "Gobi Desert",
+      "Sahara Desert",
+      "Antarctica",
+      "Arabian Desert"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who painted the famous painting 'Starry Night'?",
+    "options": [
+      "Vincent van Gogh",
+      "Pablo Picasso",
+      "Claude Monet",
+      "Leonardo da Vinci"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for nitrogen?",
+    "options": [
+      "Ni",
+      "N",
+      "Ne",
+      "No"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who was the first person to fly solo across the Atlantic Ocean?",
+    "options": [
+      "Amelia Earhart",
+      "Charles Lindbergh",
+      "Howard Hughes",
+      "Wiley Post"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the capital of Brazil?",
+    "options": [
+      "Rio de Janeiro",
+      "Brasília",
+      "São Paulo",
+      "Salvador"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which gas is the most abundant in Earth's atmosphere?",
+    "options": [
+      "Oxygen",
+      "Nitrogen",
+      "Carbon Dioxide",
+      "Argon"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who composed the famous musical piece 'Für Elise'?",
+    "options": [
+      "Ludwig van Beethoven",
+      "Wolfgang Amadeus Mozart",
+      "Johann Sebastian Bach",
+      "Johannes Brahms"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for potassium?",
+    "options": [
+      "Po",
+      "K",
+      "P",
+      "Ka"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who wrote the novel 'Pride and Prejudice'?",
+    "options": [
+      "Charlotte Brontë",
+      "Jane Austen",
+      "Emily Dickinson",
+      "Virginia Woolf"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the largest bird in the world?",
+    "options": [
+      "Ostrich",
+      "Eagle",
+      "Albatross",
+      "Emu"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who is the founder of Microsoft?",
+    "options": [
+      "Bill Gates",
+      "Steve Jobs",
+      "Larry Page",
+      "Mark Zuckerberg"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for silver?",
+    "options": [
+      "Ag",
+      "Si",
+      "Sv",
+      "Sl"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who painted the ceiling of the Sistine Chapel?",
+    "options": [
+      "Leonardo da Vinci",
+      "Raphael",
+      "Michelangelo",
+      "Donatello"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the chemical symbol for calcium?",
+    "options": [
+      "C",
+      "Ca",
+      "Ce",
+      "Co"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who discovered the laws of planetary motion?",
+    "options": [
+      "Isaac Newton",
+      "Johannes Kepler",
+      "Galileo Galilei",
+      "Nicolaus Copernicus"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the main ingredient in hummus?",
+    "options": [
+      "Chickpeas",
+      "Lentils",
+      "Quinoa",
+      "Black beans"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who is known as the 'Queen of Soul'?",
+    "options": [
+      "Beyoncé",
+      "Adele",
+      "Aretha Franklin",
+      "Whitney Houston"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the chemical symbol for uranium?",
+    "options": [
+      "Ur",
+      "Un",
+      "U",
+      "Ui"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "Who was the first woman to win a Nobel Prize?",
+    "options": [
+      "Marie Curie",
+      "Rosalind Franklin",
+      "Ada Lovelace",
+      "Florence Nightingale"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the largest planet in our solar system?",
+    "options": [
+      "Earth",
+      "Jupiter",
+      "Saturn",
+      "Mars"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who is the author of 'To the Lighthouse'?",
+    "options": [
+      "Virginia Woolf",
+      "D.H. Lawrence",
+      "James Joyce",
+      "F. Scott Fitzgerald"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for gold?",
+    "options": [
+      "Au",
+      "Ag",
+      "Cu",
+      "Fe"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the first female Prime Minister of India?",
+    "options": [
+      "Indira Gandhi",
+      "Sonia Gandhi",
+      "Margaret Thatcher",
+      "Golda Meir"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the largest ocean on Earth?",
+    "options": [
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Arctic Ocean",
+      "Pacific Ocean"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Who is the author of 'The Catcher in the Rye'?",
+    "options": [
+      "J.D. Salinger",
+      "F. Scott Fitzgerald",
+      "Ernest Hemingway",
+      "Mark Twain"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for sodium?",
+    "options": [
+      "Na",
+      "Ca",
+      "K",
+      "Mg"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who wrote the play 'Hamlet'?",
+    "options": [
+      "William Shakespeare",
+      "Christopher Marlowe",
+      "Ben Jonson",
+      "John Milton"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for phosphorus?",
+    "options": [
+      "Ph",
+      "Po",
+      "P",
+      "Pl"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "Who was the first woman to fly solo across the Atlantic Ocean?",
+    "options": [
+      "Amelia Earhart",
+      "Bessie Coleman",
+      "Harriet Quimby",
+      "Jacqueline Cochran"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the capital of Italy?",
+    "options": [
+      "Rome",
+      "Milan",
+      "Venice",
+      "Florence"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who discovered the structure of DNA?",
+    "options": [
+      "Francis Crick and James Watson",
+      "Rosalind Franklin",
+      "Gregor Mendel",
+      "Linus Pauling"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for carbon?",
+    "options": [
+      "C",
+      "Ca",
+      "Co",
+      "Cu"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the first person to set foot on Antarctica?",
+    "options": [
+      "Roald Amundsen",
+      "Ernest Shackleton",
+      "Robert Falcon Scott",
+      "James Cook"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "What is the chemical symbol for iron?",
+    "options": [
+      "Fe",
+      "I",
+      "Ir",
+      "Io"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who composed the famous 'Four Seasons' concertos?",
+    "options": [
+      "Wolfgang Amadeus Mozart",
+      "Johann Sebastian Bach",
+      "Ludwig van Beethoven",
+      "Antonio Vivaldi"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "What is the chemical symbol for chlorine?",
+    "options": [
+      "Cl",
+      "Cr",
+      "Cn",
+      "Ci"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the first woman to win a Nobel Prize?",
+    "options": [
+      "Marie Curie",
+      "Rosalind Franklin",
+      "Ada Lovelace",
+      "Florence Nightingale"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the capital of South Korea?",
+    "options": [
+      "Seoul",
+      "Busan",
+      "Incheon",
+      "Jeju"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who is the author of 'The Lord of the Rings' trilogy?",
+    "options": [
+      "J.R.R. Tolkien",
+      "C.S. Lewis",
+      "George R.R. Martin",
+      "Terry Pratchett"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for lead?",
+    "options": [
+      "Pb",
+      "Le",
+      "Ld",
+      "Pl"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who painted the 'Mona Lisa'?",
+    "options": [
+      "Leonardo da Vinci",
+      "Vincent van Gogh",
+      "Pablo Picasso",
+      "Michelangelo"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for neon?",
+    "options": [
+      "Ne",
+      "N",
+      "No",
+      "Na"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the first person to walk on the Moon?",
+    "options": [
+      "Neil Armstrong",
+      "Buzz Aldrin",
+      "Yuri Gagarin",
+      "Alan Shepard"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for helium?",
+    "options": [
+      "He",
+      "H",
+      "Hu",
+      "Ha"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who wrote the 'Harry Potter' series?",
+    "options": [
+      "J.R.R. Tolkien",
+      "J.K. Rowling",
+      "George R.R. Martin",
+      "Stephenie Meyer"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the largest desert in the world?",
+    "options": [
+      "Gobi Desert",
+      "Sahara Desert",
+      "Antarctica",
+      "Arabian Desert"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who painted the famous painting 'Starry Night'?",
+    "options": [
+      "Vincent van Gogh",
+      "Pablo Picasso",
+      "Claude Monet",
+      "Leonardo da Vinci"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for nitrogen?",
+    "options": [
+      "Ni",
+      "N",
+      "Ne",
+      "No"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who was the first person to fly solo across the Atlantic Ocean?",
+    "options": [
+      "Amelia Earhart",
+      "Charles Lindbergh",
+      "Howard Hughes",
+      "Wiley Post"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the capital of Brazil?",
+    "options": [
+      "Rio de Janeiro",
+      "Brasília",
+      "São Paulo",
+      "Salvador"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which gas is the most abundant in Earth's atmosphere?",
+    "options": [
+      "Oxygen",
+      "Nitrogen",
+      "Carbon Dioxide",
+      "Argon"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who composed the famous musical piece 'Für Elise'?",
+    "options": [
+      "Ludwig van Beethoven",
+      "Wolfgang Amadeus Mozart",
+      "Johann Sebastian Bach",
+      "Johannes Brahms"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for potassium?",
+    "options": [
+      "Po",
+      "K",
+      "P",
+      "Ka"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who wrote the novel 'Pride and Prejudice'?",
+    "options": [
+      "Charlotte Brontë",
+      "Jane Austen",
+      "Emily Dickinson",
+      "Virginia Woolf"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the largest bird in the world?",
+    "options": [
+      "Ostrich",
+      "Eagle",
+      "Albatross",
+      "Emu"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who is the founder of Microsoft?",
+    "options": [
+      "Bill Gates",
+      "Steve Jobs",
+      "Larry Page",
+      "Mark Zuckerberg"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for silver?",
+    "options": [
+      "Ag",
+      "Si",
+      "Sv",
+      "Sl"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who painted the ceiling of the Sistine Chapel?",
+    "options": [
+      "Leonardo da Vinci",
+      "Raphael",
+      "Michelangelo",
+      "Donatello"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the chemical symbol for calcium?",
+    "options": [
+      "C",
+      "Ca",
+      "Ce",
+      "Co"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who discovered the laws of planetary motion?",
+    "options": [
+      "Isaac Newton",
+      "Johannes Kepler",
+      "Galileo Galilei",
+      "Nicolaus Copernicus"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the main ingredient in hummus?",
+    "options": [
+      "Chickpeas",
+      "Lentils",
+      "Quinoa",
+      "Black beans"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who is known as the 'Queen of Soul'?",
+    "options": [
+      "Beyoncé",
+      "Adele",
+      "Aretha Franklin",
+      "Whitney Houston"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the chemical symbol for uranium?",
+    "options": [
+      "Ur",
+      "Un",
+      "U",
+      "Ui"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "Who was the first woman to win a Nobel Prize?",
+    "options": [
+      "Marie Curie",
+      "Rosalind Franklin",
+      "Ada Lovelace",
+      "Florence Nightingale"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the largest planet in our solar system?",
+    "options": [
+      "Earth",
+      "Jupiter",
+      "Saturn",
+      "Mars"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who is the author of 'To the Lighthouse'?",
+    "options": [
+      "Virginia Woolf",
+      "D.H. Lawrence",
+      "James Joyce",
+      "F. Scott Fitzgerald"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for gold?",
+    "options": [
+      "Au",
+      "Ag",
+      "Cu",
+      "Fe"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the first female Prime Minister of India?",
+    "options": [
+      "Indira Gandhi",
+      "Sonia Gandhi",
+      "Margaret Thatcher",
+      "Golda Meir"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the largest ocean on Earth?",
+    "options": [
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Arctic Ocean",
+      "Pacific Ocean"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Who is the author of 'The Catcher in the Rye'?",
+    "options": [
+      "J.D. Salinger",
+      "F. Scott Fitzgerald",
+      "Ernest Hemingway",
+      "Mark Twain"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for sodium?",
+    "options": [
+      "Na",
+      "Ca",
+      "K",
+      "Mg"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who wrote the play 'Hamlet'?",
+    "options": [
+      "William Shakespeare",
+      "Christopher Marlowe",
+      "Ben Jonson",
+      "John Milton"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for phosphorus?",
+    "options": [
+      "Ph",
+      "Po",
+      "P",
+      "Pl"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "Who was the first woman to fly solo across the Atlantic Ocean?",
+    "options": [
+      "Amelia Earhart",
+      "Bessie Coleman",
+      "Harriet Quimby",
+      "Jacqueline Cochran"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the capital of Italy?",
+    "options": [
+      "Rome",
+      "Milan",
+      "Venice",
+      "Florence"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who discovered the structure of DNA?",
+    "options": [
+      "Francis Crick and James Watson",
+      "Rosalind Franklin",
+      "Gregor Mendel",
+      "Linus Pauling"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the chemical symbol for carbon?",
+    "options": [
+      "C",
+      "Ca",
+      "Co",
+      "Cu"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the first person to set foot on Antarctica?",
+    "options": [
+      "Roald Amundsen",
+      "Ernest Shackleton",
+      "Robert Falcon Scott",
+      "James Cook"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "What is the chemical symbol for iron?",
+    "options": [
+      "Fe",
+      "I",
+      "Ir",
+      "Io"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who composed the famous 'Four Seasons' concertos?",
+    "options": [
+      "Wolfgang Amadeus Mozart",
+      "Johann Sebastian Bach",
+      "Ludwig van Beethoven",
+      "Antonio Vivaldi"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "What is the chemical symbol for chlorine?",
+    "options": [
+      "Cl",
+      "Cr",
+      "Cn",
+      "Ci"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the first woman to win a Nobel Prize?",
+    "options": [
+      "Marie Curie",
+      "Rosalind Franklin",
+      "Ada Lovelace",
+      "Florence Nightingale"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the capital of South Korea?",
+    "options": [
+      "Seoul",
+      "Busan",
+      "Incheon",
+      "Jeju"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who is the author of 'The Lord of the Rings' trilogy?",
+    "options": [
+      "J.R.R. Tolkien",
+      "C.S. Lewis",
+      "George R.R. Martin",
+      "Terry Pratchett"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the capital of India?",
+    "options": [
+      "Mumbai",
+      "New Delhi",
+      "Kolkata",
+      "Chennai"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who is known as the Father of the Nation in India?",
+    "options": [
+      "Jawaharlal Nehru",
+      "Sardar Vallabhbhai Patel",
+      "Mahatma Gandhi",
+      "B.R. Ambedkar"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "Which river is considered the holiest in Hinduism?",
+    "options": [
+      "Yamuna",
+      "Ganges",
+      "Brahmaputra",
+      "Godavari"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which monument in India is one of the Seven Wonders of the World?",
+    "options": [
+      "Taj Mahal",
+      "Red Fort",
+      "Hawa Mahal",
+      "Qutub Minar"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who composed the Indian national anthem, 'Jana Gana Mana'?",
+    "options": [
+      "Rabindranath Tagore",
+      "Mahatma Gandhi",
+      "Subhas Chandra Bose",
+      "Jawaharlal Nehru"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Indian state is known as the 'Land of Five Rivers'?",
+    "options": [
+      "Punjab",
+      "Gujarat",
+      "Maharashtra",
+      "Kerala"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the first Prime Minister of India?",
+    "options": [
+      "Indira Gandhi",
+      "Jawaharlal Nehru",
+      "Sardar Vallabhbhai Patel",
+      "Morarji Desai"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the currency of India?",
+    "options": [
+      "Rupee",
+      "Dollar",
+      "Euro",
+      "Yen"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who is known as the Missile Man of India?",
+    "options": [
+      "A.P.J. Abdul Kalam",
+      "Narendra Modi",
+      "Rajiv Gandhi",
+      "Indira Gandhi"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the largest state in India by area?",
+    "options": [
+      "Uttar Pradesh",
+      "Rajasthan",
+      "Madhya Pradesh",
+      "Maharashtra"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which city is known as the IT capital of India?",
+    "options": [
+      "Mumbai",
+      "Bengaluru",
+      "Hyderabad",
+      "Chennai"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who was the first female Prime Minister of India?",
+    "options": [
+      "Sonia Gandhi",
+      "Indira Gandhi",
+      "Pratibha Patil",
+      "Sheila Dikshit"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which Indian city is famous for its tea?",
+    "options": [
+      "Darjeeling",
+      "Mumbai",
+      "Jaipur",
+      "Chennai"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who is known as the Nightingale of India?",
+    "options": [
+      "Sarojini Naidu",
+      "Indira Gandhi",
+      "Mother Teresa",
+      "Lata Mangeshkar"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the national animal of India?",
+    "options": [
+      "Elephant",
+      "Tiger",
+      "Lion",
+      "Rhino"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who built the Red Fort in Delhi?",
+    "options": [
+      "Akbar",
+      "Shah Jahan",
+      "Aurangzeb",
+      "Humayun"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the official language of India?",
+    "options": [
+      "English",
+      "Hindi",
+      "Sanskrit",
+      "Urdu"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which Indian state is known as the 'Land of Temples'?",
+    "options": [
+      "Karnataka",
+      "Tamil Nadu",
+      "Kerala",
+      "Andhra Pradesh"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who is known as the Iron Man of India?",
+    "options": [
+      "Sardar Vallabhbhai Patel",
+      "Mahatma Gandhi",
+      "B.R. Ambedkar",
+      "Jawaharlal Nehru"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the national flower of India?",
+    "options": [
+      "Rose",
+      "Lotus",
+      "Sunflower",
+      "Jasmine"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who is known as the Grand Old Man of India?",
+    "options": [
+      "Jawaharlal Nehru",
+      "Mahatma Gandhi",
+      "B.R. Ambedkar",
+      "Dadabhai Naoroji"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "What is the output of 5 + 3 * 2?",
+    "options": [
+      "10",
+      "16",
+      "11",
+      "9"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What does HTML stand for?",
+    "options": [
+      "Hyper Text Markup Language",
+      "Hyperlinks and Text Markup Language",
+      "Home Tool Markup Language",
+      "Hyper Tool Markup Language"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which of the following is not a programming language?",
+    "options": [
+      "Java",
+      "HTML",
+      "Python",
+      "Ruby"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the output of 'hello' + 'world' in Python?",
+    "options": [
+      "'helloworld'",
+      "'hello world'",
+      "'hello' 'world'",
+      "Error"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which of the following is a CSS framework?",
+    "options": [
+      "jQuery",
+      "Bootstrap",
+      "React",
+      "Node.js"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What does CSS stand for?",
+    "options": [
+      "Creative Style Sheets",
+      "Cascading Style Sheets",
+      "Computer Style Sheets",
+      "Colorful Style Sheets"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which programming language is often used for artificial intelligence?",
+    "options": [
+      "Java",
+      "Python",
+      "C++",
+      "Ruby"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What does SQL stand for?",
+    "options": [
+      "Structured Query Language",
+      "Sequential Query Language",
+      "Structured Question Language",
+      "Standard Query Language"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which of the following is a JavaScript library?",
+    "options": [
+      "React",
+      "Angular",
+      "Vue.js",
+      "jQuery"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "What is the output of 2 ** 3 in Python?",
+    "options": [
+      "8",
+      "6",
+      "4",
+      "10"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the purpose of the 'git' command in programming?",
+    "options": [
+      "To compile code",
+      "To format code",
+      "To manage source code",
+      "To debug code"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the file extension for a Python source code file?",
+    "options": [
+      ".py",
+      ".js",
+      ".html",
+      ".css"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the result of 10 % 3 in most programming languages?",
+    "options": [
+      "1",
+      "3",
+      "0",
+      "2"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which of the following is a version control system?",
+    "options": [
+      "Git",
+      "Java",
+      "Python",
+      "HTML"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What does API stand for?",
+    "options": [
+      "Application Programming Interface",
+      "Advanced Programming Interface",
+      "Automated Programming Interface",
+      "Application Protocol Interface"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the output of print(3 == 3) in Python?",
+    "options": [
+      "True",
+      "False",
+      "3",
+      "Error"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which of the following is a relational database management system?",
+    "options": [
+      "MongoDB",
+      "SQLite",
+      "Redis",
+      "Elasticsearch"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What does HTTP stand for?",
+    "options": [
+      "HyperText Transfer Protocol",
+      "HyperText Transmission Protocol",
+      "HyperTransfer Text Protocol",
+      "HyperTransmission Transfer Protocol"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the output of 5 / 2 in most programming languages?",
+    "options": [
+      "2.5",
+      "2",
+      "3",
+      "2.0"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which programming language is known for its use in web development and building dynamic web pages?",
+    "options": [
+      "Python",
+      "JavaScript",
+      "C++",
+      "Java"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What does IDE stand for?",
+    "options": [
+      "Integrated Development Environment",
+      "Interactive Development Environment",
+      "Interface Development Environment",
+      "Internet Development Environment"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the output of print('hello' * 3) in Python?",
+    "options": [
+      "'hellohellohello'",
+      "'hello' 'hello' 'hello'",
+      "'hello 3 times'",
+      "Error"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which of the following is a statically typed programming language?",
+    "options": [
+      "JavaScript",
+      "Python",
+      "Ruby",
+      "Java"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "What does XML stand for?",
+    "options": [
+      "eXtensible Markup Language",
+      "Extended Markup Language",
+      "Executable Markup Language",
+      "Extreme Markup Language"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the output of 'hello'.length in JavaScript?",
+    "options": [
+      "5",
+      "'hello'",
+      "Error",
+      "0"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which of the following is not a programming paradigm?",
+    "options": [
+      "Functional Programming",
+      "Procedural Programming",
+      "Mathematical Programming",
+      "Object-Oriented Programming"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the output of print(3 < 5) in Python?",
+    "options": [
+      "True",
+      "False",
+      "3",
+      "5"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the purpose of the 'npm' command in JavaScript development?",
+    "options": [
+      "To compile code",
+      "To install packages",
+      "To manage source code",
+      "To debug code"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the output of print('hello'.toUpperCase()) in JavaScript?",
+    "options": [
+      "'hello'",
+      "'HELLO'",
+      "Error",
+      "null"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which of the following is not a JavaScript data type?",
+    "options": [
+      "Number",
+      "String",
+      "Boolean",
+      "Character"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "What is the purpose of the 'pip' command in Python?",
+    "options": [
+      "To compile code",
+      "To install packages",
+      "To manage source code",
+      "To debug code"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the output of print('hello'.length) in JavaScript?",
+    "options": [
+      "5",
+      "'hello'",
+      "Error",
+      "null"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "Which of the following is not a Python data type?",
+    "options": [
+      "Integer",
+      "List",
+      "Tuple",
+      "Map"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "What does CSS specificity refer to?",
+    "options": [
+      "The order of properties in a CSS rule",
+      "The size of a CSS file",
+      "The level of importance of a CSS rule",
+      "The number of CSS selectors applied to an element"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "Which symbol is used to denote single-line comments in Python?",
+    "options": [
+      "//",
+      "/* */",
+      "#",
+      "--"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the purpose of the 'npm start' command in JavaScript development?",
+    "options": [
+      "To start the Node.js server",
+      "To install dependencies",
+      "To compile code",
+      "To run tests"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the output of print(5 === '5') in JavaScript?",
+    "options": [
+      "True",
+      "False",
+      "Error",
+      "Null"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which of the following is a dynamically typed programming language?",
+    "options": [
+      "Java",
+      "C++",
+      "Python",
+      "C#"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the output of 'hello'.toUpperCase() in JavaScript?",
+    "options": [
+      "'hello'",
+      "'HELLO'",
+      "Error",
+      "null"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the purpose of the 'virtualenv' command in Python?",
+    "options": [
+      "To install virtual environments",
+      "To manage dependencies",
+      "To create isolated Python environments",
+      "To debug code"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the result of 2 == '2' in Python?",
+    "options": [
+      "True",
+      "False",
+      "Error",
+      "Null"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which of the following is used to iterate over elements of an array in JavaScript?",
+    "options": [
+      "for loop",
+      "if statement",
+      "while loop",
+      "switch statement"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What does DOM stand for in web development?",
+    "options": [
+      "Document Object Model",
+      "Dynamic Object Manipulation",
+      "Data Object Model",
+      "Document Oriented Middleware"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the output of print('hello'.indexOf('l')) in JavaScript?",
+    "options": [
+      "3",
+      "2",
+      "1",
+      "Error"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which of the following is a popular JavaScript framework for building user interfaces?",
+    "options": [
+      "React",
+      "Express",
+      "Vue.js",
+      "Angular"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the output of 5 % 2 in JavaScript?",
+    "options": [
+      "2.5",
+      "2",
+      "1",
+      "2.0"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the purpose of the 'docker' command in software development?",
+    "options": [
+      "To manage dependencies",
+      "To containerize applications",
+      "To debug code",
+      "To deploy applications"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the result of '5' === 5 in JavaScript?",
+    "options": [
+      "True",
+      "False",
+      "Error",
+      "Null"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which of the following is not a valid variable name in Python?",
+    "options": [
+      "my_var",
+      "myVar",
+      "my-var",
+      "_my_var"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the purpose of the 'javac' command in Java development?",
+    "options": [
+      "To compile Java source code",
+      "To install Java libraries",
+      "To run Java code",
+      "To debug Java code"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the founder of the Maratha Empire?",
+    "options": [
+      "Shivaji Maharaj",
+      "Balaji Vishwanath",
+      "Baji Rao I",
+      "Sambhaji Maharaj"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which city served as the capital of the Maratha Empire?",
+    "options": [
+      "Pune",
+      "Mumbai",
+      "Nashik",
+      "Satara"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which battle is considered the turning point in Shivaji Maharaj's career?",
+    "options": [
+      "Battle of Pratapgad",
+      "Battle of Panhala",
+      "Battle of Talikota",
+      "Battle of Plassey"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the first Peshwa of the Maratha Empire?",
+    "options": [
+      "Balaji Vishwanath",
+      "Baji Rao I",
+      "Madhavrao I",
+      "Nana Saheb"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which fort in Maharashtra is known as the 'Tiger's Lair'?",
+    "options": [
+      "Raigad Fort",
+      "Pratapgad Fort",
+      "Sinhagad Fort",
+      "Lohagad Fort"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "Which Maratha ruler was captured and executed by Aurangzeb?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who founded the Peshwa dynasty?",
+    "options": [
+      "Balaji Vishwanath",
+      "Baji Rao I",
+      "Madhavrao I",
+      "Nana Saheb"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What was the capital of the Peshwas during their rule?",
+    "options": [
+      "Pune",
+      "Mumbai",
+      "Nashik",
+      "Satara"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the last Peshwa of the Maratha Empire?",
+    "options": [
+      "Balaji Baji Rao",
+      "Madhavrao I",
+      "Nana Saheb",
+      "Baji Rao II"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which British governor-general defeated the Marathas in the Third Anglo-Maratha War?",
+    "options": [
+      "Lord Cornwallis",
+      "Lord Wellesley",
+      "Lord Dalhousie",
+      "Lord Mountbatten"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who was the leader of the Samyukta Maharashtra Movement?",
+    "options": [
+      "B. R. Ambedkar",
+      "Vinayak Damodar Savarkar",
+      "Lokmanya Tilak",
+      "Pandurang Sadashiv Sane"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which year did Maharashtra achieve statehood?",
+    "options": [
+      "1947",
+      "1950",
+      "1960",
+      "1962"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "Which Maratha ruler expanded the empire to the south of India?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who was known as the 'Napoleon of India'?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which Maratha ruler is known for establishing a naval force?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Portuguese leader attacked and plundered Mumbai in the 16th century?",
+    "options": [
+      "Alfonso de Albuquerque",
+      "Vasco da Gama",
+      "Francisco de Almeida",
+      "Afonso I of Portugal"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the first Chief Minister of Maharashtra?",
+    "options": [
+      "Yashwantrao Chavan",
+      "Vasantrao Naik",
+      "B. R. Ambedkar",
+      "P. K. Sawant"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which famous Indian social reformer hailed from Maharashtra and advocated for women's education and widow remarriage?",
+    "options": [
+      "Jyotirao Phule",
+      "Bal Gangadhar Tilak",
+      "Gopal Krishna Gokhale",
+      "Dhondo Keshav Karve"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Marathi saint-poet wrote the famous devotional verses called 'Abhangas'?",
+    "options": [
+      "Sant Dnyaneshwar",
+      "Sant Tukaram",
+      "Sant Namdev",
+      "Sant Eknath"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who was the founder of the Rashtrakuta dynasty?",
+    "options": [
+      "Dantidurga",
+      "Krishna I",
+      "Govinda III",
+      "Amoghavarsha I"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which ancient Buddhist caves are located near Aurangabad in Maharashtra?",
+    "options": [
+      "Ajanta Caves",
+      "Ellora Caves",
+      "Kanheri Caves",
+      "Karla Caves"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which Marathi ruler built the famous Elephanta Caves?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Krishna I"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Who was the founder of the Bhonsle dynasty of Nagpur?",
+    "options": [
+      "Chhatrapati Shivaji Maharaj",
+      "Raghoji I Bhonsle",
+      "Madhoji I Bhonsle",
+      "Sambhaji Maharaj"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "Which Marathi king was a contemporary of Emperor Ashoka?",
+    "options": [
+      "Gautamiputra Satakarni",
+      "Chandragupta Maurya",
+      "Shivaji Maharaj",
+      "Bhishamvarman"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Marathi saint-poet is associated with the composition 'Dasbodh'?",
+    "options": [
+      "Sant Tukaram",
+      "Sant Eknath",
+      "Sant Namdev",
+      "Sant Dnyaneshwar"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who was the founder of the Bahmani Sultanate?",
+    "options": [
+      "Alauddin Hasan Bahman Shah",
+      "Mohammad Shah I",
+      "Firuz Shah",
+      "Ahmad Shah I"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Marathi king is known for his victory over the Greeks?",
+    "options": [
+      "Gautamiputra Satakarni",
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the architect of the famous Ajanta Caves?",
+    "options": [
+      "Krishna I",
+      "Chandragupta Maurya",
+      "Aurangzeb",
+      "Harisena"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which Marathi ruler was known for his naval expeditions to the Gulf of Khambhat and Sri Lanka?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which Marathi ruler is known for the Battle of Wai?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which Marathi ruler defeated the Portuguese and captured Goa?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the Marathi saint-poet-saint known for his devotion to Lord Vitthal?",
+    "options": [
+      "Sant Tukaram",
+      "Sant Eknath",
+      "Sant Namdev",
+      "Sant Dnyaneshwar"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the Marathi ruler who built the famous Lal Mahal in Pune?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Marathi ruler was known for his innovative guerrilla warfare tactics?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the Marathi ruler who fought the Battle of Palkhed against the Mughals?",
+    "options": [
+      "Sambhaji Maharaj",
+      "Shivaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Marathi ruler is known for his coronation on the Raigad Fort?",
+    "options": [
+      "Sambhaji Maharaj",
+      "Shivaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who was the Marathi ruler who famously escaped from the Mughal captivity?",
+    "options": [
+      "Sambhaji Maharaj",
+      "Shivaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the Marathi queen known for her bravery during the siege of Panhala?",
+    "options": [
+      "Rajmata Jijabai",
+      "Rani Laxmibai",
+      "Rani Chennamma",
+      "Rajmata Ahilyabai Holkar"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Marathi ruler defeated the Adil Shahi Sultanate and annexed territories in Karnataka?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the Marathi general known for his role in the Battle of Sinhagad?",
+    "options": [
+      "Tanaji Malusare",
+      "Baji Prabhu Deshpande",
+      "Murarbaji Deshpande",
+      "Suryaji Malusare"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Marathi ruler is known for his diplomatic skills and negotiations with the Mughals?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the Marathi ruler who expanded the empire into present-day Gujarat?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Marathi ruler is known for his contributions to literature and patronage of Sanskrit scholars?",
+    "options": [
+      "Sambhaji Maharaj",
+      "Shivaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Who was the Marathi ruler who fought against the Mughals in the Deccan Wars?",
+    "options": [
+      "Sambhaji Maharaj",
+      "Shivaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Marathi ruler is known for his tolerance and respect for all religions?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the Marathi ruler known for his contributions to architecture and fortifications?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Marathi ruler is known for his treatment of enemies with honor and chivalry?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the Marathi ruler who defeated the Portuguese and captured several of their forts?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Marathi ruler was known for his policies promoting agriculture and trade?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Who was the Marathi ruler who expanded the Maratha influence to the north of India?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which Marathi ruler is known for his military expeditions and conquests in northern India?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Who was the Marathi ruler known for his administrative reforms and efficient governance?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which Marathi ruler is known for his military campaigns in the Carnatic region?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Who was the Marathi ruler who successfully resisted the Mughal invasion of the Deccan?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which Marathi ruler is known for his military prowess and battlefield strategies?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Who was the Marathi ruler known for his alliances with various Indian states against the British?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which Marathi ruler is known for his contributions to art, culture, and literature?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Who was the Marathi ruler known for his military campaigns against the Nizam of Hyderabad?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which Marathi ruler is known for his patronage of arts and architecture, especially in Pune?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Who was the Marathi ruler known for his efforts to establish Marathi as a language of administration and culture?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which Marathi ruler is known for his military campaigns against the Portuguese in western India?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Who was the Marathi ruler known for his vision of a united and prosperous Maharashtra?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which Marathi ruler is known for his expeditions into the Deccan and southern India?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Who was the Marathi ruler known for his efforts to establish a strong navy to protect the coastline?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which Marathi ruler is known for his diplomatic skills in dealing with various regional powers in India?",
+    "options": [
+      "Shivaji Maharaj",
+      "Sambhaji Maharaj",
+      "Baji Rao I",
+      "Balaji Vishwanath"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which city in India is known as the 'Pink City'?",
+    "options": [
+      "Jaipur",
+      "Udaipur",
+      "Jodhpur",
+      "Agra"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the popular tourist attraction in Kerala known for its backwaters?",
+    "options": [
+      "Munnar",
+      "Alleppey",
+      "Kochi",
+      "Thiruvananthapuram"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which Indian state is famous for its tea plantations in places like Munnar and Darjeeling?",
+    "options": [
+      "Assam",
+      "Kerala",
+      "Tamil Nadu",
+      "West Bengal"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "What is the name of the highest mountain peak in India?",
+    "options": [
+      "Kangchenjunga",
+      "Mount Everest",
+      "Nanda Devi",
+      "K2"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which city in India is known as the 'City of Lakes'?",
+    "options": [
+      "Udaipur",
+      "Jaipur",
+      "Varanasi",
+      "Bhopal"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Indian state is famous for its backwaters and houseboat cruises?",
+    "options": [
+      "Goa",
+      "Kerala",
+      "West Bengal",
+      "Assam"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the famous hill station located in the state of Himachal Pradesh?",
+    "options": [
+      "Shimla",
+      "Manali",
+      "Darjeeling",
+      "Ooty"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which city in India is famous for its historic monuments like the Taj Mahal and Agra Fort?",
+    "options": [
+      "Jaipur",
+      "Delhi",
+      "Agra",
+      "Lucknow"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the name of the river where the famous Rishikesh and Haridwar are located?",
+    "options": [
+      "Ganges",
+      "Yamuna",
+      "Brahmaputra",
+      "Godavari"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Indian state is known for its wildlife sanctuaries like Jim Corbett and Rajaji?",
+    "options": [
+      "Rajasthan",
+      "Uttar Pradesh",
+      "Uttarakhand",
+      "Madhya Pradesh"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the famous festival celebrated in the state of Gujarat known for its colorful kite flying?",
+    "options": [
+      "Diwali",
+      "Holi",
+      "Navratri",
+      "Makar Sankranti"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which city in India is known as the 'City of Joy'?",
+    "options": [
+      "Kolkata",
+      "Mumbai",
+      "Chennai",
+      "Bangalore"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the name of the national park in Madhya Pradesh famous for its population of tigers?",
+    "options": [
+      "Kaziranga National Park",
+      "Bandhavgarh National Park",
+      "Periyar National Park",
+      "Ranthambore National Park"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which Indian state is known for its scenic beauty and adventure sports like river rafting and paragliding?",
+    "options": [
+      "Uttarakhand",
+      "Kerala",
+      "Himachal Pradesh",
+      "Goa"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the famous hill station located in the state of Tamil Nadu known for its botanical gardens and toy train?",
+    "options": [
+      "Kodaikanal",
+      "Ooty",
+      "Munnar",
+      "Coorg"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which city in India is famous for its beaches like Anjuna and Calangute?",
+    "options": [
+      "Goa",
+      "Kerala",
+      "Maharashtra",
+      "Andaman and Nicobar Islands"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the name of the desert in Rajasthan known for its sand dunes and camel safaris?",
+    "options": [
+      "Thar Desert",
+      "Sahara Desert",
+      "Kutch Desert",
+      "Arabian Desert"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the name of the river that flows through the city of Varanasi, considered sacred in Hinduism?",
+    "options": [
+      "Ganges",
+      "Yamuna",
+      "Brahmaputra",
+      "Godavari"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which city in India is known as the 'City of Temples'?",
+    "options": [
+      "Varanasi",
+      "Haridwar",
+      "Rishikesh",
+      "Bhubaneswar"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "What is the name of the mountain pass in Ladakh that is one of the highest motorable roads in the world?",
+    "options": [
+      "Rohtang Pass",
+      "Khardung La",
+      "Nathu La",
+      "Zoji La"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "Which Indian state is known for its houseboat cruises in the Dal Lake?",
+    "options": [
+      "Himachal Pradesh",
+      "Kerala",
+      "Jammu and Kashmir",
+      "Uttarakhand"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the name of the ancient city in Madhya Pradesh known for its intricately carved temples?",
+    "options": [
+      "Khajuraho",
+      "Hampi",
+      "Ellora",
+      "Ajanta"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Indian state is known for its vibrant culture, including the dance forms Kathak and Bhangra?",
+    "options": [
+      "Punjab",
+      "Gujarat",
+      "Rajasthan",
+      "Maharashtra"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the name of the hill station in Maharashtra known for its strawberry farms?",
+    "options": [
+      "Mahabaleshwar",
+      "Panchgani",
+      "Lonavala",
+      "Matheran"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which city in India is known as the 'City of Gardens'?",
+    "options": [
+      "Bangalore",
+      "Chennai",
+      "Hyderabad",
+      "Pune"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the name of the river that flows through the city of Ahmedabad?",
+    "options": [
+      "Sabarmati",
+      "Tapi",
+      "Narmada",
+      "Krishna"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Indian state is known for its unique culture, including the dance form Mohiniyattam?",
+    "options": [
+      "Kerala",
+      "Tamil Nadu",
+      "Odisha",
+      "Assam"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the name of the island in Andaman and Nicobar Islands known for its pristine beaches and water sports?",
+    "options": [
+      "Havelock Island",
+      "Neil Island",
+      "Ross Island",
+      "Viper Island"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which city in India is known for its UNESCO World Heritage-listed cave temples?",
+    "options": [
+      "Ajanta",
+      "Ellora",
+      "Aurangabad",
+      "Pune"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the name of the national park in Karnataka known for its population of tigers and elephants?",
+    "options": [
+      "Bandipur National Park",
+      "Ranthambore National Park",
+      "Sundarbans National Park",
+      "Kaziranga National Park"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "Which Indian state is known for its cultural heritage, including the famous Rath Yatra festival?",
+    "options": [
+      "West Bengal",
+      "Odisha",
+      "Bihar",
+      "Jharkhand"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the name of the river where the famous city of Kolkata is located?",
+    "options": [
+      "Ganges",
+      "Yamuna",
+      "Brahmaputra",
+      "Hooghly"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "Which city in India is known for its colonial architecture and the Victoria Memorial?",
+    "options": [
+      "Mumbai",
+      "Kolkata",
+      "Chennai",
+      "Delhi"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the name of the hill station in Uttarakhand known for its scenic beauty and adventure sports?",
+    "options": [
+      "Nainital",
+      "Mussoorie",
+      "Manali",
+      "Shimla"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the value of 5! (factorial of 5)?",
+    "options": [
+      "20",
+      "120",
+      "60",
+      "24"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "If a train travels at 40 km/h for 3 hours, how far does it travel?",
+    "options": [
+      "80 km",
+      "120 km",
+      "100 km",
+      "150 km"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the square root of 144?",
+    "options": [
+      "12",
+      "14",
+      "16",
+      "10"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "If 20% of a number is 30, what is 40% of that number?",
+    "options": [
+      "60",
+      "120",
+      "80",
+      "90"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the sum of the first 10 prime numbers?",
+    "options": [
+      "120",
+      "129",
+      "129",
+      "117"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "If a square has a side length of 6 cm, what is its area?",
+    "options": [
+      "24 sq cm",
+      "36 sq cm",
+      "30 sq cm",
+      "42 sq cm"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the next number in the series: 2, 6, 12, 20, ...?",
+    "options": [
+      "24",
+      "30",
+      "28",
+      "36"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "If 4x + 7 = 31, what is the value of x?",
+    "options": [
+      "6",
+      "8",
+      "5",
+      "7"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the area of a circle with radius 5 cm?",
+    "options": [
+      "25π sq cm",
+      "50π sq cm",
+      "10π sq cm",
+      "15π sq cm"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "If 25% of a number is 40, what is 75% of that number?",
+    "options": [
+      "100",
+      "120",
+      "90",
+      "80"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the product of the first 5 prime numbers?",
+    "options": [
+      "210",
+      "230",
+      "200",
+      "210"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "If x + 15 = 45, what is the value of x?",
+    "options": [
+      "25",
+      "35",
+      "30",
+      "20"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "What is the value of 3^4 (3 raised to the power of 4)?",
+    "options": [
+      "81",
+      "27",
+      "64",
+      "36"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "If a rectangle has a length of 8 cm and a width of 5 cm, what is its perimeter?",
+    "options": [
+      "24 cm",
+      "26 cm",
+      "34 cm",
+      "22 cm"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the next number in the series: 3, 6, 12, 24, ...?",
+    "options": [
+      "36",
+      "48",
+      "30",
+      "45"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "If 2y - 5 = 11, what is the value of y?",
+    "options": [
+      "10",
+      "8",
+      "9",
+      "7"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the circumference of a circle with diameter 14 cm?",
+    "options": [
+      "22π cm",
+      "28π cm",
+      "14π cm",
+      "21π cm"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "If a number is increased by 20% and then decreased by 20%, what is the overall change in percentage?",
+    "options": [
+      "0%",
+      "4%",
+      "2%",
+      "3%"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the sum of the angles in a triangle?",
+    "options": [
+      "90°",
+      "180°",
+      "270°",
+      "360°"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "If 3x + 4 = 25, what is the value of x?",
+    "options": [
+      "7",
+      "8",
+      "6",
+      "9"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the value of 7^2 (7 squared)?",
+    "options": [
+      "42",
+      "48",
+      "49",
+      "56"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "If a square has a perimeter of 20 cm, what is its side length?",
+    "options": [
+      "4 cm",
+      "5 cm",
+      "6 cm",
+      "7 cm"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the next number in the series: 1, 3, 9, 27, ...?",
+    "options": [
+      "81",
+      "54",
+      "36",
+      "63"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "If 4x - 3 = 21, what is the value of x?",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the value of 10% of 200?",
+    "options": [
+      "20",
+      "10",
+      "30",
+      "25"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the square of 8?",
+    "options": [
+      "64",
+      "36",
+      "49",
+      "56"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "If 25% of a number is 50, what is 50% of that number?",
+    "options": [
+      "75",
+      "100",
+      "125",
+      "150"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the sum of the interior angles of a hexagon?",
+    "options": [
+      "360°",
+      "540°",
+      "720°",
+      "900°"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "If 2y + 10 = 30, what is the value of y?",
+    "options": [
+      "10",
+      "8",
+      "9",
+      "7"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the value of 3^3 (3 cubed)?",
+    "options": [
+      "27",
+      "9",
+      "81",
+      "36"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "If a circle has a radius of 7 cm, what is its circumference?",
+    "options": [
+      "14π cm",
+      "21π cm",
+      "28π cm",
+      "35π cm"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the product of the first 4 prime numbers?",
+    "options": [
+      "36",
+      "40",
+      "48",
+      "30"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "question": "If 4x + 5 = 25, what is the value of x?",
+    "options": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the square root of 81?",
+    "options": [
+      "9",
+      "8",
+      "7",
+      "6"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "If a train travels at 60 km/h for 2 hours, how far does it travel?",
+    "options": [
+      "120 km",
+      "100 km",
+      "80 km",
+      "140 km"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the next number in the series: 2, 5, 10, 17, ...?",
+    "options": [
+      "24",
+      "23",
+      "22",
+      "21"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "If 3x - 4 = 14, what is the value of x?",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the area of a rectangle with length 10 cm and width 6 cm?",
+    "options": [
+      "60 sq cm",
+      "56 sq cm",
+      "36 sq cm",
+      "40 sq cm"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the sum of the first 5 natural numbers?",
+    "options": [
+      "10",
+      "11",
+      "15",
+      "12"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "If 30% of a number is 45, what is 10% of that number?",
+    "options": [
+      "15",
+      "18",
+      "12",
+      "20"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "What is the next number in the series: 2, 4, 8, 16, ...?",
+    "options": [
+      "32",
+      "24",
+      "20",
+      "28"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "question": "If 7x + 6 = 55, what is the value of x?",
+    "options": [
+      "7",
+      "8",
+      "6",
+      "9"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "What is the value of 12^2 (12 squared)?",
+    "options": [
+      "124",
+      "144",
+      "132",
+      "136"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "question": "If a square has a side length of 10 cm, what is its perimeter?",
+    "options": [
+      "20 cm",
+      "30 cm",
+      "40 cm",
+      "50 cm"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "question": "What is the next number in the series: 3, 9, 27, 81, ...?",
+    "options": [
+      "243",
+      "121",
+      "91",
+      "171"
+    ],
+    "correctOptionIndex": 0
+  }
+]
