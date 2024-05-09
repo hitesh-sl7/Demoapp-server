@@ -54,6 +54,7 @@ Register.postRegister = async (req, res) => {
             sendData.message = "Register Request successfully reached.";
             console.log(`User inserted with ID: ${lastInsertedId}`);
         } catch (error) {
+            console.log(error);
             var sendData = {};
             sendData.loginstatus = 'register_failed';
             sendData.request = Reqdata;
