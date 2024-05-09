@@ -7,20 +7,10 @@ const axios = require('axios');
 const forge = require('node-forge');
 const path = require('path')
 const sqlite3 = require('sqlite3');
-const fs = require('fs');
-const AWS = require('aws-sdk');
 
+const CyclicDB = require('@cyclic.sh/dynamodb');
+const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 
-
-
-AWS.config.update({
-    accessKeyId: 'ASIAYS6CACM4ZX33NKSN',
-    secretAccessKey: 'PFF1tPMV1Zy/Mdh6fmeX8chQ3zSR5rd1wRm/106V',
-    region: 'ap-south-1'
-  });
-  
-  const s3 = new AWS.S3();
-  
 var Login = function(){
 };
 Login.postLogin = async (req, res) => {
@@ -36,71 +26,30 @@ Login.postLogin = async (req, res) => {
         Reqdata.ip = requestIp.getClientIp(req);
         var sendData = {};
 
-        await uploadDatabaseToS3();
+        let users = dynamodb.collection('users');
+        let u = await users.get(Reqdata.email);
 
-        try {
-            const response = await s3.getObject({
-              Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
-              Key: 'game_database.db'
-            }).promise();
-
-            buffer = response.Body;
-          } catch (error) {
-            console.error('Error accessing database file from S3:', error);
-          }
-
-          console.log(buffer);
-
-          const db = new sqlite3.Database(':memory:');
-        //   const db = new sqlite3.Database(buffer);
-
-        db.exec(buffer.toString(),async function(err) {
-            if (err) {
-              console.error('Error executing SQL commands on database:', err);
-              return;
+        if(u){
+            if(u.props.password == Reqdata.password){
+                sendData.loginstatus = 'login_succeeded';
+                sendData.user_info = {
+                    "uID" : u.props.id,
+                    "username" : u.props.username,
+                    "phone" : u.props.phone,
+                    "email" : u.props.email,
+                }
+                // sendData.request = Reqdata;
+                sendData.message = "Login Request successfully reached.";
+            }else{
+                sendData.loginstatus = 'login_failed';
+                sendData.request = Reqdata;
+                sendData.message = "Incorrect password";
             }
-            
-            const findUser = () => {
-                return new Promise((resolve, reject) => {
-                    db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT,password TEXT,email TEXT UNIQUE,phone TEXT)");
-    
-                    db.all("SELECT id, username, email, phone, password FROM users WHERE email=? and password=?", [Reqdata.email, Reqdata.password], function(err, row) {
-                        if (err) {
-                            reject(err);
-                        } else {
-                            resolve(row);
-                        }
-                    });
-                });
-            };
-            
-            const rows = await findUser();
-            console.log(rows)
-          });
-
-        
-        if(rows.length > 0){
-            sendData.loginstatus = 'login_succeeded';
-            sendData.user_info = {
-                "uID" : rows[0].id,
-                "username" : rows[0].username,
-                "phone" : rows[0].phone,
-                "email" : rows[0].email,
-            }
-            // sendData.request = Reqdata;
-            sendData.message = "Login Request successfully reached.";
         }else{
             sendData.loginstatus = 'login_failed';
             sendData.request = Reqdata;
-            sendData.message = "Login Request successfully reached.";
+            sendData.message = "User not found";
         }
-
-        db.close((err) => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log('Close the database connection.');
-        });
 
         return res.status(200).send(sendData);
 }
@@ -162,33 +111,5 @@ Login.sendLoginData = async(status,data) => {
     
     }
 };
-
-const uploadDatabaseToS3 = async () => {
-    try {
-      const buffer_file = await new Promise((resolve, reject) => {
-
-          fs.readFile('./game_database.db', (err, data) => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(data);
-            }
-          });
- 
-      });
-  
-      // Upload the updated database file to S3
-      await s3.upload({
-        Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
-        Key: 'game_database.db',
-        Body: buffer_file
-      }).promise();
-  
-      console.log('Updated database file uploaded to S3 successfully');
-    } catch (error) {
-      console.error('Error uploading updated database file to S3:', error);
-    }
-  };
-
 
 module.exports = Login;
