@@ -4,11 +4,12 @@ const requestIp = require('request-ip');
 const { v1: uuidv1,v4: uuidv4 } = require('uuid');
 const jwtGenerator = require("../utils/jwtGenerator");
 const axios = require('axios');
-var fs = require("fs");
 const forge = require('node-forge');
 const path = require('path')
 const fsPromises = require('fs/promises');
 const sqlite3 = require('sqlite3');
+const fs = require('fs');
+const AWS = require('aws-sdk');
 
 var Questions = function(){
 };
@@ -36,8 +37,17 @@ Questions.getQues = async (req, res) => {
             indexes.push(randomIndex);
         }
         
-        // console.log(quesArray);
-        const db = new sqlite3.Database('./game_database.db');
+        try {
+            const response = await s3.getObject({
+              Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
+              Key: 'game_database.db'
+            }).promise();
+            const buffer = response.Body;
+          } catch (error) {
+            console.error('Error accessing database file from S3:', error);
+          }
+
+        const db = new sqlite3.Database(buffer);
         const quizEntry = () => {
             return new Promise((resolve, reject) => {
                 db.run("CREATE TABLE IF NOT EXISTS quiz_record (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER,quiz_id TEXT,ques_indexes TEXT,correct NUMBER,incorrect NUMBER,skip NUMBER, time TEXT)");
@@ -52,6 +62,8 @@ Questions.getQues = async (req, res) => {
         };
         try {
             const lastInsertedId = await quizEntry();
+            const serializedBuffer = Buffer.from(db.serialize(), 'utf-8');
+            await uploadDatabaseToS3(serializedBuffer);
         } catch (error) {
             console.log(error);
         }
@@ -87,7 +99,17 @@ Questions.postQues = async (req, res) => {
         var Reqdata = req.body;
         console.log(Reqdata)
 
-        const db = new sqlite3.Database('./game_database.db');
+        try {
+            const response = await s3.getObject({
+              Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
+              Key: 'game_database.db'
+            }).promise();
+            const buffer = response.Body;
+          } catch (error) {
+            console.error('Error accessing database file from S3:', error);
+          }
+
+        const db = new sqlite3.Database(buffer);
         const quizEntry = () => {
             return new Promise((resolve, reject) => {
                 db.run("UPDATE quiz_record SET correct=?, incorrect=?, skip=?, time=? WHERE quiz_id=?", 
@@ -107,6 +129,8 @@ Questions.postQues = async (req, res) => {
 
         try {
             await quizEntry();
+            const serializedBuffer = Buffer.from(db.serialize(), 'utf-8');
+            await uploadDatabaseToS3(serializedBuffer);
             var sendData = {};
             sendData.status = "success";
             sendData.message = "Quiz answer saved successfully";
@@ -150,6 +174,21 @@ function getRandomindex(ques) {
     }
     return result;
 }
+
+const uploadDatabaseToS3 = async (buffer) => {
+    try {
+      // Upload the serialized database buffer to S3
+      await s3.upload({
+        Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
+        Key: 'game_database.db',
+        Body: buffer
+      }).promise();
+  
+      console.log('Serialized database buffer uploaded to S3 successfully');
+    } catch (error) {
+      console.error('Error uploading serialized database buffer to S3:', error);
+    }
+  };
 
 
 module.exports = Questions;

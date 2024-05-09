@@ -7,6 +7,11 @@ const path = require('path')
 const axios = require('axios');
 const sqlite3 = require('sqlite3');
 
+const fs = require('fs');
+const AWS = require('aws-sdk');
+
+const s3 = new AWS.S3();
+
 var Register = function(){
     
 };
@@ -33,7 +38,17 @@ Register.postRegister = async (req, res) => {
             return res.status(200).send(sendData);  
         }
 
-        const db = new sqlite3.Database('./game_database.db');
+        try {
+            const response = await s3.getObject({
+              Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
+              Key: 'game_database.db'
+            }).promise();
+            const buffer = response.Body;
+        } catch (error) {
+        console.error('Error accessing database file from S3:', error);
+        }
+
+        const db = new sqlite3.Database(buffer);
         const registerUser = () => {
             return new Promise((resolve, reject) => {
                 db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT,password TEXT,email TEXT UNIQUE,phone TEXT)");
@@ -47,8 +62,11 @@ Register.postRegister = async (req, res) => {
                 });
             });
         };
+
         try {
             const lastInsertedId = await registerUser();
+            const serializedBuffer = Buffer.from(db.serialize(), 'utf-8');
+            await uploadDatabaseToS3(serializedBuffer);
             var sendData = {};
             sendData.loginstatus = 'register_succeeded';
             sendData.message = "Register Request successfully reached.";
@@ -138,7 +156,20 @@ Register.postRegister = async (req, res) => {
     }
 };
 
-
+const uploadDatabaseToS3 = async (buffer) => {
+    try {
+      // Upload the serialized database buffer to S3
+      await s3.upload({
+        Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
+        Key: 'game_database.db',
+        Body: buffer
+      }).promise();
+  
+      console.log('Serialized database buffer uploaded to S3 successfully');
+    } catch (error) {
+      console.error('Error uploading serialized database buffer to S3:', error);
+    }
+  };
 
 
 module.exports = Register;

@@ -8,6 +8,9 @@ const forge = require('node-forge');
 const path = require('path')
 const sqlite3 = require('sqlite3');
 const fs = require('fs');
+const AWS = require('aws-sdk');
+
+const s3 = new AWS.S3();
 
 var Login = function(){
 };
@@ -23,7 +26,17 @@ Login.postLogin = async (req, res) => {
         Reqdata.ip = requestIp.getClientIp(req);
         var sendData = {};
 
-        const db = new sqlite3.Database('./game_database.db');
+        try {
+            const response = await s3.getObject({
+              Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
+              Key: 'game_database.db'
+            }).promise();
+            const buffer = response.Body;
+          } catch (error) {
+            console.error('Error accessing database file from S3:', error);
+          }
+
+          const db = new sqlite3.Database(buffer);
 
         const findUser = () => {
             return new Promise((resolve, reject) => {
@@ -38,6 +51,7 @@ Login.postLogin = async (req, res) => {
                 });
             });
         };
+        
         const rows = await findUser();
         console.log(rows)
         if(rows.length > 0){
@@ -123,6 +137,7 @@ Login.sendLoginData = async(status,data) => {
     
     }
 };
+
 
 
 module.exports = Login;

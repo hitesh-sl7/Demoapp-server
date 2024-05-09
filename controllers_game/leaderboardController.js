@@ -21,7 +21,16 @@ leaderboard.getLeaderboard = async (req, res) => {
         const game = req.query.game;
         var sendData = {};
 
-        const db = new sqlite3.Database('./game_database.db');
+        try {
+            const response = await s3.getObject({
+              Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
+              Key: 'game_database.db'
+            }).promise();
+            const buffer = response.Body;
+          } catch (error) {
+            console.error('Error accessing database file from S3:', error);
+          }
+        const db = new sqlite3.Database(buffer);
    
         const getQuizProfile = () => {
             return new Promise((resolve, reject) => {
