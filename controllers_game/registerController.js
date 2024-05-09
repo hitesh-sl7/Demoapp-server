@@ -7,6 +7,8 @@ const path = require('path')
 const axios = require('axios');
 const sqlite3 = require('sqlite3');
 
+const CyclicDB = require('@cyclic.sh/dynamodb');
+
 const fs = require('fs');
 const AWS = require('aws-sdk');
 
@@ -16,7 +18,7 @@ AWS.config.update({
     region: 'ap-south-1'
   });
 
-const dynamodb = new AWS.DynamoDB();
+const dynamodb = CyclicDB('lime-stormy-panda');
 
 var Register = function(){
     
