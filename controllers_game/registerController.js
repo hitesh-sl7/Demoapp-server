@@ -47,6 +47,7 @@ Register.postRegister = async (req, res) => {
                 sendData.message = "Email already exists!";
             }else{
                 var all_users = await users.list();
+                console.log(all_users);
                 console.log(all_users.length);
                 console.log(all_users.length + 1);
                 let user = await users.set(Reqdata.rfs.email, {
