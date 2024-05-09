@@ -65,35 +65,38 @@ Register.postRegister = async (req, res) => {
         //     });
         // };
 
-        let users = dynamodb.collection('users');
-
-        // create an item in collection with key "leo"
-        let user = await users.set(Reqdata.rfs.email, {
-            username : Reqdata.rfs.name,
-            password : Reqdata.rfs.password,
-            email : Reqdata.rfs.email,
-            phone : Reqdata.rfs.phone,
-        })
-
-        // get an item at key "leo" from collection animals
-        let item = await users.get(Reqdata.rfs.email)
-        console.log(item)
+        
+        // let item = await users.get(Reqdata.rfs.email)
+        // console.log(item)
         
 
         try {
-            // const lastInsertedId = await registerUser();
-            // const serializedBuffer = Buffer.from(db.serialize(), 'utf-8');
-            // await uploadDatabaseToS3(serializedBuffer);
-            var sendData = {};
-            sendData.loginstatus = 'register_succeeded';
-            sendData.message = "Register Request successfully reached.";
-            // console.log(`User inserted with ID: ${lastInsertedId}`);
+            let users = dynamodb.collection('users');
+            let u = await users.get(Reqdata.rfs.email);
+            console.log(u,"--")
+            if(u){
+                sendData.loginstatus = 'register_failed';
+                sendData.request = Reqdata;
+                sendData.message = "Email already exists!";
+            }else{
+                let user = await users.set(Reqdata.rfs.email, {
+                    username : Reqdata.rfs.name,
+                    password : Reqdata.rfs.password,
+                    email : Reqdata.rfs.email,
+                    phone : Reqdata.rfs.phone,
+                });
+
+                console.log(user)
+                var sendData = {};
+                sendData.loginstatus = 'register_succeeded';
+                sendData.message = "Register Request successfully reached.";
+            }
         } catch (error) {
             console.log(error);
             var sendData = {};
             sendData.loginstatus = 'register_failed';
             sendData.request = Reqdata;
-            sendData.message = "Email already Exists!";
+            sendData.message = error;
         }
 
         // db.close((err) => {
