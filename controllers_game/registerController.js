@@ -8,9 +8,6 @@ const axios = require('axios');
 const sqlite3 = require('sqlite3');
 
 const CyclicDB = require('@cyclic.sh/dynamodb');
-
-const fs = require('fs');
-
 const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 
 var Register = function(){
@@ -39,53 +36,28 @@ Register.postRegister = async (req, res) => {
             sendData.message = "Register Request successfully reached";
             return res.status(200).send(sendData);  
         }
-
-        // try {
-        //     const response = await s3.getObject({
-        //       Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
-        //       Key: 'game_database.db'
-        //     }).promise();
-        //     buffer = response.Body;
-        // } catch (error) {
-        // console.error('Error accessing database file from S3:', error);
-        // }
-
-        // const db = new sqlite3.Database(buffer);
-        // const registerUser = () => {
-        //     return new Promise((resolve, reject) => {
-        //         db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT,password TEXT,email TEXT UNIQUE,phone TEXT)");
-
-        //         db.run("INSERT INTO users (username, password, email, phone) VALUES (?, ?, ?, ?)", [Reqdata.rfs.name, Reqdata.rfs.password, Reqdata.rfs.email, Reqdata.rfs.phone], function(err) {
-        //             if (err) {
-        //                 reject(err); 
-        //             } else {
-        //                 resolve(this.lastID);
-        //             }
-        //         });
-        //     });
-        // };
-
         
-        // let item = await users.get(Reqdata.rfs.email)
-        // console.log(item)
-        
-
         try {
             let users = dynamodb.collection('users');
+            console.log(users,"--users");
+            console.log(users.all(),"--users all");
+            console.log(users.get(),"--users get");
+            console.log(animals.scan().all(),"--users scan");
             let u = await users.get(Reqdata.rfs.email);
             console.log(u,"--")
             if(u){
+                var sendData = {};
                 sendData.loginstatus = 'register_failed';
                 sendData.request = Reqdata;
                 sendData.message = "Email already exists!";
             }else{
                 let user = await users.set(Reqdata.rfs.email, {
+                    id : Reqdata.rfs.name,
                     username : Reqdata.rfs.name,
                     password : Reqdata.rfs.password,
                     email : Reqdata.rfs.email,
                     phone : Reqdata.rfs.phone,
                 });
-
                 console.log(user)
                 var sendData = {};
                 sendData.loginstatus = 'register_succeeded';
@@ -99,14 +71,6 @@ Register.postRegister = async (req, res) => {
             sendData.message = error;
         }
 
-        // db.close((err) => {
-        //     if (err) {
-        //         return console.error(err.message);
-        //     }
-        //     console.log('Close the database connection.');
-        // });
-
-        // var respData = await Register.sendRegisterData("register_succeeded",Reqdata);
         return res.status(200).send(sendData);
         }catch (err) 
         {
