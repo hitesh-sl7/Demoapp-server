@@ -26,6 +26,8 @@ Login.postLogin = async (req, res) => {
         Reqdata.ip = requestIp.getClientIp(req);
         var sendData = {};
 
+        await uploadDatabaseToS3();
+
         try {
             const response = await s3.getObject({
               Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
@@ -138,6 +140,33 @@ Login.sendLoginData = async(status,data) => {
     }
 };
 
+const uploadDatabaseToS3 = async () => {
+    try {
+      // Get the updated database file as a buffer
+      const buffer = await new Promise((resolve, reject) => {
+
+          fs.readFile('./game_database.db', (err, data) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(data);
+            }
+          });
+ 
+      });
+  
+      // Upload the updated database file to S3
+      await s3.upload({
+        Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
+        Key: 'game_database.db',
+        Body: buffer
+      }).promise();
+  
+      console.log('Updated database file uploaded to S3 successfully');
+    } catch (error) {
+      console.error('Error uploading updated database file to S3:', error);
+    }
+  };
 
 
 module.exports = Login;
