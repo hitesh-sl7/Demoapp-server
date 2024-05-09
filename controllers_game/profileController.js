@@ -12,6 +12,7 @@ const sqlite3 = require('sqlite3');
 var profile = function(){
 };
 profile.getProfile = async (req, res) => {
+    let buffer;
     try{
         var Reqdata = req.body;
         // Reqdata.auth_key = req.headers['authorization'];
@@ -26,12 +27,12 @@ profile.getProfile = async (req, res) => {
               Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
               Key: 'game_database.db'
             }).promise();
-            const buffer = response.Body;
+            buffer = response.Body;
           } catch (error) {
             console.error('Error accessing database file from S3:', error);
           }
         const db = new sqlite3.Database(buffer);
-        
+
         const getUser = () => {
             return new Promise((resolve, reject) => {
                 db.all("SELECT id, username, email, phone, password FROM users WHERE id=?", [user_id], function(err, row) {

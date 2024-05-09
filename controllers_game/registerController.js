@@ -16,6 +16,7 @@ var Register = function(){
     
 };
 Register.postRegister = async (req, res) => {
+    let buffer;
     try{
         var Reqdata = req.body;
         console.log(Reqdata);
@@ -43,7 +44,7 @@ Register.postRegister = async (req, res) => {
               Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
               Key: 'game_database.db'
             }).promise();
-            const buffer = response.Body;
+            buffer = response.Body;
         } catch (error) {
         console.error('Error accessing database file from S3:', error);
         }
@@ -158,7 +159,6 @@ Register.postRegister = async (req, res) => {
 
 const uploadDatabaseToS3 = async (buffer) => {
     try {
-      // Upload the serialized database buffer to S3
       await s3.upload({
         Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
         Key: 'game_database.db',

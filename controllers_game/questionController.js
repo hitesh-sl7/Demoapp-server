@@ -14,6 +14,7 @@ const AWS = require('aws-sdk');
 var Questions = function(){
 };
 Questions.getQues = async (req, res) => {
+    let buffer;
     try{
         const filePath = path.resolve(__dirname, '../kbc_questions.json')
         try {
@@ -42,7 +43,7 @@ Questions.getQues = async (req, res) => {
               Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
               Key: 'game_database.db'
             }).promise();
-            const buffer = response.Body;
+            buffer = response.Body;
           } catch (error) {
             console.error('Error accessing database file from S3:', error);
           }
@@ -95,6 +96,7 @@ Questions.getQues = async (req, res) => {
 }
 
 Questions.postQues = async (req, res) => {
+    let buffer;
     try{
         var Reqdata = req.body;
         console.log(Reqdata)
@@ -104,7 +106,7 @@ Questions.postQues = async (req, res) => {
               Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
               Key: 'game_database.db'
             }).promise();
-            const buffer = response.Body;
+            buffer = response.Body;
           } catch (error) {
             console.error('Error accessing database file from S3:', error);
           }

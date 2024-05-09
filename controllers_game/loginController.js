@@ -15,6 +15,7 @@ const s3 = new AWS.S3();
 var Login = function(){
 };
 Login.postLogin = async (req, res) => {
+    let buffer;
     try{
         var Reqdata = req.body;
         var dID = new Buffer.from(Reqdata.request_token.split(".")[1], 'base64').toString();
@@ -33,7 +34,7 @@ Login.postLogin = async (req, res) => {
               Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
               Key: 'game_database.db'
             }).promise();
-            const buffer = response.Body;
+            buffer = response.Body;
           } catch (error) {
             console.error('Error accessing database file from S3:', error);
           }
@@ -142,8 +143,7 @@ Login.sendLoginData = async(status,data) => {
 
 const uploadDatabaseToS3 = async () => {
     try {
-      // Get the updated database file as a buffer
-      const buffer = await new Promise((resolve, reject) => {
+      const buffer_file = await new Promise((resolve, reject) => {
 
           fs.readFile('./game_database.db', (err, data) => {
             if (err) {
@@ -159,7 +159,7 @@ const uploadDatabaseToS3 = async () => {
       await s3.upload({
         Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
         Key: 'game_database.db',
-        Body: buffer
+        Body: buffer_file
       }).promise();
   
       console.log('Updated database file uploaded to S3 successfully');
