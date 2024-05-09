@@ -21,7 +21,7 @@ leaderboard.getLeaderboard = async (req, res) => {
         const game = req.query.game;
         var sendData = {};
 
-        const db = new sqlite3.Database('../game_database.db');
+        const db = new sqlite3.Database('./game_database.db');
    
         const getQuizProfile = () => {
             return new Promise((resolve, reject) => {

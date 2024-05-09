@@ -8,10 +8,7 @@ const forge = require('node-forge');
 const path = require('path')
 const sqlite3 = require('sqlite3');
 const fs = require('fs');
-const AWS = require("aws-sdk");
 
-
-const s3 = new AWS.S3()
 var Login = function(){
 };
 Login.postLogin = async (req, res) => {
@@ -25,8 +22,6 @@ Login.postLogin = async (req, res) => {
         Reqdata.uID = '';
         Reqdata.ip = requestIp.getClientIp(req);
         var sendData = {};
-
-        uploadDatabaseToS3();
 
         const db = new sqlite3.Database('./game_database.db');
 
@@ -129,19 +124,5 @@ Login.sendLoginData = async(status,data) => {
     }
 };
 
-const uploadDatabaseToS3 = async () => {
-    try {
-      const fileContent = fs.readFileSync('../game_database.db');
-        await s3.upload({
-        Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
-        Key: 'game_database.db',
-        Body: fileContent
-      }).promise();
-  
-      console.log('Database file uploaded to S3 successfully');
-    } catch (error) {
-      console.error('Error uploading database file to S3:', error);
-    }
-  };
 
 module.exports = Login;

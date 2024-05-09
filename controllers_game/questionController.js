@@ -37,7 +37,7 @@ Questions.getQues = async (req, res) => {
         }
         
         // console.log(quesArray);
-        const db = new sqlite3.Database('../game_database.db');
+        const db = new sqlite3.Database('./game_database.db');
         const quizEntry = () => {
             return new Promise((resolve, reject) => {
                 db.run("CREATE TABLE IF NOT EXISTS quiz_record (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER,quiz_id TEXT,ques_indexes TEXT,correct NUMBER,incorrect NUMBER,skip NUMBER, time TEXT)");
@@ -87,7 +87,7 @@ Questions.postQues = async (req, res) => {
         var Reqdata = req.body;
         console.log(Reqdata)
 
-        const db = new sqlite3.Database('../game_database.db');
+        const db = new sqlite3.Database('./game_database.db');
         const quizEntry = () => {
             return new Promise((resolve, reject) => {
                 db.run("UPDATE quiz_record SET correct=?, incorrect=?, skip=?, time=? WHERE quiz_id=?", 
