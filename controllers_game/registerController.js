@@ -39,7 +39,6 @@ Register.postRegister = async (req, res) => {
         try {
             let users = dynamodb.collection('users');
             let u = await users.get(Reqdata.rfs.email);
-            console.log(u,"--")
             if(u){
                 var sendData = {};
                 sendData.loginstatus = 'register_failed';
@@ -47,9 +46,6 @@ Register.postRegister = async (req, res) => {
                 sendData.message = "Email already exists!";
             }else{
                 var all_users = await users.list();
-                console.log(all_users);
-                console.log(all_users.results.length);
-                console.log(all_users.results.length + 1);
                 let user = await users.set(Reqdata.rfs.email, {
                     id : all_users.results.length + 1,
                     username : Reqdata.rfs.name,
@@ -57,7 +53,6 @@ Register.postRegister = async (req, res) => {
                     email : Reqdata.rfs.email,
                     phone : Reqdata.rfs.phone,
                 });
-                console.log(user)
                 var sendData = {};
                 sendData.loginstatus = 'register_succeeded';
                 sendData.message = "Register Request successfully reached.";

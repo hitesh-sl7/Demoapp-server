@@ -7,9 +7,9 @@ const axios = require('axios');
 const forge = require('node-forge');
 const path = require('path')
 const fsPromises = require('fs/promises');
-const sqlite3 = require('sqlite3');
-const fs = require('fs');
-const AWS = require('aws-sdk');
+
+const CyclicDB = require('@cyclic.sh/dynamodb');
+const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 
 var Questions = function(){
 };
@@ -37,44 +37,22 @@ Questions.getQues = async (req, res) => {
             quesArray.push(q);
             indexes.push(randomIndex);
         }
-        
+   
         try {
-            const response = await s3.getObject({
-              Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
-              Key: 'game_database.db'
-            }).promise();
-            buffer = response.Body;
-          } catch (error) {
-            console.error('Error accessing database file from S3:', error);
-          }
-
-        const db = new sqlite3.Database(buffer);
-        const quizEntry = () => {
-            return new Promise((resolve, reject) => {
-                db.run("CREATE TABLE IF NOT EXISTS quiz_record (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER,quiz_id TEXT,ques_indexes TEXT,correct NUMBER,incorrect NUMBER,skip NUMBER, time TEXT)");
-                db.run("INSERT INTO quiz_record (user_id, quiz_id, ques_indexes) VALUES (?, ?, ?)", [user_id, quiz_id, indexes.join()], function(err) {
-                    if (err) {
-                        reject(err); 
-                    } else {
-                        resolve(this.lastID);
-                    }
-                });
+            let quiz_record = dynamodb.collection('quiz_record');
+            await quiz_record.set(quiz_id, {
+                user_id : user_id,
+                quiz_id : quiz_id,
+                ques_indexes : indexes.join(),
+                correct : 0,
+                incorrect : 0,
+                skip : 0,
+                time : "",
             });
-        };
-        try {
-            const lastInsertedId = await quizEntry();
-            const serializedBuffer = Buffer.from(db.serialize(), 'utf-8');
-            await uploadDatabaseToS3(serializedBuffer);
         } catch (error) {
             console.log(error);
         }
 
-        db.close((err) => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log('Close the database connection.');
-        });
 
         var sendData = {};
         sendData.quiz_id = quiz_id;
@@ -99,56 +77,38 @@ Questions.postQues = async (req, res) => {
     let buffer;
     try{
         var Reqdata = req.body;
-        console.log(Reqdata)
+        console.log(Reqdata);
 
         try {
-            const response = await s3.getObject({
-              Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
-              Key: 'game_database.db'
-            }).promise();
-            buffer = response.Body;
-          } catch (error) {
-            console.error('Error accessing database file from S3:', error);
-          }
+            let quiz_record = dynamodb.collection('quiz_record');
+            let record = await quiz_record.get(Reqdata.quiz_id);
 
-        const db = new sqlite3.Database(buffer);
-        const quizEntry = () => {
-            return new Promise((resolve, reject) => {
-                db.run("UPDATE quiz_record SET correct=?, incorrect=?, skip=?, time=? WHERE quiz_id=?", 
-                    [Reqdata.correct, Reqdata.incorrect, Reqdata.skip, Reqdata.time, Reqdata.quiz_id], 
-                    function(err) {
-                        if (err) {
-                            reject(err); 
-                        } else if (this.changes === 0) {
-                            reject(new Error("Quiz ID does not exist"));
-                        } else {
-                            resolve();
-                        }
-                    }
-                );
-            });
-        };
+            if(record){
+                await quiz_record.set(Reqdata.quiz_id, {
+                    user_id : record.props.user_id,
+                    quiz_id : record.props.quiz_id,
+                    ques_indexes : record.props.ques_indexes,
+                    correct : Reqdata.correct,
+                    incorrect : Reqdata.incorrect,
+                    skip : Reqdata.skip,
+                    time : Reqdata.time,
+                });
 
-        try {
-            await quizEntry();
-            const serializedBuffer = Buffer.from(db.serialize(), 'utf-8');
-            await uploadDatabaseToS3(serializedBuffer);
-            var sendData = {};
-            sendData.status = "success";
-            sendData.message = "Quiz answer saved successfully";
+                var sendData = {};
+                sendData.status = "success";
+                sendData.message = "Quiz answer saved successfully";
+            }else{
+                var sendData = {};
+                sendData.status = "failed";
+                sendData.message = "Quiz id not found";
+            }
+            
         } catch (error) {
             console.log(error);
             var sendData = {};
             sendData.status = "failed";
             sendData.message = error.message;
         }
-
-        db.close((err) => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log('Close the database connection.');
-        });
 
         return res.status(200).send(sendData);
 }
@@ -176,21 +136,6 @@ function getRandomindex(ques) {
     }
     return result;
 }
-
-const uploadDatabaseToS3 = async (buffer) => {
-    try {
-      // Upload the serialized database buffer to S3
-      await s3.upload({
-        Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
-        Key: 'game_database.db',
-        Body: buffer
-      }).promise();
-  
-      console.log('Serialized database buffer uploaded to S3 successfully');
-    } catch (error) {
-      console.error('Error uploading serialized database buffer to S3:', error);
-    }
-  };
 
 
 module.exports = Questions;

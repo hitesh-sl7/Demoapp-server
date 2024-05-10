@@ -6,7 +6,9 @@ const jwtGenerator = require("../utils/jwtGenerator");
 const axios = require('axios');
 const forge = require('node-forge');
 const path = require('path')
-const sqlite3 = require('sqlite3');
+
+const CyclicDB = require('@cyclic.sh/dynamodb');
+const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 
 
 var profile = function(){
@@ -21,45 +23,7 @@ profile.getProfile = async (req, res) => {
         Reqdata.ip = requestIp.getClientIp(req);
         const user_id = req.query.user_id;
         var sendData = {};
-
-        try {
-            const response = await s3.getObject({
-              Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
-              Key: 'game_database.db'
-            }).promise();
-            buffer = response.Body;
-          } catch (error) {
-            console.error('Error accessing database file from S3:', error);
-          }
-        const db = new sqlite3.Database(buffer);
-
-        const getUser = () => {
-            return new Promise((resolve, reject) => {
-                db.all("SELECT id, username, email, phone, password FROM users WHERE id=?", [user_id], function(err, row) {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(row);
-                    }
-                });
-            });
-        };
-        const rows = await getUser();
-
-        const getQuizProfile = () => {
-            return new Promise((resolve, reject) => {
-                db.all("SELECT correct,incorrect,skip,time FROM quiz_record WHERE user_id=?", [user_id], function(err, row) {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(row);
-                    }
-                });
-            });
-        };
-        const quiz_rows = await getQuizProfile();
-        console.log(quiz_rows);
-
+        var user_info = {};
         var game_info = {
             "quiz" : { 
                 "game_played" : 0,
@@ -69,26 +33,40 @@ profile.getProfile = async (req, res) => {
                 "time" : "0m" }
         };
 
-        quiz_rows.forEach((element) => {
-            game_info['quiz']['game_played'] += 1;
-            game_info['quiz']['correct'] += element['correct'];
-            game_info['quiz']['incorrect'] += element['incorrect'];
-            game_info['quiz']['skip'] += element['skip'];
-            var t_time = game_info['quiz']['time'];
-            t_time = parseInt(t_time.replace("m",""));
-            t_time = parseInt(element['time'].replace("m","")) + t_time;
-            game_info['quiz']['time'] = t_time.toString() + "m";
+        let users = dynamodb.collection('users');
+        var all_users = await users.list();
 
+        all_users.results.forEach((row) => {
+            if(row.props.id == user_id){
+                user_info = {
+                    "uID" : user_id,
+                    "username" : row.props.username,
+                    "phone" : row.props.phone,
+                    "email" : row.props.email,
+                }
+            }
         });
 
-        if(rows.length > 0){
+        let quizes = dynamodb.collection('quiz_record');
+        var all_quizes = await quizes.list();
+
+        all_quizes.results.forEach((row) => {
+            game_info['quiz']['game_played'] += 1;
+            game_info['quiz']['correct'] += row.props.correct;
+            game_info['quiz']['incorrect'] += row.props.incorrect;
+            game_info['quiz']['skip'] += row.props.skip;
+            var t_time = game_info['quiz']['time'];
+            t_time = parseInt(t_time.replace("m",""));
+            t_time = parseInt(row.props.time.replace("m","")) + t_time;
+            game_info['quiz']['time'] = t_time.toString() + "m";
+        });
+
+        console.log(user_info);
+        console.log(game_info);
+
+        if(user_info && game_info){
             sendData.status = 'success';
-            sendData.user_info = {
-                "uID" : rows[0].id,
-                "username" : rows[0].username,
-                "phone" : rows[0].phone,
-                "email" : rows[0].email,
-            }
+            sendData.user_info = user_info;
             sendData.game_info = game_info;
             // sendData.request = Reqdata;
             sendData.message = "Profile Request successfully reached.";

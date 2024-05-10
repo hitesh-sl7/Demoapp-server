@@ -6,8 +6,8 @@ const jwtGenerator = require("../utils/jwtGenerator");
 const axios = require('axios');
 const forge = require('node-forge');
 const path = require('path')
-const sqlite3 = require('sqlite3');
-
+const CyclicDB = require('@cyclic.sh/dynamodb');
+const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 
 var leaderboard = function(){
 };
@@ -22,63 +22,70 @@ leaderboard.getLeaderboard = async (req, res) => {
         const game = req.query.game;
         var sendData = {};
 
-        try {
-            const response = await s3.getObject({
-              Bucket: 'cyclic-lime-stormy-panda-ap-south-1',
-              Key: 'game_database.db'
-            }).promise();
-            buffer = response.Body;
-          } catch (error) {
-            console.error('Error accessing database file from S3:', error);
-          }
-        const db = new sqlite3.Database(buffer);
-   
-        const getQuizProfile = () => {
-            return new Promise((resolve, reject) => {
-                db.all("SELECT user_id,correct,incorrect,skip,time FROM quiz_record ", function(err, row) {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(row);
-                    }
-                });
-            });
-        };
-        const quiz_rows = await getQuizProfile();
-        console.log(quiz_rows);
+        // let users = dynamodb.collection('users');
+        // var all_users = await users.list();
+
+        // all_users.results.forEach((row) => {
+        //     if(row.props.id == user_id){
+        //         user_info = {
+        //             "uID" : user_id,
+        //             "username" : row.props.username,
+        //             "phone" : row.props.phone,
+        //             "email" : row.props.email,
+        //         }
+        //     }
+        // });
+
+        // let quizes = dynamodb.collection('quiz_record');
+        // var all_quizes = await quizes.list();
+
+        // all_quizes.results.forEach((row) => {
+        //     game_info['quiz']['game_played'] += 1;
+        //     game_info['quiz']['correct'] += row.props.correct;
+        //     game_info['quiz']['incorrect'] += row.props.incorrect;
+        //     game_info['quiz']['skip'] += row.props.skip;
+        //     var t_time = game_info['quiz']['time'];
+        //     t_time = parseInt(t_time.replace("m",""));
+        //     t_time = parseInt(row.props.time.replace("m","")) + t_time;
+        //     game_info['quiz']['time'] = t_time.toString() + "m";
+        // });
+  
+
+        let quizes = dynamodb.collection('quiz_record');
+        var all_quizes = await quizes.list();
 
         var lb = {};
-        for (const element of quiz_rows) {
-            if (!lb.hasOwnProperty(element['user_id'])) {
-                lb[element['user_id']] = {
-                    'correct' : element['correct'],
-                    'incorrect' : element['incorrect'],
-                    'skip' : element['skip'],
-                    'time' : parseInt(element['time'].replace("m",""))
+        for (const element of all_quizes.results) {
+            if (!lb.hasOwnProperty(element.props.user_id)) {
+                lb[element.props.user_id] = {
+                    'correct' : element.props.correct,
+                    'incorrect' : element.props.incorrect,
+                    'skip' : element.props.skip,
+                    'time' : parseInt(element.props.time.replace("m",""))
                 }
             }else{
-                lb[element['user_id']]['correct'] += element['correct'];
-                lb[element['user_id']]['incorrect'] += element['incorrect'];
-                lb[element['user_id']]['skip'] += element['skip'];
-                lb[element['user_id']]['time'] += parseInt(element['time'].replace("m",""));
+                lb[element.props.user_id]['correct'] += element.props.correct;
+                lb[element.props.user_id]['incorrect'] += element.props.incorrect;
+                lb[element.props.user_id]['skip'] += element.props.skip;
+                lb[element.props.user_id]['time'] += parseInt(element.props.time.replace("m",""));
             }
 
-            const getUser = () => {
-                return new Promise((resolve, reject) => {
-                    db.all("SELECT id, username, email, phone, password FROM users WHERE id=?", [element['user_id']], function(err, row) {
-                        if (err) {
-                            reject(err);
-                        } else {
-                            resolve(row);
-                        }
-                    });
-                });
-            };
-            const rows = await getUser();
-            lb[element['user_id']]['username'] = rows[0].username;
-            lb[element['user_id']]['email'] = rows[0].email;
-            lb[element['user_id']]['user_id'] = rows[0].id;
+            let users = dynamodb.collection('users');
+            var all_users = await users.list();
+
+            all_users.results.forEach((row) => {
+                if(row.props.user_id == element.props.user_id){
+                    lb[element.props.user_id]['username'] = row.props.username;
+                    lb[element.props.user_id]['email'] = row.props.email;
+                    lb[element.props.user_id]['user_id'] = row.props.id;
+                }
+            });
+
+
+            
         };
+
+        console.log(lb);
 
         lb = Object.values(lb);
         lb.sort((a, b) => {
