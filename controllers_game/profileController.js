@@ -34,22 +34,24 @@ profile.getProfile = async (req, res) => {
         };
 
         let dusers = dynamodb.collection('users');
-        dusers.deleteCollection()
-        .then(() => {
-            console.log("Collection 'users' deleted successfully.");
-        })
-        .catch((err) => {
-            console.error("Error deleting collection:", err);
-        });
+        dusers.scan().then((items) => {
+            const deletePromises = items.map((item) => dusers.deleteItem(item.id));
+            return Promise.all(deletePromises);
+          }).then(() => {
+            console.log("All items in 'dusers' collection deleted successfully.");
+          }).catch((err) => {
+            console.error("Error deleting items from collection:", err);
+          });
 
         let dquizes = dynamodb.collection('quiz_record');
-        dquizes.deleteCollection()
-        .then(() => {
-            console.log("Collection 'quizes' deleted successfully.");
-        })
-        .catch((err) => {
-            console.error("Error deleting collection:", err);
-        });
+        dquizes.scan().then((items) => {
+            const deletePromises = items.map((item) => dquizes.deleteItem(item.id));
+            return Promise.all(deletePromises);
+          }).then(() => {
+            console.log("All items in 'dquizes' collection deleted successfully.");
+          }).catch((err) => {
+            console.error("Error deleting items from collection:", err);
+          });
 
         return true;
 
