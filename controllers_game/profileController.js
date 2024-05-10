@@ -51,6 +51,7 @@ profile.getProfile = async (req, res) => {
         var all_users = await users.list();
         all_users.results.forEach((row) => {
             var u = users.get(row.key);
+            console.log(u,"--users");
             if(u.props.id == user_id){
                 user_info = {
                     "uID" : user_id,
@@ -66,6 +67,7 @@ profile.getProfile = async (req, res) => {
 
         all_quizes.results.forEach((row) => {
             var q = quizes.get(row.key);
+            console.log(q,"--quiz");
             game_info['quiz']['game_played'] += 1;
             game_info['quiz']['correct'] += q.props.correct;
             game_info['quiz']['incorrect'] += q.props.incorrect;
