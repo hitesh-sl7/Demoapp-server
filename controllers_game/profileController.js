@@ -94,13 +94,6 @@ profile.getProfile = async (req, res) => {
             sendData.message = "Profile Request successfully reached.";
         }
 
-        db.close((err) => {
-            if (err) {
-                return console.error(err.message);
-            }
-            //console.log('Close the database connection.');
-        });
-
         return res.status(200).send(sendData);
 }
     catch (err) 
