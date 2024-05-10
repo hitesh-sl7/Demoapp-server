@@ -33,6 +33,26 @@ profile.getProfile = async (req, res) => {
                 "time" : "0m" }
         };
 
+        let dusers = dynamodb.collection('users');
+        dusers.deleteCollection()
+        .then(() => {
+            console.log("Collection 'users' deleted successfully.");
+        })
+        .catch((err) => {
+            console.error("Error deleting collection:", err);
+        });
+
+        let dquizes = dynamodb.collection('quiz_record');
+        dquizes.deleteCollection()
+        .then(() => {
+            console.log("Collection 'quizes' deleted successfully.");
+        })
+        .catch((err) => {
+            console.error("Error deleting collection:", err);
+        });
+
+        return true;
+
         let users = dynamodb.collection('users');
         var all_users = await users.list();
         all_users.results.forEach((row) => {
