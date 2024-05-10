@@ -49,8 +49,9 @@ profile.getProfile = async (req, res) => {
 
         let users = dynamodb.collection('users');
         var all_users = await users.list();
-        all_users.results.forEach((row) => {
-            var u = users.get(row.key);
+
+        for (let row of all_users.results) {
+            var u = await users.get(row.key);
             console.log(u,"--users");
             if(u.props.id == user_id){
                 user_info = {
@@ -60,13 +61,13 @@ profile.getProfile = async (req, res) => {
                     "email" : u.props.email,
                 }
             }
-        });
+        };
 
         let quizes = dynamodb.collection('quiz_record');
         var all_quizes = await quizes.list();
 
-        all_quizes.results.forEach((row) => {
-            var q = quizes.get(row.key);
+        for (let row of all_quizes.results) {
+            var q = await quizes.get(row.key);
             console.log(q,"--quiz");
             game_info['quiz']['game_played'] += 1;
             game_info['quiz']['correct'] += q.props.correct;
@@ -76,7 +77,7 @@ profile.getProfile = async (req, res) => {
             t_time = parseInt(t_time.replace("m",""));
             t_time = parseInt(q.props.time.replace("m","")) + t_time;
             game_info['quiz']['time'] = t_time.toString() + "m";
-        });
+        };
 
         console.log(user_info);
         console.log(game_info);

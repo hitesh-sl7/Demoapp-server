@@ -14,7 +14,6 @@ const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 var Questions = function(){
 };
 Questions.getQues = async (req, res) => {
-    let buffer;
     try{
         const filePath = path.resolve(__dirname, '../kbc_questions.json')
         try {
@@ -74,7 +73,6 @@ Questions.getQues = async (req, res) => {
 }
 
 Questions.postQues = async (req, res) => {
-    let buffer;
     try{
         var Reqdata = req.body;
         console.log(Reqdata);

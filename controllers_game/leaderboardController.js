@@ -22,41 +22,12 @@ leaderboard.getLeaderboard = async (req, res) => {
         const game = req.query.game;
         var sendData = {};
 
-        // let users = dynamodb.collection('users');
-        // var all_users = await users.list();
-
-        // all_users.results.forEach((row) => {
-        //     if(row.props.id == user_id){
-        //         user_info = {
-        //             "uID" : user_id,
-        //             "username" : row.props.username,
-        //             "phone" : row.props.phone,
-        //             "email" : row.props.email,
-        //         }
-        //     }
-        // });
-
-        // let quizes = dynamodb.collection('quiz_record');
-        // var all_quizes = await quizes.list();
-
-        // all_quizes.results.forEach((row) => {
-        //     game_info['quiz']['game_played'] += 1;
-        //     game_info['quiz']['correct'] += row.props.correct;
-        //     game_info['quiz']['incorrect'] += row.props.incorrect;
-        //     game_info['quiz']['skip'] += row.props.skip;
-        //     var t_time = game_info['quiz']['time'];
-        //     t_time = parseInt(t_time.replace("m",""));
-        //     t_time = parseInt(row.props.time.replace("m","")) + t_time;
-        //     game_info['quiz']['time'] = t_time.toString() + "m";
-        // });
-  
-
         let quizes = dynamodb.collection('quiz_record');
         var all_quizes = await quizes.list();
 
         var lb = {};
         for (const element of all_quizes.results) {
-            var q = quizes.get(element.key);
+            var q = await quizes.get(element.key);
             if (!lb.hasOwnProperty(q.props.user_id)) {
                 lb[q.props.user_id] = {
                     'correct' : q.props.correct,
@@ -74,14 +45,14 @@ leaderboard.getLeaderboard = async (req, res) => {
             let users = dynamodb.collection('users');
             var all_users = await users.list();
 
-            all_users.results.forEach((row) => {
-                var u = users.get(row.key);
+            for (const row of all_users.results) {
+                var u = await users.get(row.key);
                 if(u.props.user_id == q.props.user_id){
                     lb[q.props.user_id]['username'] = u.props.username;
                     lb[q.props.user_id]['email'] = u.props.email;
                     lb[q.props.user_id]['user_id'] = u.props.id;
                 }
-            });   
+            };   
         };
 
         console.log(lb);
