@@ -33,19 +33,19 @@ profile.getProfile = async (req, res) => {
                 "time" : "0m" }
         };
 
-        let dusers = dynamodb.collection('users');
-        var a_u = await dusers.list();
-        a_u.results.forEach((row) => {
-            dusers.delete(row.key);
-        });
+        // let dusers = dynamodb.collection('users');
+        // var a_u = await dusers.list();
+        // a_u.results.forEach((row) => {
+        //     dusers.delete(row.key);
+        // });
 
-        let dquizes = dynamodb.collection('quiz_record');
-        var a_q = await dquizes.list();
-        a_q.results.forEach((row) => {
-            dquizes.delete(row.key);
-        });
+        // let dquizes = dynamodb.collection('quiz_record');
+        // var a_q = await dquizes.list();
+        // a_q.results.forEach((row) => {
+        //     dquizes.delete(row.key);
+        // });
 
-        return true;
+        // return true;
 
         let users = dynamodb.collection('users');
         var all_users = await users.list();
