@@ -51,6 +51,7 @@ profile.getProfile = async (req, res) => {
         var all_quizes = await quizes.list();
 
         all_quizes.results.forEach((row) => {
+            console.log(row);
             game_info['quiz']['game_played'] += 1;
             game_info['quiz']['correct'] += row.props.correct;
             game_info['quiz']['incorrect'] += row.props.incorrect;
