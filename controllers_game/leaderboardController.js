@@ -56,33 +56,32 @@ leaderboard.getLeaderboard = async (req, res) => {
 
         var lb = {};
         for (const element of all_quizes.results) {
-            if (!lb.hasOwnProperty(element.props.user_id)) {
-                lb[element.props.user_id] = {
-                    'correct' : element.props.correct,
-                    'incorrect' : element.props.incorrect,
-                    'skip' : element.props.skip,
-                    'time' : parseInt(element.props.time.replace("m",""))
+            var q = quizes.get(element.key);
+            if (!lb.hasOwnProperty(q.props.user_id)) {
+                lb[q.props.user_id] = {
+                    'correct' : q.props.correct,
+                    'incorrect' : q.props.incorrect,
+                    'skip' : q.props.skip,
+                    'time' : parseInt(q.props.time.replace("m",""))
                 }
             }else{
-                lb[element.props.user_id]['correct'] += element.props.correct;
-                lb[element.props.user_id]['incorrect'] += element.props.incorrect;
-                lb[element.props.user_id]['skip'] += element.props.skip;
-                lb[element.props.user_id]['time'] += parseInt(element.props.time.replace("m",""));
+                lb[q.props.user_id]['correct'] += q.props.correct;
+                lb[q.props.user_id]['incorrect'] += q.props.incorrect;
+                lb[q.props.user_id]['skip'] += q.props.skip;
+                lb[q.props.user_id]['time'] += parseInt(q.props.time.replace("m",""));
             }
 
             let users = dynamodb.collection('users');
             var all_users = await users.list();
 
             all_users.results.forEach((row) => {
-                if(row.props.user_id == element.props.user_id){
-                    lb[element.props.user_id]['username'] = row.props.username;
-                    lb[element.props.user_id]['email'] = row.props.email;
-                    lb[element.props.user_id]['user_id'] = row.props.id;
+                var u = users.get(row.key);
+                if(u.props.user_id == q.props.user_id){
+                    lb[q.props.user_id]['username'] = u.props.username;
+                    lb[q.props.user_id]['email'] = u.props.email;
+                    lb[q.props.user_id]['user_id'] = u.props.id;
                 }
-            });
-
-
-            
+            });   
         };
 
         console.log(lb);

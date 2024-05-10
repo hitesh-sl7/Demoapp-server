@@ -35,14 +35,14 @@ profile.getProfile = async (req, res) => {
 
         let users = dynamodb.collection('users');
         var all_users = await users.list();
-
         all_users.results.forEach((row) => {
-            if(row.props.id == user_id){
+            var u = users.get(row.key);
+            if(u.props.id == user_id){
                 user_info = {
                     "uID" : user_id,
-                    "username" : row.props.username,
-                    "phone" : row.props.phone,
-                    "email" : row.props.email,
+                    "username" : u.props.username,
+                    "phone" : u.props.phone,
+                    "email" : u.props.email,
                 }
             }
         });
@@ -51,14 +51,14 @@ profile.getProfile = async (req, res) => {
         var all_quizes = await quizes.list();
 
         all_quizes.results.forEach((row) => {
-            console.log(row);
+            var q = quizes.get(row.key);
             game_info['quiz']['game_played'] += 1;
-            game_info['quiz']['correct'] += row.props.correct;
-            game_info['quiz']['incorrect'] += row.props.incorrect;
-            game_info['quiz']['skip'] += row.props.skip;
+            game_info['quiz']['correct'] += q.props.correct;
+            game_info['quiz']['incorrect'] += q.props.incorrect;
+            game_info['quiz']['skip'] += q.props.skip;
             var t_time = game_info['quiz']['time'];
             t_time = parseInt(t_time.replace("m",""));
-            t_time = parseInt(row.props.time.replace("m","")) + t_time;
+            t_time = parseInt(q.props.time.replace("m","")) + t_time;
             game_info['quiz']['time'] = t_time.toString() + "m";
         });
 
