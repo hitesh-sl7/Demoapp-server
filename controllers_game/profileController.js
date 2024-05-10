@@ -36,13 +36,13 @@ profile.getProfile = async (req, res) => {
         let dusers = dynamodb.collection('users');
         var a_u = await dusers.list();
         a_u.results.forEach((row) => {
-            dynamodb.delete(row.key);
+            dusers.delete(row.key);
         });
 
         let dquizes = dynamodb.collection('quiz_record');
         var a_q = await dquizes.list();
         a_q.results.forEach((row) => {
-            dynamodb.delete(row.key);
+            dquizes.delete(row.key);
         });
 
         return true;
