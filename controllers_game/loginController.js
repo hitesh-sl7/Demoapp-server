@@ -37,13 +37,14 @@ Login.postLogin = async (req, res) => {
         // let u = await users.get(Reqdata.email);
         console.log(u,Reqdata.email);
         if(u.rowCount){
-            if(u.password == Reqdata.password){
+            uObj = u.rows[0];
+            if(uObj.password == Reqdata.password){
                 sendData.loginstatus = 'login_succeeded';
                 sendData.user_info = {
-                    "uID" : u.id,
-                    "username" : u.username,
-                    "phone" : u.phone,
-                    "email" : u.email,
+                    "uID" : uObj.id,
+                    "username" : uObj.username,
+                    "phone" : uObj.phone,
+                    "email" : uObj.email,
                 }
                 // sendData.request = Reqdata;
                 sendData.message = "Login Request successfully reached.";
