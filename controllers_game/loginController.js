@@ -6,7 +6,7 @@ const jwtGenerator = require("../utils/jwtGenerator");
 const axios = require('axios');
 const forge = require('node-forge');
 const path = require('path')
-const sqlite3 = require('sqlite3');
+// const sqlite3 = require('sqlite3');
 
 const CyclicDB = require('@cyclic.sh/dynamodb');
 const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');

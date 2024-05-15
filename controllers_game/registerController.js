@@ -5,7 +5,7 @@ const requestIp = require('request-ip');
 const path = require('path')
 
 const axios = require('axios');
-const sqlite3 = require('sqlite3');
+// const sqlite3 = require('sqlite3');
 
 const CyclicDB = require('@cyclic.sh/dynamodb');
 const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
