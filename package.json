@@ -16,6 +16,7 @@
   "dependencies": {
     "@cyclic.sh/dynamodb": "^0.0.35",
     "@elastic/elasticsearch": "^7.13.0",
+    "@vercel/postgres": "^0.8.0",
     "aws-sdk": "^2.1289.0",
     "axios": "^0.26.1",
     "cookie": "^0.4.1",

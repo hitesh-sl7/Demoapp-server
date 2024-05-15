@@ -37,33 +37,36 @@ Register.postRegister = async (req, res) => {
         }
         var sendData = {};
         
-        // try {
-        //     let users = dynamodb.collection('users');
-        //     let u = await users.get(Reqdata.rfs.email);
-        //     if(u){
-        //         sendData.loginstatus = 'register_failed';
-        //         sendData.request = Reqdata;
-        //         sendData.message = "Email already exists!";
-        //     }else{
-        //         var all_users = await users.list();
-        //         let user = await users.set(Reqdata.rfs.email, {
-        //             id : all_users.results.length + 1,
-        //             username : Reqdata.rfs.name,
-        //             password : Reqdata.rfs.password,
-        //             email : Reqdata.rfs.email,
-        //             phone : Reqdata.rfs.phone,
-        //         });
-        //         var sendData = {};
-        //         sendData.loginstatus = 'register_succeeded';
-        //         sendData.message = "Register Request successfully reached.";
-        //     }
-        // } catch (error) {
-        //     console.log(error);
-        //     var sendData = {};
-        //     sendData.loginstatus = 'register_failed';
-        //     sendData.request = Reqdata;
-        //     sendData.message = error;
-        // }
+        try {
+            // let users = dynamodb.collection('users');
+            // let u = await users.get(Reqdata.rfs.email);
+
+            const { u } = await sql`SELECT * from game_users where email=${Reqdata.rfs.email}`;
+            if(u){
+                sendData.loginstatus = 'register_failed';
+                sendData.request = Reqdata;
+                sendData.message = "Email already exists!";
+            }else{
+                // var all_users = await users.list();
+                // let user = await users.set(Reqdata.rfs.email, {
+                //     id : all_users.results.length + 1,
+                //     username : Reqdata.rfs.name,
+                //     password : Reqdata.rfs.password,
+                //     email : Reqdata.rfs.email,
+                //     phone : Reqdata.rfs.phone,
+                // });
+                await sql`INSERT INTO game_users (email, username, phone, password) VALUES (${Reqdata.rfs.email},${Reqdata.rfs.name},${Reqdata.rfs.phone},${Reqdata.rfs.password})`;
+                var sendData = {};
+                sendData.loginstatus = 'register_succeeded';
+                sendData.message = "Register Request successfully reached.";
+            }
+        } catch (error) {
+            console.log(error);
+            var sendData = {};
+            sendData.loginstatus = 'register_failed';
+            sendData.request = Reqdata;
+            sendData.message = error;
+        }
 
         return res.status(200).send(sendData);
         }catch (err) 

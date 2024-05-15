@@ -11,6 +11,8 @@ const path = require('path')
 // const CyclicDB = require('@cyclic.sh/dynamodb');
 // const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 
+import { sql } from "@vercel/postgres";
+
 var Login = function(){
 };
 Login.postLogin = async (req, res) => {
@@ -26,30 +28,32 @@ Login.postLogin = async (req, res) => {
         Reqdata.ip = requestIp.getClientIp(req);
         var sendData = {};
 
+        const { u } = await sql`SELECT * from game_users where email=${Reqdata.email}`;
+
         // let users = dynamodb.collection('users');
         // let u = await users.get(Reqdata.email);
 
-        // if(u){
-        //     if(u.props.password == Reqdata.password){
-        //         sendData.loginstatus = 'login_succeeded';
-        //         sendData.user_info = {
-        //             "uID" : u.props.id,
-        //             "username" : u.props.username,
-        //             "phone" : u.props.phone,
-        //             "email" : u.props.email,
-        //         }
-        //         // sendData.request = Reqdata;
-        //         sendData.message = "Login Request successfully reached.";
-        //     }else{
-        //         sendData.loginstatus = 'login_failed';
-        //         sendData.request = Reqdata;
-        //         sendData.message = "Incorrect password";
-        //     }
-        // }else{
-        //     sendData.loginstatus = 'login_failed';
-        //     sendData.request = Reqdata;
-        //     sendData.message = "User not found";
-        // }
+        if(u){
+            if(u.password == Reqdata.password){
+                sendData.loginstatus = 'login_succeeded';
+                sendData.user_info = {
+                    "uID" : u.id,
+                    "username" : u.username,
+                    "phone" : u.phone,
+                    "email" : u.email,
+                }
+                // sendData.request = Reqdata;
+                sendData.message = "Login Request successfully reached.";
+            }else{
+                sendData.loginstatus = 'login_failed';
+                sendData.request = Reqdata;
+                sendData.message = "Incorrect password";
+            }
+        }else{
+            sendData.loginstatus = 'login_failed';
+            sendData.request = Reqdata;
+            sendData.message = "User not found";
+        }
 
         return res.status(200).send(sendData);
 }
