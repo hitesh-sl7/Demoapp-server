@@ -32,7 +32,7 @@ Login.postLogin = async (req, res) => {
 
         // let users = dynamodb.collection('users');
         // let u = await users.get(Reqdata.email);
-
+        console.log(u,Reqdata.password);
         if(u){
             if(u.password == Reqdata.password){
                 sendData.loginstatus = 'login_succeeded';
