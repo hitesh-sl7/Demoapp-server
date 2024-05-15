@@ -31,15 +31,12 @@ Login.postLogin = async (req, res) => {
         // const { a } = await client.sql`SELECT * from game_users where email=hitesh@yopmail.com`;
         // console.log(a,"--a");
 
-        var b = await sql`SELECT * from game_users where email='hitesh@yopmail.com'`;
-        console.log(b,"--b");
-
-        const { u } = await sql`SELECT * from game_users where email=${Reqdata.email}`;
+        var u  = await sql`SELECT * from game_users where email=${Reqdata.email}`;
 
         // let users = dynamodb.collection('users');
         // let u = await users.get(Reqdata.email);
         console.log(u,Reqdata.email);
-        if(u){
+        if(u.rowCount){
             if(u.password == Reqdata.password){
                 sendData.loginstatus = 'login_succeeded';
                 sendData.user_info = {
