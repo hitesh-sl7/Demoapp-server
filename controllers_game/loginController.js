@@ -28,15 +28,13 @@ Login.postLogin = async (req, res) => {
         Reqdata.ip = requestIp.getClientIp(req);
         var sendData = {};
 
-        const client = await sql.connect();
-
         // const { a } = await client.sql`SELECT * from game_users where email=hitesh@yopmail.com`;
         // console.log(a,"--a");
 
-        const { b } = await client.sql`SELECT * from game_users where email='hitesh@yopmail.com'`;
+        var b = await sql`SELECT * from game_users where email='hitesh@yopmail.com'`;
         console.log(b,"--b");
 
-        const { u } = await client.sql`SELECT * from game_users where email=${Reqdata.email}`;
+        const { u } = await sql`SELECT * from game_users where email=${Reqdata.email}`;
 
         // let users = dynamodb.collection('users');
         // let u = await users.get(Reqdata.email);
