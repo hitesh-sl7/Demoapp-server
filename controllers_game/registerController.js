@@ -10,6 +10,8 @@ const axios = require('axios');
 // const CyclicDB = require('@cyclic.sh/dynamodb');
 // const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 
+const { sql } = require("@vercel/postgres");
+
 var Register = function(){
     
 };

@@ -11,7 +11,7 @@ const path = require('path')
 // const CyclicDB = require('@cyclic.sh/dynamodb');
 // const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 
-import { sql } from "@vercel/postgres";
+const { sql } = require("@vercel/postgres");
 
 var Login = function(){
 };
