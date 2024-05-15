@@ -28,7 +28,8 @@ Login.postLogin = async (req, res) => {
         Reqdata.ip = requestIp.getClientIp(req);
         var sendData = {};
 
-        const { u } = await sql`SELECT * from game_users where email=${Reqdata.email}`;
+        const client = await sql.connect();
+        const { u } = await client.sql`SELECT * from game_users where email=${Reqdata.email}`;
 
         // let users = dynamodb.collection('users');
         // let u = await users.get(Reqdata.email);
