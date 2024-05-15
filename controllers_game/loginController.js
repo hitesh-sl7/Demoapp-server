@@ -30,8 +30,8 @@ Login.postLogin = async (req, res) => {
 
         const client = await sql.connect();
 
-        const { a } = await client.sql`SELECT * from game_users where email=hitesh@yopmail.com`;
-        console.log(a,"--a");
+        // const { a } = await client.sql`SELECT * from game_users where email=hitesh@yopmail.com`;
+        // console.log(a,"--a");
 
         const { b } = await client.sql`SELECT * from game_users where email='hitesh@yopmail.com'`;
         console.log(b,"--b");
