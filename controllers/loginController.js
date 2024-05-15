@@ -26,40 +26,31 @@ Login.loginLog = async (req, res) => {
         var passed = 0;
         Reqdata.uID = '';
         Reqdata.ip = requestIp.getClientIp(req);
-        var user = parseInt(Reqdata.email.slice(5,));
-        var pass = parseInt(Reqdata.password.slice(5,));
-        if((user <= 50) && (pass <= 50) && (user == pass)){
-            const astk = jwtGenerator(user);
-            Reqdata.uID = user;
-            Reqdata.username = Reqdata.email;
-            Reqdata.email = Reqdata.email + "@yopmail.com";
-            Reqdata.phone = '';
-            Reqdata.session_id = astk;
-            passed = 1;
-        }else{
-            var u  = await sql`SELECT * from users where email=${Reqdata.email}`;
 
-            if(u.rowCount){
-                uObj = u.rows[0];
-                if(uObj.password == Reqdata.password){
-                    var respData = await Login.sendLoginData("login_succeeded",Reqdata);
-                    var sendData = {};
-                    sendData.status = respData.status;
-                    sendData.severity = respData.severity;
-                    sendData.loginstatus = 'login_succeeded';
-                    sendData.device = respData.device;
-                    sendData.request = Reqdata;
-                    sendData.message = "Login Request successfully reached.";
-                }else{
-                    var sendData = {};
-                    sendData.status = 'allow';
-                    sendData.severity = 'low';
-                    sendData.loginstatus = 'login_failed';
-                    sendData.device = {};
-                    sendData.request = Reqdata;
-                    sendData.message = "Login Request successfully reached.";
-                    sendData.message = "Incorrect password";
+        var u  = await sql`SELECT * from users where email=${Reqdata.email}`;
+
+        if(u.rowCount){
+            uObj = u.rows[0];
+            if(uObj.password == Reqdata.password){
+
+                Reqdata.uID = uObj.id;
+                Reqdata.username = uObj.username;
+                Reqdata.email = Reqdata.email;
+                Reqdata.phone = '';
+                if(uObj.phone){
+                    Reqdata.phone = uObj.phone;
                 }
+                const astk = jwtGenerator(Reqdata.uID);
+                Reqdata.session_id = astk;
+
+                var respData = await Login.sendLoginData("login_succeeded",Reqdata);
+                var sendData = {};
+                sendData.status = respData.status;
+                sendData.severity = respData.severity;
+                sendData.loginstatus = 'login_succeeded';
+                sendData.device = respData.device;
+                sendData.request = Reqdata;
+                sendData.message = "Login Request successfully reached.";
             }else{
                 var sendData = {};
                 sendData.status = 'allow';
@@ -67,8 +58,17 @@ Login.loginLog = async (req, res) => {
                 sendData.loginstatus = 'login_failed';
                 sendData.device = {};
                 sendData.request = Reqdata;
-                sendData.message = "User not found";
+                sendData.message = "Login Request successfully reached.";
+                sendData.message = "Incorrect password";
             }
+        }else{
+            var sendData = {};
+            sendData.status = 'allow';
+            sendData.severity = 'low';
+            sendData.loginstatus = 'login_failed';
+            sendData.device = {};
+            sendData.request = Reqdata;
+            sendData.message = "User not found";
         }
         return res.status(200).send(sendData);
 }
