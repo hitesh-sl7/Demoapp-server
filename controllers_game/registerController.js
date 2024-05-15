@@ -7,8 +7,8 @@ const path = require('path')
 const axios = require('axios');
 // const sqlite3 = require('sqlite3');
 
-const CyclicDB = require('@cyclic.sh/dynamodb');
-const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
+// const CyclicDB = require('@cyclic.sh/dynamodb');
+// const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 
 var Register = function(){
     
@@ -35,35 +35,35 @@ Register.postRegister = async (req, res) => {
             sendData.message = "Register Request successfully reached";
             return res.status(200).send(sendData);  
         }
+        var sendData = {};
         
-        try {
-            let users = dynamodb.collection('users');
-            let u = await users.get(Reqdata.rfs.email);
-            if(u){
-                var sendData = {};
-                sendData.loginstatus = 'register_failed';
-                sendData.request = Reqdata;
-                sendData.message = "Email already exists!";
-            }else{
-                var all_users = await users.list();
-                let user = await users.set(Reqdata.rfs.email, {
-                    id : all_users.results.length + 1,
-                    username : Reqdata.rfs.name,
-                    password : Reqdata.rfs.password,
-                    email : Reqdata.rfs.email,
-                    phone : Reqdata.rfs.phone,
-                });
-                var sendData = {};
-                sendData.loginstatus = 'register_succeeded';
-                sendData.message = "Register Request successfully reached.";
-            }
-        } catch (error) {
-            console.log(error);
-            var sendData = {};
-            sendData.loginstatus = 'register_failed';
-            sendData.request = Reqdata;
-            sendData.message = error;
-        }
+        // try {
+        //     let users = dynamodb.collection('users');
+        //     let u = await users.get(Reqdata.rfs.email);
+        //     if(u){
+        //         sendData.loginstatus = 'register_failed';
+        //         sendData.request = Reqdata;
+        //         sendData.message = "Email already exists!";
+        //     }else{
+        //         var all_users = await users.list();
+        //         let user = await users.set(Reqdata.rfs.email, {
+        //             id : all_users.results.length + 1,
+        //             username : Reqdata.rfs.name,
+        //             password : Reqdata.rfs.password,
+        //             email : Reqdata.rfs.email,
+        //             phone : Reqdata.rfs.phone,
+        //         });
+        //         var sendData = {};
+        //         sendData.loginstatus = 'register_succeeded';
+        //         sendData.message = "Register Request successfully reached.";
+        //     }
+        // } catch (error) {
+        //     console.log(error);
+        //     var sendData = {};
+        //     sendData.loginstatus = 'register_failed';
+        //     sendData.request = Reqdata;
+        //     sendData.message = error;
+        // }
 
         return res.status(200).send(sendData);
         }catch (err) 

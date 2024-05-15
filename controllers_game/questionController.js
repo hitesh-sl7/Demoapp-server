@@ -8,8 +8,8 @@ const forge = require('node-forge');
 const path = require('path')
 const fsPromises = require('fs/promises');
 
-const CyclicDB = require('@cyclic.sh/dynamodb');
-const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
+// const CyclicDB = require('@cyclic.sh/dynamodb');
+// const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 
 var Questions = function(){
 };
@@ -37,20 +37,20 @@ Questions.getQues = async (req, res) => {
             indexes.push(randomIndex);
         }
    
-        try {
-            let quiz_record = dynamodb.collection('quiz_record');
-            await quiz_record.set(quiz_id, {
-                user_id : user_id,
-                quiz_id : quiz_id,
-                ques_indexes : indexes.join(),
-                correct : 0,
-                incorrect : 0,
-                skip : 0,
-                time : "",
-            });
-        } catch (error) {
-            console.log(error);
-        }
+        // try {
+        //     let quiz_record = dynamodb.collection('quiz_record');
+        //     await quiz_record.set(quiz_id, {
+        //         user_id : user_id,
+        //         quiz_id : quiz_id,
+        //         ques_indexes : indexes.join(),
+        //         correct : 0,
+        //         incorrect : 0,
+        //         skip : 0,
+        //         time : "",
+        //     });
+        // } catch (error) {
+        //     console.log(error);
+        // }
 
 
         var sendData = {};

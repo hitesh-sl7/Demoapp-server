@@ -8,8 +8,8 @@ const forge = require('node-forge');
 const path = require('path')
 // const sqlite3 = require('sqlite3');
 
-const CyclicDB = require('@cyclic.sh/dynamodb');
-const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
+// const CyclicDB = require('@cyclic.sh/dynamodb');
+// const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 
 var Login = function(){
 };
@@ -26,30 +26,30 @@ Login.postLogin = async (req, res) => {
         Reqdata.ip = requestIp.getClientIp(req);
         var sendData = {};
 
-        let users = dynamodb.collection('users');
-        let u = await users.get(Reqdata.email);
+        // let users = dynamodb.collection('users');
+        // let u = await users.get(Reqdata.email);
 
-        if(u){
-            if(u.props.password == Reqdata.password){
-                sendData.loginstatus = 'login_succeeded';
-                sendData.user_info = {
-                    "uID" : u.props.id,
-                    "username" : u.props.username,
-                    "phone" : u.props.phone,
-                    "email" : u.props.email,
-                }
-                // sendData.request = Reqdata;
-                sendData.message = "Login Request successfully reached.";
-            }else{
-                sendData.loginstatus = 'login_failed';
-                sendData.request = Reqdata;
-                sendData.message = "Incorrect password";
-            }
-        }else{
-            sendData.loginstatus = 'login_failed';
-            sendData.request = Reqdata;
-            sendData.message = "User not found";
-        }
+        // if(u){
+        //     if(u.props.password == Reqdata.password){
+        //         sendData.loginstatus = 'login_succeeded';
+        //         sendData.user_info = {
+        //             "uID" : u.props.id,
+        //             "username" : u.props.username,
+        //             "phone" : u.props.phone,
+        //             "email" : u.props.email,
+        //         }
+        //         // sendData.request = Reqdata;
+        //         sendData.message = "Login Request successfully reached.";
+        //     }else{
+        //         sendData.loginstatus = 'login_failed';
+        //         sendData.request = Reqdata;
+        //         sendData.message = "Incorrect password";
+        //     }
+        // }else{
+        //     sendData.loginstatus = 'login_failed';
+        //     sendData.request = Reqdata;
+        //     sendData.message = "User not found";
+        // }
 
         return res.status(200).send(sendData);
 }

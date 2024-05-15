@@ -7,8 +7,8 @@ const axios = require('axios');
 const forge = require('node-forge');
 const path = require('path')
 
-const CyclicDB = require('@cyclic.sh/dynamodb');
-const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
+// const CyclicDB = require('@cyclic.sh/dynamodb');
+// const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 
 
 var profile = function(){
@@ -47,37 +47,37 @@ profile.getProfile = async (req, res) => {
 
         // return true;
 
-        let users = dynamodb.collection('users');
-        var all_users = await users.list();
+        // let users = dynamodb.collection('users');
+        // var all_users = await users.list();
 
-        for (let row of all_users.results) {
-            var u = await users.get(row.key);
-            console.log(u,"--users");
-            if(u.props.id == user_id){
-                user_info = {
-                    "uID" : user_id,
-                    "username" : u.props.username,
-                    "phone" : u.props.phone,
-                    "email" : u.props.email,
-                }
-            }
-        };
+        // for (let row of all_users.results) {
+        //     var u = await users.get(row.key);
+        //     console.log(u,"--users");
+        //     if(u.props.id == user_id){
+        //         user_info = {
+        //             "uID" : user_id,
+        //             "username" : u.props.username,
+        //             "phone" : u.props.phone,
+        //             "email" : u.props.email,
+        //         }
+        //     }
+        // };
 
-        let quizes = dynamodb.collection('quiz_record');
-        var all_quizes = await quizes.list();
+        // let quizes = dynamodb.collection('quiz_record');
+        // var all_quizes = await quizes.list();
 
-        for (let row of all_quizes.results) {
-            var q = await quizes.get(row.key);
-            console.log(q,"--quiz");
-            game_info['quiz']['game_played'] += 1;
-            game_info['quiz']['correct'] += q.props.correct;
-            game_info['quiz']['incorrect'] += q.props.incorrect;
-            game_info['quiz']['skip'] += q.props.skip;
-            var t_time = game_info['quiz']['time'];
-            t_time = parseInt(t_time.replace("m",""));
-            t_time = parseInt(q.props.time.replace("m","")) + t_time;
-            game_info['quiz']['time'] = t_time.toString() + "m";
-        };
+        // for (let row of all_quizes.results) {
+        //     var q = await quizes.get(row.key);
+        //     console.log(q,"--quiz");
+        //     game_info['quiz']['game_played'] += 1;
+        //     game_info['quiz']['correct'] += q.props.correct;
+        //     game_info['quiz']['incorrect'] += q.props.incorrect;
+        //     game_info['quiz']['skip'] += q.props.skip;
+        //     var t_time = game_info['quiz']['time'];
+        //     t_time = parseInt(t_time.replace("m",""));
+        //     t_time = parseInt(q.props.time.replace("m","")) + t_time;
+        //     game_info['quiz']['time'] = t_time.toString() + "m";
+        // };
 
         console.log(user_info);
         console.log(game_info);
