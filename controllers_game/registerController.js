@@ -7,9 +7,6 @@ const path = require('path')
 const axios = require('axios');
 // const sqlite3 = require('sqlite3');
 
-// const CyclicDB = require('@cyclic.sh/dynamodb');
-// const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
-
 const { sql } = require("@vercel/postgres");
 
 var Register = function(){
@@ -40,23 +37,12 @@ Register.postRegister = async (req, res) => {
         var sendData = {};
         
         try {
-            // let users = dynamodb.collection('users');
-            // let u = await users.get(Reqdata.rfs.email);
-
-            const { u } = await sql`SELECT * from game_users where email=${Reqdata.rfs.email}`;
+            var u = await sql`SELECT * from game_users where email=${Reqdata.rfs.email}`;
             if(u){
                 sendData.loginstatus = 'register_failed';
                 sendData.request = Reqdata;
                 sendData.message = "Email already exists!";
             }else{
-                // var all_users = await users.list();
-                // let user = await users.set(Reqdata.rfs.email, {
-                //     id : all_users.results.length + 1,
-                //     username : Reqdata.rfs.name,
-                //     password : Reqdata.rfs.password,
-                //     email : Reqdata.rfs.email,
-                //     phone : Reqdata.rfs.phone,
-                // });
                 await sql`INSERT INTO game_users (email, username, phone, password) VALUES (${Reqdata.rfs.email},${Reqdata.rfs.name},${Reqdata.rfs.phone},${Reqdata.rfs.password})`;
                 var sendData = {};
                 sendData.loginstatus = 'register_succeeded';

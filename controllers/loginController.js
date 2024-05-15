@@ -9,6 +9,10 @@ const AWS = require("aws-sdk");
 const forge = require('node-forge');
 
 const s3 = new AWS.S3()
+
+const { sql } = require("@vercel/postgres");
+
+
 var Login = function(){
 };
 Login.loginLog = async (req, res) => {
@@ -33,48 +37,38 @@ Login.loginLog = async (req, res) => {
             Reqdata.session_id = astk;
             passed = 1;
         }else{
-            // var data = Reqdata.email + ":" + Reqdata.password;
-            my_file = await s3.getObject({
-                Bucket: "cyclic-lime-stormy-panda-ap-south-1",
-                Key: "some_files/users.json",
-            }).promise()
+            var u  = await sql`SELECT * from users where email=${Reqdata.email}`;
 
-            var users = new Buffer.from(my_file['Body']).toString();
-            users = JSON.parse(users)
-
-            if(users[Reqdata.email]){
-                if(users[Reqdata.email]['password'] == Reqdata.password){
-                    Reqdata.uID = users[Reqdata.email]['id'];
-                    Reqdata.username = users[Reqdata.email]['username'];
-                    Reqdata.email = Reqdata.email;
-                    Reqdata.phone = '';
-                    if(users[Reqdata.email]['phone']){
-                        Reqdata.phone = users[Reqdata.email]['phone'];
-                    }
-                    const astk = jwtGenerator(Reqdata.uID);
-                    Reqdata.session_id = astk;
-                    passed = 1;  
+            if(u.rowCount){
+                uObj = u.rows[0];
+                if(uObj.password == Reqdata.password){
+                    var respData = await Login.sendLoginData("login_succeeded",Reqdata);
+                    var sendData = {};
+                    sendData.status = respData.status;
+                    sendData.severity = respData.severity;
+                    sendData.loginstatus = 'login_succeeded';
+                    sendData.device = respData.device;
+                    sendData.request = Reqdata;
+                    sendData.message = "Login Request successfully reached.";
+                }else{
+                    var sendData = {};
+                    sendData.status = 'allow';
+                    sendData.severity = 'low';
+                    sendData.loginstatus = 'login_failed';
+                    sendData.device = {};
+                    sendData.request = Reqdata;
+                    sendData.message = "Login Request successfully reached.";
+                    sendData.message = "Incorrect password";
                 }
+            }else{
+                var sendData = {};
+                sendData.status = 'allow';
+                sendData.severity = 'low';
+                sendData.loginstatus = 'login_failed';
+                sendData.device = {};
+                sendData.request = Reqdata;
+                sendData.message = "User not found";
             }
-        }
-        if(passed == 1){
-            var respData = await Login.sendLoginData("login_succeeded",Reqdata);
-            var sendData = {};
-            sendData.status = respData.status;
-            sendData.severity = respData.severity;
-            sendData.loginstatus = 'login_succeeded';
-            sendData.device = respData.device;
-            sendData.request = Reqdata;
-            sendData.message = "Login Request successfully reached.";
-        }else{
-            Login.sendLoginData("login_failed",Reqdata);
-            var sendData = {};
-            sendData.status = 'allow';
-            sendData.severity = 'low';
-            sendData.loginstatus = 'login_failed';
-            sendData.device = {};
-            sendData.request = Reqdata;
-            sendData.message = "Login Request successfully reached.";
         }
         return res.status(200).send(sendData);
 }

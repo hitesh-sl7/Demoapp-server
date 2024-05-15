@@ -8,6 +8,9 @@ const axios = require('axios');
 var fs = require("fs");
 const s3 = new AWS.S3()
 
+
+const { sql } = require("@vercel/postgres");
+
 var Register = function(){
     
 };
@@ -33,49 +36,36 @@ Register.registerLog = async (req, res) => {
             sendData.message = "Register Request successfully reached";
             return res.status(200).send(sendData);  
         }
-        // var data = Reqdata.rfs.name + ";" + Reqdata.rfs.email + ":" + Reqdata.rfs.password + "\n";
-        // console.log(data);
 
-        let my_file = await s3.getObject({
-            Bucket: "cyclic-lime-stormy-panda-ap-south-1",
-            Key: "some_files/users.json",
-        }).promise()
 
-        var users = new Buffer.from(my_file['Body']).toString();
-        users = JSON.parse(users)
-
-        if(users[Reqdata.rfs.email]){
-            Register.sendRegisterData("register_failed",Reqdata);
+        try {
+            var u  = await sql`SELECT * from users where email=${Reqdata.rfs.email}`;
+            if(u){
+                var sendData = {};
+                sendData.loginstatus = 'register_failed';
+                sendData.request = Reqdata;
+                sendData.message = "Email already exists!";
+                return res.status(200).send(sendData);
+            }else{
+                await sql`INSERT INTO users (email, username, phone, password) VALUES (${Reqdata.rfs.email},${Reqdata.rfs.name},${Reqdata.rfs.phone},${Reqdata.rfs.password})`;
+                var respData = await Register.sendRegisterData("register_succeeded",Reqdata);
+                var sendData = {};
+                sendData.status = respData.status;
+                sendData.severity = respData.severity;
+                sendData.loginstatus = 'register_succeeded';
+                sendData.device = respData.device;
+                sendData.request = Reqdata;
+                sendData.message = "Register Request successfully reached.";
+                return res.status(200).send(sendData);
+            }
+        } catch (error) {
+            console.log(error);
             var sendData = {};
-            sendData.status = 'allow';
-            sendData.severity = 'low';
-            sendData.register_status = 'register_failed';
-            sendData.device = {};
-            sendData.request = req.body;
-            sendData.message = "Register Request successfully reached. User Already exists";
-            return res.status(200).send(sendData);  
-        }else{
-            userid = Object.keys(users).length + 1
-            // userid = 1
-            Reqdata.rfs.uID = 50 + userid;
-            users[Reqdata.rfs.email] = {"id" : Reqdata.rfs.uID , "pid" : pid , "username" : Reqdata.rfs.name , "password" : Reqdata.rfs.password , "phone" : Reqdata.rfs.phone  }
-
-            await s3.putObject({
-                Body: JSON.stringify(users),
-                Bucket: "cyclic-lime-stormy-panda-ap-south-1",
-                Key: "some_files/users.json",
-            }).promise()
+            sendData.loginstatus = 'register_failed';
+            sendData.request = Reqdata;
+            sendData.message = error;
         }
-
-        var respData = await Register.sendRegisterData("register_succeeded",Reqdata);
-        var sendData = {};
-        sendData.status = respData.status;
-        sendData.severity = respData.severity;
-        sendData.loginstatus = 'register_succeeded';
-        sendData.device = respData.device;
-        sendData.request = Reqdata;
-        sendData.message = "Register Request successfully reached.";
-        return res.status(200).send(sendData);
+        
         }catch (err) 
         {
             //console.error(err.message);

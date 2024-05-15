@@ -6,10 +6,6 @@ const jwtGenerator = require("../utils/jwtGenerator");
 const axios = require('axios');
 const forge = require('node-forge');
 const path = require('path')
-// const sqlite3 = require('sqlite3');
-
-// const CyclicDB = require('@cyclic.sh/dynamodb');
-// const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
 
 const { sql } = require("@vercel/postgres");
 
@@ -28,13 +24,8 @@ Login.postLogin = async (req, res) => {
         Reqdata.ip = requestIp.getClientIp(req);
         var sendData = {};
 
-        // const { a } = await client.sql`SELECT * from game_users where email=hitesh@yopmail.com`;
-        // console.log(a,"--a");
-
         var u  = await sql`SELECT * from game_users where email=${Reqdata.email}`;
 
-        // let users = dynamodb.collection('users');
-        // let u = await users.get(Reqdata.email);
         console.log(u,Reqdata.email);
         if(u.rowCount){
             uObj = u.rows[0];
