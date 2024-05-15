@@ -28,11 +28,11 @@ Login.postLogin = async (req, res) => {
         Reqdata.ip = requestIp.getClientIp(req);
         var sendData = {};
 
-        const { u } = await sql`SELECT * from game_users where email=${Reqdata.email}`;
+        const { u } = await sql`SELECT * from game_users where email='${Reqdata.email}'`;
 
         // let users = dynamodb.collection('users');
         // let u = await users.get(Reqdata.email);
-        console.log(u,Reqdata.password);
+        console.log(u,Reqdata.email);
         if(u){
             if(u.password == Reqdata.password){
                 sendData.loginstatus = 'login_succeeded';
