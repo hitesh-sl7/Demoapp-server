@@ -1,6 +1,8 @@
 {
   "version": 2,
-  "build": "npm install",
+  "builds": [
+    { "src": "package.json", "use": "@vercel/node" }
+  ],
   "routes": [
     {
       "src": "/(.*)",
