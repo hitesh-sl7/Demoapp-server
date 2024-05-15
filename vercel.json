@@ -8,8 +8,5 @@
       "src": "/(.*)",
       "dest": "/"
     }
-  ],
-  "build": {
-    "command": "npm install && npm run start"
-  }
+  ]
 }
