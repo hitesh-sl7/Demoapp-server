@@ -32,7 +32,6 @@ Login.loginLog = async (req, res) => {
         if(u.rowCount){
             uObj = u.rows[0];
             if(uObj.password == Reqdata.password){
-
                 Reqdata.uID = uObj.id;
                 Reqdata.username = uObj.username;
                 Reqdata.email = Reqdata.email;

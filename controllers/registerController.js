@@ -40,7 +40,7 @@ Register.registerLog = async (req, res) => {
 
         try {
             var u  = await sql`SELECT * from users where email=${Reqdata.rfs.email}`;
-            if(u){
+            if(u.rowCount){
                 var sendData = {};
                 sendData.loginstatus = 'register_failed';
                 sendData.request = Reqdata;

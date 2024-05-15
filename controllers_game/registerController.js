@@ -38,7 +38,7 @@ Register.postRegister = async (req, res) => {
         
         try {
             var u = await sql`SELECT * from game_users where email=${Reqdata.rfs.email}`;
-            if(u){
+            if(u.rowCount){
                 sendData.loginstatus = 'register_failed';
                 sendData.request = Reqdata;
                 sendData.message = "Email already exists!";
