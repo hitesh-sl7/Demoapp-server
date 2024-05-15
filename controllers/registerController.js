@@ -1,7 +1,7 @@
 const parser = require("ua-parser-js");
 const useragent = require('express-useragent');
 const requestIp = require('request-ip');
-const { v1: uuidv1,v4: uuidv4 } = require('uuid');
+//const { v1: uuidv1,v4: uuidv4 } = require('uuid');
 const AWS = require("aws-sdk");
 
 const axios = require('axios');

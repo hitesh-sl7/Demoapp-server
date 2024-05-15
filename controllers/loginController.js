@@ -1,7 +1,7 @@
 const parser = require("ua-parser-js");
 const useragent = require('express-useragent');
 const requestIp = require('request-ip');
-const { v1: uuidv1,v4: uuidv4 } = require('uuid');
+// const { v1: uuidv1,v4: uuidv4 } = require('uuid');
 const jwtGenerator = require("../utils/jwtGenerator");
 const axios = require('axios');
 var fs = require("fs");
