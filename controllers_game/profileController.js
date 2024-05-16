@@ -7,8 +7,7 @@ const axios = require('axios');
 const forge = require('node-forge');
 const path = require('path')
 
-// const CyclicDB = require('@cyclic.sh/dynamodb');
-// const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
+const { sql } = require("@vercel/postgres");
 
 
 var profile = function(){
@@ -33,51 +32,30 @@ profile.getProfile = async (req, res) => {
                 "time" : "0m" }
         };
 
-        // let dusers = dynamodb.collection('users');
-        // var a_u = await dusers.list();
-        // a_u.results.forEach((row) => {
-        //     dusers.delete(row.key);
-        // });
-
-        // let dquizes = dynamodb.collection('quiz_record');
-        // var a_q = await dquizes.list();
-        // a_q.results.forEach((row) => {
-        //     dquizes.delete(row.key);
-        // });
-
-        // return true;
-
-        // let users = dynamodb.collection('users');
-        // var all_users = await users.list();
-
-        // for (let row of all_users.results) {
-        //     var u = await users.get(row.key);
-        //     console.log(u,"--users");
-        //     if(u.props.id == user_id){
-        //         user_info = {
-        //             "uID" : user_id,
-        //             "username" : u.props.username,
-        //             "phone" : u.props.phone,
-        //             "email" : u.props.email,
-        //         }
-        //     }
-        // };
-
-        // let quizes = dynamodb.collection('quiz_record');
-        // var all_quizes = await quizes.list();
-
-        // for (let row of all_quizes.results) {
-        //     var q = await quizes.get(row.key);
-        //     console.log(q,"--quiz");
-        //     game_info['quiz']['game_played'] += 1;
-        //     game_info['quiz']['correct'] += q.props.correct;
-        //     game_info['quiz']['incorrect'] += q.props.incorrect;
-        //     game_info['quiz']['skip'] += q.props.skip;
-        //     var t_time = game_info['quiz']['time'];
-        //     t_time = parseInt(t_time.replace("m",""));
-        //     t_time = parseInt(q.props.time.replace("m","")) + t_time;
-        //     game_info['quiz']['time'] = t_time.toString() + "m";
-        // };
+        var u = await sql`SELECT * from game_users where id=${user_id}`;
+        if(u.rowCount){
+            uObj = u.rows[0];
+            user_info = {
+                            "uID" : user_id,
+                            "username" : uObj.username,
+                            "phone" : uObj.phone,
+                            "email" : uObj.email,
+                        }
+            }
+        
+        var q = await sql`SELECT * from quiz_record where user_id=${user_id}`;
+        if(q.rowCount){
+            for (let row of q.rows) {
+                    game_info['quiz']['game_played'] += 1;
+                    game_info['quiz']['correct'] += row.correct;
+                    game_info['quiz']['incorrect'] += row.incorrect;
+                    game_info['quiz']['skip'] += row.skip;
+                    var t_time = game_info['quiz']['time'];
+                    t_time = parseInt(t_time.replace("m",""));
+                    t_time = parseInt(row.time.replace("m","")) + t_time;
+                    game_info['quiz']['time'] = t_time.toString() + "m";
+                };
+            }
 
         console.log(user_info);
         console.log(game_info);

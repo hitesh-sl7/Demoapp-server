@@ -6,8 +6,7 @@ const jwtGenerator = require("../utils/jwtGenerator");
 const axios = require('axios');
 const forge = require('node-forge');
 const path = require('path')
-// const CyclicDB = require('@cyclic.sh/dynamodb');
-// const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
+const { sql } = require("@vercel/postgres");
 
 var leaderboard = function(){
 };
@@ -22,38 +21,34 @@ leaderboard.getLeaderboard = async (req, res) => {
         const game = req.query.game;
         var sendData = {};
 
-        // let quizes = dynamodb.collection('quiz_record');
-        // var all_quizes = await quizes.list();
-
         var lb = {};
-        // for (const element of all_quizes.results) {
-        //     var q = await quizes.get(element.key);
-        //     if (!lb.hasOwnProperty(q.props.user_id)) {
-        //         lb[q.props.user_id] = {
-        //             'correct' : q.props.correct,
-        //             'incorrect' : q.props.incorrect,
-        //             'skip' : q.props.skip,
-        //             'time' : parseInt(q.props.time.replace("m",""))
-        //         }
-        //     }else{
-        //         lb[q.props.user_id]['correct'] += q.props.correct;
-        //         lb[q.props.user_id]['incorrect'] += q.props.incorrect;
-        //         lb[q.props.user_id]['skip'] += q.props.skip;
-        //         lb[q.props.user_id]['time'] += parseInt(q.props.time.replace("m",""));
-        //     }
 
-        //     let users = dynamodb.collection('users');
-        //     var all_users = await users.list();
+        var q = await sql`SELECT * from quiz_record;`;
+        if(q.rowCount){
+            for (let row of q.rows) {
+                if (!lb.hasOwnProperty(row.user_id)) {
+                    lb[row.user_id] = {
+                        'correct' : row.correct,
+                        'incorrect' : row.incorrect,
+                        'skip' : row.skip,
+                        'time' : parseInt(row.time.replace("m",""))
+                    }
+                }else{
+                    lb[row.user_id]['correct'] += row.correct;
+                    lb[row.user_id]['incorrect'] += row.incorrect;
+                    lb[row.user_id]['skip'] += row.skip;
+                    lb[row.user_id]['time'] += parseInt(row.time.replace("m",""));
+                }
 
-        //     for (const row of all_users.results) {
-        //         var u = await users.get(row.key);
-        //         if(u.props.user_id == q.props.user_id){
-        //             lb[q.props.user_id]['username'] = u.props.username;
-        //             lb[q.props.user_id]['email'] = u.props.email;
-        //             lb[q.props.user_id]['user_id'] = u.props.id;
-        //         }
-        //     };   
-        // };
+                var u = await sql`SELECT * from game_users where id=${row.user_id}`;
+                if(u.rowCount){
+                    uObj = u.rows[0];
+                    lb[row.user_id]['username'] = uObj.username;
+                    lb[row.user_id]['email'] = uObj.email;
+                    lb[row.user_id]['user_id'] = uObj.id;
+                    }
+            };
+        }
 
         console.log(lb);
 

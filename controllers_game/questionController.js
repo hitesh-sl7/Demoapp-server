@@ -8,8 +8,7 @@ const forge = require('node-forge');
 const path = require('path')
 const fsPromises = require('fs/promises');
 
-// const CyclicDB = require('@cyclic.sh/dynamodb');
-// const dynamodb = CyclicDB('lime-stormy-pandaCyclicDB');
+const { sql } = require("@vercel/postgres");
 
 var Questions = function(){
 };
@@ -36,30 +35,19 @@ Questions.getQues = async (req, res) => {
             quesArray.push(q);
             indexes.push(randomIndex);
         }
-   
-        // try {
-        //     let quiz_record = dynamodb.collection('quiz_record');
-        //     await quiz_record.set(quiz_id, {
-        //         user_id : user_id,
-        //         quiz_id : quiz_id,
-        //         ques_indexes : indexes.join(),
-        //         correct : 0,
-        //         incorrect : 0,
-        //         skip : 0,
-        //         time : "",
-        //     });
-        // } catch (error) {
-        //     console.log(error);
-        // }
+
+        try {
+            await sql`INSERT INTO quiz_record (user_id, quiz_id, ques_indexes, correct, incorrect, skip, time) VALUES (${user_id},${quiz_id},${indexes.join()},0,0,0,'')`;
+
+        } catch (error) {
+            console.log(error);
+        }
 
 
         var sendData = {};
         sendData.quiz_id = quiz_id;
         sendData.questions = quesArray;
-        // sendData.options = q['options'];
-        // sendData.answer = q['options'][q['correctOptionIndex']];
         sendData.message = "Question Request successfully reached.";
-
         return res.status(200).send(sendData);
 }
     catch (err) 
@@ -81,17 +69,14 @@ Questions.postQues = async (req, res) => {
             let quiz_record = dynamodb.collection('quiz_record');
             let record = await quiz_record.get(Reqdata.quiz_id);
 
-            if(record){
-                await quiz_record.set(Reqdata.quiz_id, {
-                    user_id : record.props.user_id,
-                    quiz_id : record.props.quiz_id,
-                    ques_indexes : record.props.ques_indexes,
-                    correct : Reqdata.correct,
-                    incorrect : Reqdata.incorrect,
-                    skip : Reqdata.skip,
-                    time : Reqdata.time,
-                });
-
+            var q = await sql`SELECT * from quiz_record where quiz_id=${Reqdata.quiz_id}`;
+            if(q.rowCount){
+                try {
+                    await sql`UPDATE quiz_record set correct=${Reqdata.correct},incorrect=${Reqdata.incorrect},skip=${Reqdata.skip},time=${Reqdata.time} WHERE quiz_id=${Reqdata.quiz_id};`;
+        
+                } catch (error) {
+                    console.log(error);
+                }
                 var sendData = {};
                 sendData.status = "success";
                 sendData.message = "Quiz answer saved successfully";
