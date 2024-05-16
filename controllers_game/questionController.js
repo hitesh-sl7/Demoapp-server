@@ -66,8 +66,6 @@ Questions.postQues = async (req, res) => {
         console.log(Reqdata);
 
         try {
-            let quiz_record = dynamodb.collection('quiz_record');
-            let record = await quiz_record.get(Reqdata.quiz_id);
 
             var q = await sql`SELECT * from quiz_record where quiz_id=${Reqdata.quiz_id}`;
             if(q.rowCount){
