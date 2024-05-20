@@ -30,21 +30,31 @@ Login.postLogin = async (req, res) => {
         if(u.rowCount){
             uObj = u.rows[0];
             if(uObj.password == Reqdata.password){
-                sendData.loginstatus = 'login_succeeded';
-                sendData.user_info = {
-                    "uID" : uObj.id,
-                    "username" : uObj.username,
-                    "phone" : uObj.phone,
-                    "email" : uObj.email,
+                Reqdata.uID = uObj.id;
+                Reqdata.username = uObj.username;
+                Reqdata.email = Reqdata.email;
+                Reqdata.phone = '';
+                if(uObj.phone){
+                    Reqdata.phone = uObj.phone;
                 }
-                // sendData.request = Reqdata;
+                const astk = jwtGenerator(Reqdata.uID);
+                Reqdata.session_id = astk;
+
+                var respData = await Login.sendLoginData("login_succeeded",Reqdata);
+                sendData.status = respData.status;
+                sendData.severity = respData.severity;
+                sendData.loginstatus = 'login_succeeded';
+                sendData.device = respData.device;
+                sendData.request = Reqdata;
                 sendData.message = "Login Request successfully reached.";
             }else{
+                await Login.sendLoginData("login_failed",Reqdata);
                 sendData.loginstatus = 'login_failed';
                 sendData.request = Reqdata;
                 sendData.message = "Incorrect password";
             }
         }else{
+            await Login.sendLoginData("login_failed",Reqdata);
             sendData.loginstatus = 'login_failed';
             sendData.request = Reqdata;
             sendData.message = "User not found";
@@ -75,10 +85,8 @@ Login.sendLoginData = async(status,data) => {
         plt = dID['plt'];
         pid = dID['pr'];
 
-        if(pid == "21" || pid == 21){ 
-            token = "9153477437238592:zzuVeKSXMdGdMz5C:" + plt;
-            auth_key = new Buffer.from(token).toString('base64');
-        }
+        token = "8362394223694836:0ZBR2eEBI6royEpY:" + plt;
+        auth_key = new Buffer.from(token).toString('base64');
 
         const headers = {
             'Content-Type': 'application/json',

@@ -26,39 +26,55 @@ leaderboard.getLeaderboard = async (req, res) => {
         var q = await sql`SELECT * from quiz_record;`;
         if(q.rowCount){
             for (let row of q.rows) {
-                if (!lb.hasOwnProperty(row.user_id)) {
-                    lb[row.user_id] = {
-                        'correct' : row.correct,
-                        'incorrect' : row.incorrect,
-                        'skip' : row.skip,
-                        'time' : parseInt(row.time.replace("m",""))
-                    }
-                }else{
-                    lb[row.user_id]['correct'] += row.correct;
-                    lb[row.user_id]['incorrect'] += row.incorrect;
-                    lb[row.user_id]['skip'] += row.skip;
-                    lb[row.user_id]['time'] += parseInt(row.time.replace("m",""));
+                let userId = row.user_id;
+                let score = (row.correct / (row.correct + row.incorrect + row.skip)) * 100;
+                let time = parseInt(row.time.replace("m", ""));
+        
+                if (!lb.hasOwnProperty(userId)) {
+                    lb[userId] = {
+                        'score': [score],
+                        'time': time
+                    };
+                } else {
+                    lb[userId]['score'].push(score);
+                    lb[userId]['time'] += time;
                 }
+        
+                var u = await sql`SELECT * FROM game_users WHERE id = ${userId}`;
+                if (u.rowCount) {
+                    let uObj = u.rows[0];
+                    lb[userId]['username'] = uObj.username;
+                    lb[userId]['email'] = uObj.email;
+                    lb[userId]['user_id'] = uObj.id;
+                }
+            }
 
-                var u = await sql`SELECT * from game_users where id=${row.user_id}`;
-                if(u.rowCount){
-                    uObj = u.rows[0];
-                    lb[row.user_id]['username'] = uObj.username;
-                    lb[row.user_id]['email'] = uObj.email;
-                    lb[row.user_id]['user_id'] = uObj.id;
-                    }
-            };
+            for (let userId in lb) {
+                if (lb.hasOwnProperty(userId)) {
+                    let scores = lb[userId]['score'];
+                    let totalScore = scores.reduce((acc, score) => acc + score, 0);
+                    let averageScore = totalScore / scores.length;
+                    let highestScore = Math.max(...scores);
+        
+                    lb[userId]['avg_score'] = averageScore;
+                    lb[userId]['high_score'] = highestScore;
+
+                    delete lb[userId]['score'];
+                }
+            }
         }
+
+
 
         console.log(lb);
 
         lb = Object.values(lb);
         lb.sort((a, b) => {
-            // Sort by correct answers (descending)
-            if (a.correct !== b.correct) {
-                return b.correct - a.correct;
+            // Sort by avg_score answers (descending)
+            if (a.avg_score !== b.avg_score) {
+                return b.avg_score - a.avg_score;
             } else {
-                // If correct answers are equal, sort by time (descending)
+                // If avg_score answers are equal, sort by time (descending)
                 return a.time - b.time;
             }
         });

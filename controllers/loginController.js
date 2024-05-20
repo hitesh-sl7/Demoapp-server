@@ -51,16 +51,17 @@ Login.loginLog = async (req, res) => {
                 sendData.request = Reqdata;
                 sendData.message = "Login Request successfully reached.";
             }else{
+                await Login.sendLoginData("login_failed",Reqdata);
                 var sendData = {};
                 sendData.status = 'allow';
                 sendData.severity = 'low';
                 sendData.loginstatus = 'login_failed';
                 sendData.device = {};
                 sendData.request = Reqdata;
-                sendData.message = "Login Request successfully reached.";
                 sendData.message = "Incorrect password";
             }
         }else{
+            await Login.sendLoginData("login_failed",Reqdata);
             var sendData = {};
             sendData.status = 'allow';
             sendData.severity = 'low';

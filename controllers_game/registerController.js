@@ -25,6 +25,7 @@ Register.postRegister = async (req, res) => {
         // Reqdata.package = req.headers['package'];
         Reqdata.ip = requestIp.getClientIp(req);
         if((Reqdata.rfs.name == "") || (Reqdata.rfs.email == "") || (Reqdata.rfs.password == "" || Reqdata.rfs.phone == "0" ) ){
+            Register.sendRegisterData("register_failed",Reqdata);
             var sendData = {};
             sendData.status = 'allow';
             sendData.severity = 'low';
@@ -39,18 +40,27 @@ Register.postRegister = async (req, res) => {
         try {
             var u = await sql`SELECT * from game_users where email=${Reqdata.rfs.email}`;
             if(u.rowCount){
-                sendData.loginstatus = 'register_failed';
-                sendData.request = Reqdata;
+                Register.sendRegisterData("register_failed",Reqdata);
+                sendData.status = 'allow';
+                sendData.severity = 'low';
+                sendData.register_status = 'register_failed';
+                sendData.device = {};
+                sendData.request = req.body;
                 sendData.message = "Email already exists!";
+                return res.status(200).send(sendData);  
             }else{
                 await sql`INSERT INTO game_users (email, username, phone, password) VALUES (${Reqdata.rfs.email},${Reqdata.rfs.name},${Reqdata.rfs.phone},${Reqdata.rfs.password})`;
-                var sendData = {};
+                var respData = await Register.sendRegisterData("register_succeeded",Reqdata);
+                sendData.status = respData.status;
+                sendData.severity = respData.severity;
                 sendData.loginstatus = 'register_succeeded';
+                sendData.device = respData.device;
+                sendData.request = Reqdata;
                 sendData.message = "Register Request successfully reached.";
+                return res.status(200).send(sendData);
             }
         } catch (error) {
             console.log(error);
-            var sendData = {};
             sendData.loginstatus = 'register_failed';
             sendData.request = Reqdata;
             sendData.message = error;
@@ -81,10 +91,9 @@ Register.postRegister = async (req, res) => {
         dID = JSON.parse(dID);
         plt = dID['plt'];
         pid = dID['pr'];
-        if(pid == "21" || pid == 21){
-            token = "9153477437238592:zzuVeKSXMdGdMz5C:" + plt;
-            auth_key = new Buffer.from(token).toString('base64');
-        }
+
+        token = "8362394223694836:0ZBR2eEBI6royEpY:" + plt;
+        auth_key = new Buffer.from(token).toString('base64');
 
         const headers = {
             'Content-Type': 'application/json',

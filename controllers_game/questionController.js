@@ -83,14 +83,12 @@ Questions.postQues = async (req, res) => {
                 sendData.status = "failed";
                 sendData.message = "Quiz id not found";
             }
-            
         } catch (error) {
             console.log(error);
             var sendData = {};
             sendData.status = "failed";
             sendData.message = error.message;
         }
-
         return res.status(200).send(sendData);
 }
     catch (err) 
