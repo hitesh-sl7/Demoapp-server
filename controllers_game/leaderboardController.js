@@ -56,8 +56,8 @@ leaderboard.getLeaderboard = async (req, res) => {
                     let averageScore = totalScore / scores.length;
                     let highestScore = Math.max(...scores);
         
-                    lb[userId]['avg_score'] = averageScore.toFixed(2);;
-                    lb[userId]['high_score'] = highestScore.toFixed(2);;
+                    lb[userId]['avg_score'] = parseFloat(averageScore.toFixed(2));
+                    lb[userId]['high_score'] = parseFloat(highestScore.toFixed(2));
 
                     delete lb[userId]['score'];
                 }
