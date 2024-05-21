@@ -39,7 +39,6 @@ Login.postLogin = async (req, res) => {
                 }
                 const astk = jwtGenerator(Reqdata.uID);
                 Reqdata.session_id = astk;
-
                 var respData = await Login.sendLoginData("login_succeeded",Reqdata);
                 sendData.status = respData.status;
                 sendData.severity = respData.severity;

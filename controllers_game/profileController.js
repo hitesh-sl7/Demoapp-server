@@ -60,6 +60,8 @@ profile.getProfile = async (req, res) => {
                     game_info['quiz']['time'] = t_time.toString() + "m";
                 };
             }
+        
+            console.log(scores);
 
         var totalScore = scores.reduce((acc, score) => acc + score, 0);
         var averageScore = totalScore / scores.length;
