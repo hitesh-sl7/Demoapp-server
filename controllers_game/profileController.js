@@ -67,8 +67,8 @@ profile.getProfile = async (req, res) => {
         var averageScore = totalScore / scores.length;
         var highestScore = Math.max(...scores);
 
-        game_info['quiz']['avg_score'] = averageScore;
-        game_info['quiz']['high_score'] = highestScore;
+        game_info['quiz']['avg_score'] = averageScore.toFixed(2);;
+        game_info['quiz']['high_score'] = highestScore.toFixed(2);;
         
         
         console.log(user_info);
