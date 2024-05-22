@@ -65,6 +65,13 @@ Questions.postQues = async (req, res) => {
         var Reqdata = req.body;
         console.log(Reqdata);
 
+        if(Reqdata.correct == 0 & Reqdata.incorrect == 0 & Reqdata.skip == 0){
+            var sendData = {};
+            sendData.status = "failed";
+            sendData.message = "invalid data";
+            return res.status(200).send(sendData);
+        }
+
         try {
 
             var q = await sql`SELECT * from quiz_record where quiz_id=${Reqdata.quiz_id}`;
