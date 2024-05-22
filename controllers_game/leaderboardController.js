@@ -70,11 +70,11 @@ leaderboard.getLeaderboard = async (req, res) => {
 
         lb = Object.values(lb);
         lb.sort((a, b) => {
-            // Sort by avg_score answers (descending)
-            if (a.avg_score !== b.avg_score) {
-                return b.avg_score - a.avg_score;
+            // Sort by high_score answers (descending)
+            if (a.high_score !== b.high_score) {
+                return b.high_score - a.high_score;
             } else {
-                // If avg_score answers are equal, sort by time (descending)
+                // If high_score answers are equal, sort by time (descending)
                 return a.time - b.time;
             }
         });
