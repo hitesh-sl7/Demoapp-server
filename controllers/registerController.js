@@ -107,7 +107,7 @@ Register.registerLog = async (req, res) => {
             auth_key = new Buffer.from(token).toString('base64');
             domain = 'https://m.sensfrx.ai/v1/register';
         }else if(pid == "722" || pid == 722){
-            token = "7838156638213257:c6Q4oS30IbRYi5Al:" + plt;
+            token = "7838156638213257:CsFqXOfLIhc274J7:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
             domain = 'https://m.sensfrx.ai/v1/register';
         }
