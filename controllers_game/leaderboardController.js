@@ -26,6 +26,9 @@ leaderboard.getLeaderboard = async (req, res) => {
         var q = await sql`SELECT * from quiz_record;`;
         if(q.rowCount){
             for (let row of q.rows) {
+                if (row.correct === 0 && row.incorrect === 0 && row.skip === 0) {
+                    continue;
+                }
                 let userId = row.user_id;
                 let score = (row.correct / (row.correct + row.incorrect + row.skip)) * 100;
                 let time = parseInt(row.time.replace("m", ""));
