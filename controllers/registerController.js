@@ -114,7 +114,7 @@ Register.registerLog = async (req, res) => {
         else if(pid == "873" || pid == 873){
             token = "7837597548861916:65tfs1r6Xps0xcod:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
-            domain = 'https://sandboxmdev.sensfrx.ai/v1/login';
+            domain = 'https://sandboxmdev.sensfrx.ai/v1/register';
         }
 
         const headers = {
