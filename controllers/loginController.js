@@ -129,6 +129,9 @@ Login.sendLoginData = async(status,data) => {
             token = "7837597548861916:65tfs1r6Xps0xcod:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
             domain = 'https://sandboxmdev.sensfrx.ai/v1/login';
+        }else if(pid == "965" || pid == 965){
+            token = "2522779579888945:VD2R7QHHpmBpihLU:" + plt;
+            auth_key = new Buffer.from(token).toString('base64');
         }
 
         const headers = {
