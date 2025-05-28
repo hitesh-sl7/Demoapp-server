@@ -147,7 +147,7 @@ Login.sendLoginData = async(status,data) => {
             "ev": status,
             "uID": data.uID,
             "dID" : data.request_token,
-            "df" : data.d_f,
+            "d_f" : data.d_f,
             "uex": {
             "email": data.email,
             "username": data.username,
