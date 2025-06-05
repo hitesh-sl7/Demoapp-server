@@ -148,7 +148,7 @@ Login.sendLoginData = async(status,data) => {
             token = "2522779579888945:VD2R7QHHpmBpihLU:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
         }else if(pid == "1121" || pid == 1121){
-            token = "1953822545692768:hkMERW0tbAhUGP5K";
+            token = "1953822545692768:5errgeszaObfdkOm";
             auth_key = new Buffer.from(token).toString('base64');
         }
 
