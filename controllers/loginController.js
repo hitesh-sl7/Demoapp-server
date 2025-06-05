@@ -121,7 +121,7 @@ Login.sendLoginData = async(status,data) => {
             token = "6291856998352997:6GXgaUaU4LBep0ka:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
         }else if(pid == "1101" || pid == 1101){
-            token = "5663953452149639:aK3eMhWFhGTRmAFC:" + plt;
+            token = "5663953452149639:aK3eMhWFhGTRmAFC";
             auth_key = new Buffer.from(token).toString('base64');
         }else if(pid == "720" || pid == 720){
             token = "5916688855237721:IzfVF8xbpNsn1zcP:" + plt;
@@ -146,6 +146,9 @@ Login.sendLoginData = async(status,data) => {
             domain = 'https://sandboxmdev.sensfrx.ai/v1/login';
         }else if(pid == "965" || pid == 965){
             token = "2522779579888945:VD2R7QHHpmBpihLU:" + plt;
+            auth_key = new Buffer.from(token).toString('base64');
+        }else if(pid == "1121" || pid == 1121){
+            token = "1953822545692768:hkMERW0tbAhUGP5K";
             auth_key = new Buffer.from(token).toString('base64');
         }
 
