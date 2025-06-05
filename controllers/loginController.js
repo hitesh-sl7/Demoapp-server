@@ -27,14 +27,14 @@ Login.loginLog = async (req, res) => {
         Reqdata.uID = '';
         Reqdata.ip = requestIp.getClientIp(req);
 
-        var u  = await sql`SELECT * from users where email=${Reqdata.email}`;
+        var u  = await sql`SELECT * from users where email=${Reqdata.uex.email}`;
 
         if(u.rowCount){
             uObj = u.rows[0];
-            if(uObj.password == Reqdata.password){
+            if(uObj.password == Reqdata.uex.password){
                 Reqdata.uID = uObj.id;
                 Reqdata.username = uObj.username;
-                Reqdata.email = Reqdata.email;
+                Reqdata.email = Reqdata.uex.email;
                 Reqdata.phone = '';
                 if(uObj.phone){
                     Reqdata.phone = uObj.phone;
