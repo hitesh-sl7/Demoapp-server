@@ -18,7 +18,6 @@ Register.registerLog = async (req, res) => {
     try{
         var Reqdata = req.body;
         console.log(Reqdata);
-
         var dID = new Buffer.from(Reqdata.request_token.split(".")[1], 'base64').toString();
         dID = JSON.parse(dID);
         pid = dID['pr'];
@@ -83,7 +82,12 @@ Register.registerLog = async (req, res) => {
         var auth_key = '';
         var plt = '';
         var token = '';
-        var domain = 'https://mdev.sensfrx.ai/v1/register';
+        if(data.plt == "android"){
+            var domain = 'https://mdev.sensfrx.ai/v1/register/android';
+        }else{
+            var domain = 'https://mdev.sensfrx.ai/v1/register/ios';
+        }
+        
 
         var dID = new Buffer.from(data.request_token.split(".")[1], 'base64').toString();
     
@@ -111,11 +115,19 @@ Register.registerLog = async (req, res) => {
         }else if(pid == "720" || pid == 720){
             token = "5916688855237721:IzfVF8xbpNsn1zcP:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
-            domain = 'https://m.sensfrx.ai/v1/register';
+            if(data.plt == "android"){
+                domain = 'https://m.sensfrx.ai/v1/register/android';
+            }else{
+                domain = 'https://m.sensfrx.ai/v1/register/ios';
+            }
         }else if(pid == "722" || pid == 722){
             token = "7838156638213257:CsFqXOfLIhc274J7:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
-            domain = 'https://m.sensfrx.ai/v1/register';
+            if(data.plt == "android"){
+                domain = 'https://m.sensfrx.ai/v1/register/android';
+            }else{
+                domain = 'https://m.sensfrx.ai/v1/register/ios';
+            }
         }
         else if(pid == "873" || pid == 873){
             token = "7837597548861916:65tfs1r6Xps0xcod:" + plt;
