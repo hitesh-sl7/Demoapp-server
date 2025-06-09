@@ -147,8 +147,8 @@ Login.sendLoginData = async(status,data) => {
             }else{
                 domain = 'https://m.sensfrx.ai/v1/login/ios';
             }
-        }else if(pid == "1067" || pid == 1067){
-            token = "9448571622792637:yKdg8vesHlXbiD3D";
+        }else if(pid == "1068" || pid == 1068){
+            token = "5486677226778972:dZPeRk6TdE4RflYa";
             auth_key = new Buffer.from(token).toString('base64');
             if(data.plt == "android"){
                 domain = 'https://m.sensfrx.ai/v1/login/android';
