@@ -163,6 +163,14 @@ Login.sendLoginData = async(status,data) => {
             }else{
                 domain = 'https://m.sensfrx.ai/v1/login/ios';
             }
+        }else if(pid == "1073" || pid == 1073){
+            token = "1492623774869734:amkT9V3XLGgRBZe2";
+            auth_key = new Buffer.from(token).toString('base64');
+            if(data.plt == "android"){
+                domain = 'https://m.sensfrx.ai/v1/login/android';
+            }else{
+                domain = 'https://m.sensfrx.ai/v1/login/ios';
+            }
         }else if(pid == "873" || pid == 873){
             token = "7837597548861916:65tfs1r6Xps0xcod:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
