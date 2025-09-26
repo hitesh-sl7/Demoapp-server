@@ -207,7 +207,7 @@ Login.sendLoginData = async(status,data) => {
             'authorization': auth_key,
             "package":  data.package,
             };
-        // console.log(headers);
+        console.log(headers);
         const body = {
             "ev": status,
             "uID": data.uID,
