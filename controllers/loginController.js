@@ -123,6 +123,9 @@ Login.sendLoginData = async(status,data) => {
         }else if(pid == "1101" || pid == 1101){
             token = "5663953452149639:aK3eMhWFhGTRmAFC";
             auth_key = new Buffer.from(token).toString('base64');
+        }else if(pid == "1234" || pid == 1234){
+            token = "9912515294798865:UPskoeQKiQeiGRnB";
+            auth_key = new Buffer.from(token).toString('base64');
         }else if(pid == "720" || pid == 720){
             token = "5916688855237721:IzfVF8xbpNsn1zcP:" + plt;
             auth_key = new Buffer.from(token).toString('base64');
