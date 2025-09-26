@@ -18,6 +18,7 @@ var Login = function(){
 Login.loginLog = async (req, res) => {
     try{
         var Reqdata = req.body;
+        console.log(Reqdata)
         var dID = new Buffer.from(Reqdata.request_token.split(".")[1], 'base64').toString();
         dID = JSON.parse(dID);
         pid = dID['pr'];
@@ -93,9 +94,10 @@ Login.sendLoginData = async(status,data) => {
         }else{
             var domain = 'https://mdev.sensfrx.ai/v1/login/ios';
         }
-
+        
         var dID = new Buffer.from(data.request_token.split(".")[1], 'base64').toString();
         dID = JSON.parse(dID);
+        console.log(dID)
         plt = dID['plt'];
         pid = dID['pr'];
 
